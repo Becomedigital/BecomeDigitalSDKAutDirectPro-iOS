@@ -197,4 +197,3 @@ Descargue el archivo `MBLocalizable.strings`, modifique el texto requerido y est
 ## Requisitos
 
 - **iOS 12. o superior**
-
