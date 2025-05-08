@@ -1,0 +1,348 @@
+/*
+  Localizable.strings
+  BecomeDigitalV
+
+  Created by BecomeDigitalV on 3/06/22.
+  
+*/
+
+// Amplify
+"amplify_ui_liveness_get_ready_page_title" = "Verificación de Vitalidad";
+"amplify_ui_liveness_get_ready_photosensitivity_title" = "Advertencia de Fotosensibilidad";
+"amplify_ui_liveness_get_ready_photosensitivity_description" = "Esta verificación parpadea con diferentes colores. Usa precaución si eres fotosensible.";
+"amplify_ui_liveness_get_ready_photosensitivity_icon_a11y" = "Información sobre fotosensibilidad";
+"amplify_ui_liveness_get_ready_photosensitivity_dialog_title" = "Advertencia de fotosensibilidad";
+"amplify_ui_liveness_get_ready_photosensitivity_dialog_description" = "Algunas personas pueden experimentar convulsiones epilépticas cuando están expuestas a luces de colores. Usa precaución si tú o alguien de tu familia tiene una condición epiléptica.";
+"amplify_ui_liveness_get_ready_begin_check" = "Iniciar verificación de video";
+
+"amplify_ui_liveness_challenge_recording_indicator_label" = "GRAB.";
+"amplify_ui_liveness_challenge_instruction_hold_face_during_countdown" = "Mantén la posición del rostro durante la cuenta regresiva.";
+"amplify_ui_liveness_challenge_instruction_hold_face_during_freshness" = "Mantén el rostro dentro del óvalo para la detección de luces de colores.";
+"amplify_ui_liveness_challenge_instruction_move_face_back" = "Muévete hacia atrás";
+"amplify_ui_liveness_challenge_instruction_move_face_closer" = "Acércate más";
+"amplify_ui_liveness_challenge_instruction_move_face_in_front_of_camera" = "Coloca tu rostro frente a la cámara";
+"amplify_ui_liveness_challenge_instruction_multiple_faces_detected" = "Solo un rostro por verificación";
+"amplify_ui_liveness_challenge_instruction_hold_still" = "Mantente quieto";
+
+"amplify_ui_liveness_challenge_connecting" = "Conectando...";
+"amplify_ui_liveness_challenge_verifying" = "Verificando";
+"amplify_ui_liveness_challenge_cancel_a11y" = "Cancelar verificación";
+
+"amplify_ui_liveness_camera_setting_alert_title" = "Cambia la Configuración de la Cámara";
+"amplify_ui_liveness_camera_setting_alert_message" = "Permite el acceso a la cámara en la configuración.";
+"amplify_ui_liveness_camera_setting_alert_update_setting_button_text" = "Actualizar configuración";
+"amplify_ui_liveness_camera_setting_alert_not_now_button_text" = "Ahora no";
+
+"amplify_ui_liveness_close_button_a11y" = "Cerrar";
+
+"amplify_ui_liveness_center_your_face_text" = "Centra tu rostro";
+"amplify_ui_liveness_camera_permission_page_title" = "Verificación de Vitalidad";
+"amplify_ui_liveness_camera_permission_button_title" = "Cambiar Configuración de la Cámara";
+"amplify_ui_liveness_camera_permission_button_header" = "La cámara no es accesible";
+"amplify_ui_liveness_camera_permission_button_description" = "Es posible que debas ir a la configuración para conceder permisos a la cámara, cerrar la aplicación e intentarlo nuevamente.";
+
+"amplify_ui_liveness_face_not_prepared_reason_pendingCheck" = " ";
+"amplify_ui_liveness_face_not_prepared_reason_not_in_oval" = "Mueve tu rostro para encajar en el óvalo";
+"amplify_ui_liveness_face_not_prepared_reason_move_face_closer" = "Acércate más";
+"amplify_ui_liveness_face_not_prepared_reason_move_face_right" = "Mueve tu rostro hacia la derecha";
+"amplify_ui_liveness_face_not_prepared_reason_move_face_left" = "Mueve tu rostro hacia la izquierda";
+"amplify_ui_liveness_face_not_prepared_reason_move_to_dimmer_area" = "Muévete a un área con menos luz";
+"amplify_ui_liveness_face_not_prepared_reason_move_to_brighter_area" = "Muévete a un área con más luz";
+"amplify_ui_liveness_face_not_prepared_reason_no_face" = "Coloca tu rostro frente a la cámara";
+"amplify_ui_liveness_face_not_prepared_reason_multiple_faces" = "Solo un rostro por verificación";
+"amplify_ui_liveness_face_not_prepared_reason_face_too_close" = "Aleja tu rostro un poco más";
+
+
+// Microblink
+"mbic_scan_the_front_side" = "Escanea el lado frontal del documento";
+"mbic_flip_document" = "Voltea el documento";
+"mbic_scan_the_back_side" = "Escanea el lado posterior del documento";
+"mbic_move_closer" = "Acércate";
+"mbic_move_farther" = "Aleja";
+"mbic_camera_angle_too_steep" = "Mantén el documento paralelo al teléfono";
+"mbic_document_too_close_to_edge" = "Mantén el documento completamente visible";
+"mbic_lightning_too_bright" = "Muévete a un lugar con menos iluminación";
+"mbic_lightning_too_dark" = "Muévete a un lugar más brillante";
+"mbic_blur_detected" = "Mantén el documento y el teléfono quietos";
+"mbic_glare_detected" = "Inclina o mueve el documento para eliminar el reflejo";
+"mbic_occluded" = "Mantén el documento completamente visible";
+"mbic_camer_orientation_unsuitable_animation" = "Gira la tarjeta o gira el teléfono a horizontal";
+"mbic_camer_orientation_unsuitable" = "Gira el teléfono o la tarjeta";
+
+// Tutorial
+"mbic_need_help_tooltip" = "¿Necesitas ayuda?";
+"mbic_onboarding_field_visible_title" = "Mantén todos los detalles visibles";
+"mbic_onboarding_field_visible_details" = "Asegúrate de mantener bien iluminado el documento. Todos los campos del documento deben ser visibles en la pantalla de la cámara.";
+"mbic_tutorial_fields_visible_title" = "Mantén todos los campos visibles";
+"mbic_tutorial_fields_visible_details" = "Asegúrate de no cubrir partes del documento con un dedo, incluyendo las líneas inferiores. Además, cuidado con los reflejos de hologramas que pasan sobre los campos del documento.";
+"mbic_tutorial_harsh_light_title" = "Cuidado con la luz intensa";
+"mbic_tutorial_harsh_light_details" = "Evita la luz directa intensa, ya que se refleja en el documento y puede hacer partes del documento ilegibles. Si no puedes leer datos en el documento, tampoco serán visibles para la cámara.";
+"mbic_tutorial_keep_still_title" = "Mantén quieto mientras escaneas";
+"mbic_tutorial_keep_still_details" = "Intenta mantener el teléfono y el documento quietos mientras escaneas. Mover cualquiera de ellos puede hacer que la imagen se desenfoque y que los datos en el documento sean ilegibles.";
+
+// Cámara
+"mbic_camera_unavailable" = "Cámara no disponible";
+"mbic_camera_permission_error" = "La aplicación no tiene permiso para usar la cámara, por favor cambia la configuración de privacidad";
+"mbic_settings" = "Configuración";
+"mbic_camera_media_capture_error" = "No se puede capturar el contenido multimedia";
+"mbic_camera_unable_to_resume_session" = "No se puede reanudar";
+
+// Compartido
+"mbic_done" = "Listo";
+"mbic_cancel" = "Cancelar";
+"mbic_back" = "Atrás";
+"mbic_next" = "Siguiente";
+"mbic_ok" = "Aceptar";
+"mbic_close" = "Cerrar";
+
+// Linterna
+"mbic_torch_glare_tooltip_message" = "Cuidado con el reflejo de la linterna.\nMueve suavemente tu ID para evitarlo.";
+
+// Licencia
+"mbic_check_internet_connection" = "Verifica la conexión a internet";
+"mbic_network_error" = "Error de red";
+"mbic_scanning_not_available" = "Escaneo no disponible";
+
+// Indety
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "2t2-G7-8Gr"; */
+"2t2-G7-8Gr.placeholder" = "Nombre de usuario";
+
+/* Class = "UIButton"; normalTitle = "Right Four Fingers"; ObjectID = "9Uj-v0-i1G"; */
+"9Uj-v0-i1G.normalTitle" = "Cuatro dedos derechos";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "BqO-2r-oxu"; */
+"BqO-2r-oxu.title" = "Elemento";
+
+/* Class = "UIButton"; normalTitle = "Left Palm"; ObjectID = "DAk-DC-4dY"; */
+"DAk-DC-4dY.normalTitle" = "Palma izquierda";
+
+/* Class = "UIButton"; normalTitle = "Left Thumb"; ObjectID = "FWE-Po-Zz2"; */
+"FWE-Po-Zz2.normalTitle" = "Pulgar izquierdo";
+
+/* Class = "UILabel"; text = "©IDENTY,Inc.v"; ObjectID = "HYC-LB-R4v"; */
+"HYC-LB-R4v.text" = "©IDENTY,Inc.v";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "Hej-Nq-dU9"; */
+"Hej-Nq-dU9.normalTitle" = "Aceptar";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "NYg-cU-6hR"; */
+"NYg-cU-6hR.normalTitle" = "Cancelar";
+
+/* Class = "UIButton"; normalTitle = "Left Four Fingers"; ObjectID = "P4v-25-JWH"; */
+"P4v-25-JWH.normalTitle" = "Cuatro dedos izquierdos";
+
+/* Class = "UILabel"; text = "SELECT FINGER COMBINATION"; ObjectID = "T9p-Wr-pas"; */
+"T9p-Wr-pas.text" = "SELECCIONAR COMBINACIÓN DE DEDOS";
+
+/* Class = "UIButton"; normalTitle = "Right Palm"; ObjectID = "XkG-Cg-OVU"; */
+"XkG-Cg-OVU.normalTitle" = "Palma derecha";
+
+/* Class = "UILabel"; text = " Privacy"; ObjectID = "fcr-dm-COC"; */
+"fcr-dm-COC.text" = " Privacidad";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "lkn-4Q-FBz"; */
+"lkn-4Q-FBz.normalTitle" = "Cerrar";
+
+/* Class = "UILabel"; text = "Terms & conditions / "; ObjectID = "nnL-Hv-lCD"; */
+"nnL-Hv-lCD.text" = "Términos y condiciones / ";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "nxa-KJ-5MJ"; */
+"nxa-KJ-5MJ.normalTitle" = "Cerrar";
+
+/* Class = "UINavigationItem"; title = "Identy"; ObjectID = "srN-UY-8NR"; */
+"srN-UY-8NR.title" = "Identy";
+
+/* Class = "UILabel"; text = "Deselect the Missing Fingers"; ObjectID = "tsp-pH-85p"; */
+"tsp-pH-85p.text" = "Deselecciona los dedos faltantes";
+
+/* Class = "UIButton"; normalTitle = "Right Thumb"; ObjectID = "vXV-bX-Ibj"; */
+"vXV-bX-Ibj.normalTitle" = "Pulgar derecho";
+
+
+"search_left_missingFingers" = "Buscando dedos izquierdos";
+"search_right_missingFingers" = "Buscando dedos derechos";
+
+"identy_please_wait" = "Por favor espera...";
+"identy_left_four_fingers" = "Cuatro dedos izquierdos";
+"identy_right_four_fingers" = "Cuatro dedos derechos";
+"identy_left_index" = "Índice izquierdo";
+"identy_left_middle" = "Medio izquierdo";
+"identy_left_ring" = "Anular izquierdo";
+"identy_left_little" = "Meñique izquierdo";
+"identy_right_index" = "Índice derecho";
+"identy_right_middle" = "Medio derecho";
+"identy_right_ring" = "Anular derecho";
+"identy_right_little" = "Meñique derecho";
+"identy_left_thumb" = "Pulgar izquierdo";
+"identy_right_thumb" = "Pulgar derecho";
+"identy_two_thumb" = "Ambos pulgares";
+"identy_left_palm" = "Palma izquierda";
+"identy_right_palm" = "Palma derecha";
+"id_searching_thumbs" = "Buscando pulgares";
+
+/*Internet Check*/
+"identy_alert" = "Alerta";
+"identy_settings" = "Configuración";
+"identy_cancel" = "Cancelar";
+"identy_no_internet" = "Por favor verifica tu conexión a Internet";
+"identy_enable_internet_message" = "Por favor habilita Internet";
+"identy_initialization_failed" = "Inicialización fallida";
+"identy_jailbroken_device" = "Dispositivo con jailbreak";
+"identy_no_lic_file" = "Error de licencia";
+"identy_activity_paused" = "Actividad en pausa";
+"identy_back_pressed" = "Actividad pausada por retroceso";
+"identy_timeout" = "Tiempo de espera agotado";
+"identy_limit_exceeded" = "Límite de transacción excedido";
+"identy_invalid_transaction_time" = "Hora de transacción no válida";
+"identy_invalid_transaction_count" = "Número de transacciones no válido";
+"identy_nistgenration_failed" = "Error al generar archivo NIST";
+"identy_templategenration_failed" = "Error al generar plantilla";
+"identy_invalid_input" = "Entrada inválida";
+
+
+"id_close" = "Cerrar";
+"id_yes" = "Sí";
+"id_no" = "No";
+/*FingerResultViewController*/
+//"identy_nfiq" = "NFIQ";
+//"identy_score" = "Score";
+
+"id_enrollment_completed" =  "Registro completado";
+"id_success_match" =  "Verificado exitosamente";
+"id_authentication_unsuccessful" = "Verificación fallida";
+"id_capture_successful" = "Captura completada";
+"identy_nfiq" = "NFIQ";
+"identy_score" = "Score";
+
+
+/*CameraViewController*/
+ "search_left_missingFingers_index" = "Buscando índice izquierdo";
+ "search_left_missingFingers_middle" = "Buscando medio izquierdo";
+ "search_left_missingFingers_ring" = "Buscando anular izquierdo";
+ "search_left_missingFingers_little" = "Buscando meñique izquierdo";
+
+ "search_right_missingFingers_index" = "Buscando índice derecho";
+ "search_right_missingFingers_middle" = "Buscando medio derecho";
+ "search_right_missingFingers_ring" = "Buscando anular derecho";
+ "search_right_missingFingers_little" = "Buscando meñique derecho";
+
+ "id_badlighting" = "Algo raro\nPor favor cambia de lugar";
+ "id_searching_left" = "Buscando dedos izquierdos";
+ "id_searching_right" = "Buscando dedos derechos";
+ "id_searching_left_thumb" = "Buscando pulgar izquierdo";
+ "id_searching_right_thumb" = "Buscando pulgar derecho";
+
+ "id_spoof" = "Falsificación";
+ "id_hold" = "Por favor mantén";
+ "id_hold_0" = "Por favor mantén 0";
+ "id_hold_1" = "Por favor mantén 1";
+ "id_hold_2" = "Por favor mantén 2";
+ "id_hold_3" = "Por favor mantén 3";
+ "id_hold_4" = "Por favor mantén 4";
+ "id_hold_5" = "Por favor mantén 5";
+
+ "id_capturing" = "Capturando..";
+ "id_captured" = "Capturado";
+ "id_inside_guide" = "Por favor permanece dentro de la guía";
+ "id_stable" = "Por favor mantente estable";
+ "id_next_hand_confirm" = "Confirmar detección siguiente";
+ "id_next_detection" = "¿Pasar a la siguiente mano?";
+ "id_move_your_hand_away" = "Aleja tu mano";
+ "id_bring_hand_closer" = "Acerca tu mano";
+
+
+/*IntroScreenViewController*/
+
+ "id_keep_fingers" = "1. Extiende y mantén los dedos juntos";
+ "id_in_front_camera" = "2. Mantén los dedos paralelos a la cámara";
+ "id_stay_still_blue" = "3. Permanece quieto mientras la app detecta tus dedos";
+ "id_wait_auto" = "4. Espera la captura automática (el flash se activará)";
+ "id_next" = "Siguiente";
+ "id_dshow_again" = "No volver a mostrar";
+
+
+
+/*Spoof*/
+
+"id_spoof_title" = "Falsificación detectada";
+"id_spoof_question" = "¿Estás usando tu mano real para autenticarte?";
+"id_spoof_additional_tip" = "Consejos adicionales";
+"id_spoof_tip_1" = "Usa tus dedos reales";
+"id_spoof_tip_2" = "Usa iluminación interior normal";
+"id_spoof_tip_3" = "Prueba una ubicación/fondo diferente";
+"id_continue" = "Continuar";
+"id_spoof_retake_msg" = "Intente la captura nuevamente";
+"id_spoof_into" = "";
+
+/*Picture Quality*/
+
+"id_pic_qc_title" = "CALIDAD DE IMAGEN FALLIDA";
+"id_qc_retake" = "Necesitamos volver a tomar la foto";
+"id_hold_still" = "Asegúrate de mantenerte quieto hasta la captura automática";
+"id_retake_additional_tip" = "Consejos adicionales";
+"id_retake_tip_1" = "Tus dedos deben mirar a la cámara";
+"id_retake_tip_2" = "Tus dedos deben estar dentro del recuadro azul";
+"id_retake_tip_3" = "Usa iluminación interior normal";
+"id_retake" = "Volver a tomar";
+
+/*Fingers*/
+
+"id_index" = "Índice";
+"id_middle" = "Medio";
+"id_ring" = "Anular";
+"id_little" = "Meñique";
+"id_thumb" = "Pulgar";
+"id_left_thumb" = "Pulgar izquierdo";
+"id_right_thumb" = "Pulgar derecho";
+
+"id_something_weird" = "Algo extraño";
+"id_try_again_btn"   = "Inténtalo de nuevo";
+
+
+"identy_camera_permission"  = "Permiso para acceder a la cámara";
+"identy_camera_permission_message" = "La app no tiene permiso para usar la cámara, por favor cambia los ajustes de privacidad";
+
+"identy_initialize" = "Inicializando...";
+"identy_exit" = "¿Deseas salir de la captura?";
+"id_nistcreated" = "Archivo ANSI/NIST generado...";
+"id_timeout" = "Tiempo agotado";
+"id_alert_btn"  = "Aceptar";
+"id_unsuccessful_recognition" =  "Reconocimiento fallido";
+
+"id_keep_fingers" = "1. Extiende y mantén los dedos juntos";
+"id_in_front_camera" = "2. Mantén los dedos paralelos a la cámara";
+"id_stay_still_blue" = "3. Permanece quieto mientras la app detecta tus dedos";
+"id_wait_auto" = "4. Espera la captura automática (el flash se activará)";
+"id_next" = "Siguiente";
+"id_dshow_again" = "No volver a mostrar";
+"id_intro_thumb_front_camera" = "1. Mantén los dedos paralelos a la cámara";
+"id_intro_thumb_stay_still_blue" = "2. Permanece quieto mientras la app detecta tus dedos";
+"id_intro_thumb_wait_auto" = "3. Espera la captura automática (el flash se activará)";
+"id_retry" = "REINTENTAR";
+"id_process" = "MOVER";
+"id_next_2T_1_OK" = "Pulgar capturado exitosamente";
+"id_next_2T_2_OK" = "Por favor, captura tu pulgar ahora";
+"id_next_4L_1_OK" = "Mano izquierda capturada exitosamente";
+"id_next_4L_2_OK" = "Por favor, captura tu mano izquierda ahora";
+"id_next_4R_1_OK" = "Mano derecha capturada exitosamente";
+"id_next_4R_2_OK" = "Por favor, captura tu mano derecha ahora";
+"id_next_LT_1_OK" = "Pulgar izquierdo capturado exitosamente";
+"id_next_LT_2_OK" = "Por favor, captura tu pulgar izquierdo";
+"id_next_RT_1_OK" = "Pulgar derecho capturado exitosamente";
+"id_next_RT_2_OK" = "Por favor, captura tu pulgar derecho";
+"id_no_next" = "¡Proceso finalizado!";
+"id_fin_capture_success_1" = "¡Capturado correctamente!";
+"id_fin_capture_success_2" = "Ahora captura la siguiente mano";
+"id_done" = "Hecho";
+"id_timed_out_next_detection" = "¿Tienes problemas para capturar? ¿Quieres pasar a la siguiente mano o intentarlo de nuevo?";
+"id_timed_out_next_detection_no_skip" = "Estamos teniendo problemas para capturar tu mano. ¡Intentémoslo de nuevo!";
+"id_timed_out_next_detection_no_retries" = "Estamos teniendo problemas para capturar esta mano. ¡Pasemos a la siguiente!";
+"id_timed_out_no_next_detection_no_skip" = "Estamos teniendo problemas para capturar tu mano. ¡Intentémoslo de nuevo!";
+"id_attempt_reached_next_detection" = "¿Tienes problemas para capturar? ¿Quieres pasar a la siguiente mano o intentarlo de nuevo?";
+"id_attempt_reached_next_detection_no_skip" = "Estamos teniendo problemas para capturar tu mano. ¡Intentémoslo de nuevo!";
+"id_attempt_reached_no_next_detection_no_skip" = "Estamos teniendo problemas para capturar tu mano. ¡Intentémoslo de nuevo!";
+"id_attempt_reached_next_detection_no_retries" = "Tienes problemas para capturar esta mano. ¡Pasemos a la siguiente!";
+"id_attempt_reached_no_next_detection" = "Estamos teniendo problemas para capturar. Revisa las mejores prácticas e inténtalo de nuevo.";
+"id_timed_out_no_next_detection" = "Estamos teniendo problemas para capturar. Revisa las mejores prácticas e inténtalo de nuevo.";
+"id_spoof_final_message" = "Se alcanzó el número máximo de intentos";
+"id_EXIT" = "SALIR";
