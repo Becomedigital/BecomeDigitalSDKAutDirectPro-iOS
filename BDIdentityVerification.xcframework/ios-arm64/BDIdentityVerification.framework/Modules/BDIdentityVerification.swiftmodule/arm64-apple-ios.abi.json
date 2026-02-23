@@ -172,6 +172,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -361,27 +368,7 @@
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Identy",
-        "printedName": "Identy",
-        "declKind": "Import",
         "moduleName": "BDIdentityVerification"
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
       },
       {
         "kind": "Import",
@@ -936,6 +923,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -2338,23 +2332,6 @@
       },
       {
         "kind": "Import",
-        "name": "Identy",
-        "printedName": "Identy",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification"
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -2712,6 +2689,7 @@
             "declAttributes": [
               "Dynamic",
               "ObjC",
+              "Nonisolated",
               "Override"
             ],
             "init_kind": "Designated"
@@ -2766,6 +2744,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -2845,6 +2824,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -2932,6 +2912,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -3035,6 +3016,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -3138,6 +3120,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -3241,6 +3224,7 @@
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "Dynamic",
+              "Nonisolated",
               "AccessControl",
               "NSManaged",
               "ObjC"
@@ -3325,6 +3309,7 @@
         "moduleName": "BDIdentityVerification",
         "objc_name": "Countries",
         "declAttributes": [
+          "Nonisolated",
           "AccessControl",
           "ObjC"
         ],
@@ -3419,6 +3404,20 @@
             ],
             "usr": "s:7Combine16ObservableObjectP",
             "mangledName": "$s7Combine16ObservableObjectP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -4081,6 +4080,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -4122,23 +4128,6 @@
         "kind": "Import",
         "name": "CaptureUX",
         "printedName": "CaptureUX",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification"
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Identy",
-        "printedName": "Identy",
         "declKind": "Import",
         "moduleName": "BDIdentityVerification"
       },
@@ -4499,6 +4488,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -4541,38 +4537,6 @@
         "declAttributes": [
           "RawDocComment"
         ]
-      },
-      {
-        "kind": "Import",
-        "name": "CryptoSwift",
-        "printedName": "CryptoSwift",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification"
-      },
-      {
-        "kind": "Import",
-        "name": "Identy",
-        "printedName": "Identy",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification"
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "BDIdentityVerification"
       },
       {
         "kind": "Import",
@@ -5031,6 +4995,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ExpressibleByImageLiteral",
             "printedName": "_ExpressibleByImageLiteral",
             "usr": "s:s26_ExpressibleByImageLiteralP",
@@ -5316,6 +5287,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           }
@@ -5409,6 +5387,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       }
@@ -5432,43 +5417,36 @@
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
-      "kind": "FloatLiteral",
-      "offset": 217,
-      "length": 4,
-      "value": "0.09"
+      "kind": "IntegerLiteral",
+      "offset": 89,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
-      "kind": "FloatLiteral",
-      "offset": 247,
-      "length": 3,
-      "value": "0.3"
+      "kind": "IntegerLiteral",
+      "offset": 116,
+      "length": 1,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
-      "kind": "FloatLiteral",
-      "offset": 275,
-      "length": 3,
-      "value": "0.5"
+      "kind": "IntegerLiteral",
+      "offset": 142,
+      "length": 1,
+      "value": "2"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
-      "kind": "FloatLiteral",
-      "offset": 301,
-      "length": 4,
-      "value": "0.71"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
-      "kind": "FloatLiteral",
-      "offset": 328,
-      "length": 3,
-      "value": "1.0"
+      "kind": "IntegerLiteral",
+      "offset": 166,
+      "length": 1,
+      "value": "3"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1068,
+      "offset": 762,
       "length": 5,
       "value": "false"
     },
@@ -5774,139 +5752,6 @@
       "value": "\"can_use_one_one\""
     },
     {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 199,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 233,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "StringLiteral",
-      "offset": 268,
-      "length": 19,
-      "value": "\"com.become.finger\""
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 319,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 356,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 386,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 415,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 444,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 474,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 503,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 533,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 570,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 600,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 637,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 821,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 862,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 903,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 939,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/Model\/FingerConfigs.swift",
-      "kind": "BooleanLiteral",
-      "offset": 968,
-      "length": 4,
-      "value": "true"
-    },
-    {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/LoaderView.swift",
       "kind": "BooleanLiteral",
       "offset": 291,
@@ -5963,13 +5808,6 @@
       "value": "\"us-east-1\""
     },
     {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Core\/SDKCoordinator.swift",
-      "kind": "BooleanLiteral",
-      "offset": 5777,
-      "length": 5,
-      "value": "false"
-    },
-    {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/SuppliesModel.swift",
       "kind": "StringLiteral",
       "offset": 309,
@@ -6003,27 +5841,6 @@
       "offset": 585,
       "length": 2,
       "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/SuppliesModel.swift",
-      "kind": "Dictionary",
-      "offset": 630,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Preview\/View\/PreviewImageViewController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 571,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Preview\/View\/PreviewImageViewController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2374,
-      "length": 5,
-      "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/DocumentType.swift",
@@ -6101,13 +5918,6 @@
       "offset": 49,
       "length": 1,
       "value": "0"
-    },
-    {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/FingerVerify\/ViewModel\/FingerCaptureViewModel.swift",
-      "kind": "Array",
-      "offset": 232,
-      "length": 2,
-      "value": "[]"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
