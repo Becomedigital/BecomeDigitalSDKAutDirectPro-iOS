@@ -222,29 +222,6 @@ Estos deben adicionarse en la sección mencionada.
 <img src="https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro/blob/main/IMG_2.png">
 </p>
 
-### Instalación mediante CocoaPods
-
-Agregar el siguiente contenido en su `Podfile`:
-
-```ruby
-platform :ios, '15.6'
-
-plugin 'cocoapods-art', :sources => [
-  'cocoapods-identy-finger'
-]
-
-target 'BecomeApp' do
-  use_frameworks!
-
-  pod 'Identy', '6.3.0'
-end
-```
-
-**Instalación de cocoapods-art:**
-
-```bash
-sudo gem install cocoapods-art
-```
 
 **Nota:** Las credenciales para acceder al repositorio privado serán proporcionadas directamente por Become.
 
