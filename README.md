@@ -195,11 +195,10 @@ Descargue el archivo `MBLocalizable.strings`, modifique el texto requerido y est
 ## Requisitos
 
 - **iOS 12. o superior**
-=======
+
 1. Agregar archivos de licencia:
 
    - **com.become.document.key.txt**: Llaves de inicialización para la captura de documentos.
-   - **com.become.finger.lic**: Llaves de inicialización para la captura de huellas.
 
 Estos archivos deben estar incluidos en los recursos del proyecto.
 
