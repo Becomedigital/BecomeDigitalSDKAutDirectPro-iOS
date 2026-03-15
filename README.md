@@ -31,7 +31,6 @@ Agregue los archivos de licencia proporcionados para la inicialización del SDK 
 
 ### Archivos requeridos
 
-* **com.become.key.txt**
 * **com.become.document.key.txt**
 
 Estos archivos deben estar incluidos en los recursos del proyecto y en el target correspondiente.
@@ -265,7 +264,6 @@ Descargue el archivo `MBLocalizable.strings`, modifique los textos requeridos y 
 
 1. Agregar los archivos de licencia:
 
-   * **com.become.key.txt**
    * **com.become.document.key.txt**
 
 2. Incluir ambos archivos en los recursos del proyecto.
