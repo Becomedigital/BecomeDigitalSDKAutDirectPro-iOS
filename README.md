@@ -47,7 +47,7 @@ Asegúrese de que el [`Bundle Identifier`](https://developer.apple.com/documenta
 
 ## Agregar el framework de Become al proyecto
 
-1. Agregue el archivo **BecomeDigitalV.xcframework** a su proyecto.
+1. Agregue el archivo **BDIdentityVerification.xcframework** a su proyecto.
 2. Verifique que quede incluido en la sección **Frameworks, Libraries, and Embedded Content** dentro de la configuración del target en Xcode.
 
 ---
@@ -110,8 +110,7 @@ import BecomeDigitalV
 ```swift
 let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                             clientSecret: "TU_CLIENT_SECRET",
-                            contractId: "TU_CONTRACT_ID",
-                            useFacialAuth: true,
+                            contractId: "TU_CONTRACT_ID",                            
                             documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                             userId: "TU_USER_ID",
                             customerLogo: "icon",
@@ -120,8 +119,6 @@ let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
 let identityVerification = BDIdentityVerification(bdivConfig: bdivConfig, delegate: self)
 identityVerification.startVerification()
 ```
-
-> Si `useFacialAuth` se encuentra en `true`, la integración de **Amplify Face Liveness** debe estar correctamente configurada en el proyecto.
 
 ---
 
@@ -140,19 +137,68 @@ func BDIVResponseError(error: String) {
 }
 ```
 
-### Estructura de `ResponseIV`
+### Estructura de `BDIdentityVerificationResponse` 
 
 ```swift
-public struct ResponseIV {
-    public var message: String = ""
-    public var responseURL: String = ""
-    public var responseStatus: StatusType = .PENDING
-
-    public enum StatusType {
-        case SUCCESS
+/// A model representing the response returned after executing the identity verification flow.
+/// 
+/// This structure holds essential data such as status, descriptive message, and an optional dictionary
+/// with additional response values that may be used for further processing.
+public struct BDIdentityVerificationResponse {
+    
+    /// Initializes a new instance of `ResponseIV` with provided values.
+///
+/// - Parameters:
+///   - message: A textual description of the result.
+///   - responseDictionary: A dictionary containing additional data returned from the verification process.
+///   - responseStatus: The current verification status represented by a `StatusType` value.
+    internal init(message: String = "", responseDictionary: [String : Any] = [:], responseStatus: BDIdentityVerificationResponse.StatusType = .PENDING) {
+        self.message = message
+        self.responseDictionary = responseDictionary
+        self.responseStatus = responseStatus
+    }
+    
+    /// Default initializer for `ResponseIV`.
+    public init() {}
+    
+    /// Enum representing the different status types for a verification response.
+    public enum StatusType: String {
+        /// Indicates a successful verification response.
+        case SUCCES
+        /// Indicates an error occurred during verification.
         case ERROR
+        /// Indicates that the verification is still in progress.
         case PENDING
+        /// Indicates that the requested verification data was not found.
         case NOFOUND
+    }
+    
+    /// A textual description conveying the result of the identity verification process.
+    public var message: String = ""
+    
+    /// A dictionary containing optional key-value pairs returned as part of the verification response.
+    public var responseDictionary: [String : Any]?
+    
+    /// Indicates the outcome of the identity verification, such as success or failure.
+    public var responseStatus: StatusType = .PENDING
+    
+    public func toJson() -> String? {
+        var jsonDict: [String: Any] = [
+            "message": message,
+            "responseStatus": responseStatus.rawValue
+        ]
+        
+        if let responseDictionary = responseDictionary {
+            jsonDict["responseDictionary"] = responseDictionary
+        }
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
+            return String(data: jsonData, encoding: .utf8)
+        } catch {
+            print("Failed to convert ResponseIV to JSON: \(error)")
+            return nil
+        }
     }
 }
 ```
@@ -167,7 +213,6 @@ Los siguientes parámetros no deben enviarse vacíos:
 
 | Parámetro         | Valor inválido |
 | ----------------- | -------------- |
-| `validationTypes` | `""`           |
 | `clientSecret`    | `""`           |
 | `clientID`        | `""`           |
 | `contractID`      | `""`           |
@@ -179,25 +224,10 @@ Error en consola:
 parameters cannot be empty
 ```
 
-### 2. Tipo de validación inválido
-
-El atributo `validationTypes` no puede contener únicamente `VIDEO`.
-
-```swift
-validationTypes: "VIDEO"
-```
-
-Error en consola:
-
-```text
-the process cannot be initialized with video only
-```
-
-### 3. Flujo facial no disponible
+### 2. Flujo facial no disponible
 
 Si el flujo facial no inicia correctamente, valide que:
 
-* `useFacialAuth` esté habilitado
 * `amplify-swift` esté agregado
 * `amplify-ui-swift-liveness` esté agregado
 * Las versiones configuradas coincidan con las requeridas
@@ -216,22 +246,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func startSDKAction(_ sender: Any) {
+    @IBAction func startAction(_ sender: Any) {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "es_ES")
+        dateFormatter.locale = Locale(identifier: "es_ES") 
         dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
-        let userId = dateFormatter.string(from: Date())
+        let userId = dateFormatter.string(from: Date())???
 
         let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                                     clientSecret: "TU_CLIENT_SECRET",
                                     contractId: "TU_CONTRACT_ID",
-                                    useFacialAuth: true,
                                     documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                                     userId: userId,
                                     customerLogo: "icon",
                                     customLocalizationFileName: "")
 
-        let identityVerification = BDIdentityVerification(bdivConfig: bdivConfig, delegate: self)
+        let identityVerification = BecomeDigitalSDK(bdivConfig: bdivConfig, delegate: self)
         identityVerification.startVerification()
     }
 }
@@ -258,7 +287,7 @@ Descargue el archivo `MBLocalizable.strings`, modifique los textos requeridos y 
 
 ## Requisitos
 
-* **iOS 12.0 o superior**
+* **iOS 15.6 o superior**
 
 ### Requisitos adicionales
 
