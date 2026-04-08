@@ -48,7 +48,7 @@ Asegúrese de que el [`Bundle Identifier`](https://developer.apple.com/documenta
 
 ## Agregar el framework de Become al proyecto
 
-1. Agregue el archivo **BecomeDigitalV.xcframework** a su proyecto.
+1. Agregue el archivo **BDIdentityVerification.xcframework** a su proyecto.
 2. Verifique que quede incluido en la sección **Frameworks, Libraries, and Embedded Content** dentro de la configuración del target en Xcode.
 
 ---
