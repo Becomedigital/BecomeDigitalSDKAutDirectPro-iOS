@@ -20,8 +20,8 @@ Configure las dependencias con las siguientes versiones:
 
 * **Amplify Swift**: `2.45.4`
 * **Amplify UI Swift Liveness**: `1.3.4`
-* **BlinkID Capture Core**: rama `main`
-* **BlinkID Capture UX**: rama `main`
+* **BlinkID Capture Core**: `1.0.0`
+* **BlinkID Capture UX**: `1.0.0`
 
 ---
 
@@ -81,8 +81,8 @@ Utilice la siguiente configuración:
 
 * **amplify-swift** → `Up to Next Major Version` desde `2.45.4`
 * **amplify-ui-swift-liveness** → `Up to Next Major Version` desde `1.3.4`
-* **capture-core-sp** → `Branch: main`
-* **capture-ux-sp** → `Branch: main`
+* **capture-core-sp** → `Up to Next Major Version` desde `1.0.0`
+* **capture-ux-sp** → `Up to Next Major Version` desde `1.0.0`
 
 ---
 
@@ -102,10 +102,13 @@ El SDK requiere permisos de acceso a la cámara. Agregue la siguiente clave en s
 ### Importar el SDK
 
 ```swift
-import BecomeDigitalV
+import BDIdentityVerification
 ```
 
 ### Inicializar e iniciar el proceso de verificación
+
+> `BDIdentityVerification` es el nombre del módulo.  
+> La clase pública para iniciar el flujo es `BecomeDigitalSDK`.
 
 ```swift
 let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
@@ -114,9 +117,9 @@ let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                             documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                             userId: "TU_USER_ID",
                             customerLogo: "icon",
-                            customLocalizationFileName: "")
+                            customLocalizationFileName: "MBLocalizable")
 
-let identityVerification = BDIdentityVerification(bdivConfig: bdivConfig, delegate: self)
+let identityVerification = BecomeDigitalSDK(bdivConfig: bdivConfig, delegate: self)
 identityVerification.startVerification()
 ```
 
@@ -124,12 +127,16 @@ identityVerification.startVerification()
 
 ## Manejo de respuestas del SDK
 
-El SDK responde a través de los métodos del protocolo `BDIVDelegate`, retornando un objeto `ResponseIV`.
+El SDK responde a través de los métodos del protocolo `BDIVDelegate`.
+El callback de éxito entrega un `AnyObject`, y el modelo público documentado por el framework es `BDIdentityVerificationResponse`.
 
 ```swift
 func BDIVResponseSuccess(bdivResult: AnyObject) {
-    let idmResultFinal = bdivResult as! ResponseIV
-    print(String(describing: idmResultFinal))
+    if let response = bdivResult as? BDIdentityVerificationResponse {
+        print(response.toJson() ?? "")
+    } else {
+        print(String(describing: bdivResult))
+    }
 }
 
 func BDIVResponseError(error: String) {
@@ -146,7 +153,7 @@ func BDIVResponseError(error: String) {
 /// with additional response values that may be used for further processing.
 public struct BDIdentityVerificationResponse {
     
-    /// Initializes a new instance of `ResponseIV` with provided values.
+    /// Initializes a new instance of `BDIdentityVerificationResponse` with provided values.
 ///
 /// - Parameters:
 ///   - message: A textual description of the result.
@@ -158,7 +165,7 @@ public struct BDIdentityVerificationResponse {
         self.responseStatus = responseStatus
     }
     
-    /// Default initializer for `ResponseIV`.
+    /// Default initializer for `BDIdentityVerificationResponse`.
     public init() {}
     
     /// Enum representing the different status types for a verification response.
@@ -196,7 +203,7 @@ public struct BDIdentityVerificationResponse {
             let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: jsonData, encoding: .utf8)
         } catch {
-            print("Failed to convert ResponseIV to JSON: \(error)")
+            print("Failed to convert BDIdentityVerificationResponse to JSON: \(error)")
             return nil
         }
     }
@@ -233,24 +240,44 @@ Si el flujo facial no inicia correctamente, valide que:
 * Las versiones configuradas coincidan con las requeridas
 * Las dependencias de Microblink estén incluidas en el target
 
+### 3. Error de compilación: `Cannot call value of non-function type 'module<BDIdentityVerification>'`
+
+Este error ocurre cuando se intenta crear el SDK de esta forma:
+
+```swift
+let identityVerification = BDIdentityVerification(...)
+```
+
+`BDIdentityVerification` es el nombre del módulo importado, no una clase instanciable.
+La forma correcta es:
+
+```swift
+import BDIdentityVerification
+
+let identityVerification = BecomeDigitalSDK(bdivConfig: bdivConfig, delegate: self)
+identityVerification.startVerification()
+```
+
 ---
 
 ## Ejemplo de implementación
 
 ```swift
 import UIKit
-import BecomeDigitalV
+import BDIdentityVerification
 
 class ViewController: UIViewController {
+    private var identityVerification: BecomeDigitalSDK?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func startAction(_ sender: Any) {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "es_ES") 
+        dateFormatter.locale = Locale(identifier: "es_ES")
         dateFormatter.dateFormat = "yyyyMMddHHmmssSSS"
-        let userId = dateFormatter.string(from: Date())???
+        let userId = dateFormatter.string(from: Date())
 
         let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                                     clientSecret: "TU_CLIENT_SECRET",
@@ -258,17 +285,20 @@ class ViewController: UIViewController {
                                     documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                                     userId: userId,
                                     customerLogo: "icon",
-                                    customLocalizationFileName: "")
+                                    customLocalizationFileName: "MBLocalizable")
 
-        let identityVerification = BecomeDigitalSDK(bdivConfig: bdivConfig, delegate: self)
-        identityVerification.startVerification()
+        identityVerification = BecomeDigitalSDK(bdivConfig: bdivConfig, delegate: self)
+        identityVerification?.startVerification()
     }
 }
 
 extension ViewController: BDIVDelegate {
     func BDIVResponseSuccess(bdivResult: AnyObject) {
-        let idmResultFinal = bdivResult as! ResponseIV
-        print(String(describing: idmResultFinal))
+        if let response = bdivResult as? BDIdentityVerificationResponse {
+            print(response.toJson() ?? "")
+        } else {
+            print(String(describing: bdivResult))
+        }
     }
 
     func BDIVResponseError(error: String) {
