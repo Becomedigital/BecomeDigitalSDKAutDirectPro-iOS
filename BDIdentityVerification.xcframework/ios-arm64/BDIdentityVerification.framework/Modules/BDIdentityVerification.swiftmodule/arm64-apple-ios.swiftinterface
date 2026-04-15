@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
-// swift-module-flags: -target arm64-apple-ios15.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name BDIdentityVerification
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
+// swift-module-flags: -target arm64-apple-ios15.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name BDIdentityVerification
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
 import AVFoundation
 import CaptureCore
 import CaptureUX
@@ -24,15 +24,9 @@ extension UIKit.UIImageView {
   @_Concurrency.MainActor @preconcurrency public func loadGif(name: Swift.String, bundle: Foundation.Bundle)
 }
 extension UIKit.UIImage {
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func gif(data: Foundation.Data) -> UIKit.UIImage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func gif(url: Swift.String) -> UIKit.UIImage?
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   public class func gif(name: Swift.String, bundle: Foundation.Bundle) -> UIKit.UIImage?
-  #endif
 }
 @objc public protocol BDIVDelegate : Swift.Sendable {
   @objc func BDIVResponseSuccess(bdivResult: Swift.AnyObject)
@@ -54,30 +48,22 @@ extension BDIdentityVerification.Countries {
     @objc get
     @objc set
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var country_name: Swift.String? {
     @objc get
     @objc set
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var co_3: Swift.String? {
     @objc get
     @objc set
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var co_2: Swift.String? {
     @objc get
     @objc set
   }
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc @NSManaged nonisolated dynamic public var airport_code: Swift.String? {
     @objc get
     @objc set
   }
-  #endif
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency final public class ScreenshotPreventingView : UIKit.UIView {
   @_Concurrency.MainActor @preconcurrency final public var preventScreenCapture: Swift.Bool {
@@ -88,9 +74,7 @@ extension BDIdentityVerification.Countries {
     @objc get
     @objc set
   }
-  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public init(contentView: UIKit.UIView? = nil)
-  #endif
   @_Concurrency.MainActor @preconcurrency final public func setup(contentView: UIKit.UIView)
   @objc deinit
 }
@@ -101,9 +85,7 @@ public struct BDIdentityVerificationResponse {
     case ERROR
     case PENDING
     case NOFOUND
-    #if compiler(>=5.3) && $NonescapableTypes
     public init?(rawValue: Swift.String)
-    #endif
     public typealias RawValue = Swift.String
     public var rawValue: Swift.String {
       get
@@ -112,14 +94,10 @@ public struct BDIdentityVerificationResponse {
   public var message: Swift.String
   public var responseDictionary: [Swift.String : Any]?
   public var responseStatus: BDIdentityVerification.BDIdentityVerificationResponse.StatusType
-  #if compiler(>=5.3) && $NonescapableTypes
   public func toJson() -> Swift.String?
-  #endif
 }
 public struct BDIVConfig {
-  #if compiler(>=5.3) && $NonescapableTypes
   public init(clienId: Swift.String, clientSecret: Swift.String, contractId: Swift.String, documenTypes: [BDIdentityVerification.DocumentType], userId: Swift.String, customerLogo: Swift.String = "", customLocalizationFileName: Swift.String? = "MBLocalizable")
-  #endif
   public let clienId: Swift.String
   public var customerLogo: Swift.String?
   public let clientSecret: Swift.String
@@ -138,18 +116,14 @@ public struct BDIVConfig {
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(Countries) nonisolated public class Countries : CoreData.NSManagedObject {
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc override nonisolated dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
-  #endif
   @objc deinit
 }
 public enum DocumentType : Swift.String {
   case DNI
   case PASSPORT
   case DRIVERLICENSE
-  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
-  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
