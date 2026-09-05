@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
 // swift-module-flags: -target arm64-apple-ios15.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name BDIdentityVerification
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import AVFoundation
 import CaptureCore
 import CaptureUX
@@ -97,7 +97,16 @@ public struct BDIdentityVerificationResponse {
   public func toJson() -> Swift.String?
 }
 public struct BDIVConfig {
-  public init(clienId: Swift.String, clientSecret: Swift.String, contractId: Swift.String, documenTypes: [BDIdentityVerification.DocumentType], userId: Swift.String, customerLogo: Swift.String = "", customLocalizationFileName: Swift.String? = "MBLocalizable")
+  public enum Flow {
+    case Onboarding
+    case Authentication
+    public static func == (a: BDIdentityVerification.BDIVConfig.Flow, b: BDIdentityVerification.BDIVConfig.Flow) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(clienId: Swift.String, clientSecret: Swift.String, contractId: Swift.String, documenTypes: [BDIdentityVerification.DocumentType], userId: Swift.String, customerLogo: Swift.String = "", customLocalizationFileName: Swift.String? = "MBLocalizable", performVerificationCheck: Swift.Bool = true, flow: BDIdentityVerification.BDIVConfig.Flow = .Onboarding, pollingMaxAttempts: Swift.Int = 0, pollingTimeout: Foundation.TimeInterval = 2)
   public let clienId: Swift.String
   public var customerLogo: Swift.String?
   public let clientSecret: Swift.String
@@ -105,6 +114,10 @@ public struct BDIVConfig {
   public let documenTypes: [BDIdentityVerification.DocumentType]
   public let userId: Swift.String
   public let customLocalizationFileName: Swift.String?
+  public let performVerificationCheck: Swift.Bool
+  public let flow: BDIdentityVerification.BDIVConfig.Flow
+  public let pollingMaxAttempts: Swift.Int
+  public let pollingTimeout: Foundation.TimeInterval
 }
 @_hasMissingDesignatedInitializers public class CountriesView {
   public static func getCountriess() -> [BDIdentityVerification.Countries]
@@ -159,6 +172,8 @@ extension CoreData.NSPersistentStoreCoordinator {
 extension BDIdentityVerification.BDIdentityVerificationResponse.StatusType : Swift.Equatable {}
 extension BDIdentityVerification.BDIdentityVerificationResponse.StatusType : Swift.Hashable {}
 extension BDIdentityVerification.BDIdentityVerificationResponse.StatusType : Swift.RawRepresentable {}
+extension BDIdentityVerification.BDIVConfig.Flow : Swift.Equatable {}
+extension BDIdentityVerification.BDIVConfig.Flow : Swift.Hashable {}
 extension BDIdentityVerification.DocumentType : Swift.Equatable {}
 extension BDIdentityVerification.DocumentType : Swift.Hashable {}
 extension BDIdentityVerification.DocumentType : Swift.RawRepresentable {}
