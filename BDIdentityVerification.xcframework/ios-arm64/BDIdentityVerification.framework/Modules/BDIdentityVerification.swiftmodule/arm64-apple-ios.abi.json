@@ -365,6 +365,13 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BDIdentityVerification"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -5852,6 +5859,20 @@
       "value": "true"
     },
     {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SDKLifecycle.swift",
+      "kind": "BooleanLiteral",
+      "offset": 666,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SDKLifecycle.swift",
+      "kind": "BooleanLiteral",
+      "offset": 703,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
       "kind": "IntegerLiteral",
       "offset": 89,
@@ -6246,7 +6267,7 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 259,
+      "offset": 270,
       "length": 11,
       "value": "\"us-east-1\""
     },
@@ -6428,14 +6449,14 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessView.swift",
       "kind": "BooleanLiteral",
-      "offset": 332,
+      "offset": 343,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessView.swift",
       "kind": "BooleanLiteral",
-      "offset": 383,
+      "offset": 394,
       "length": 5,
       "value": "false"
     },
