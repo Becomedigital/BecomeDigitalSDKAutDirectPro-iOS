@@ -197,10 +197,14 @@
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
+        "moduleName": "BDIdentityVerification"
+      },
+      {
+        "kind": "Import",
+        "name": "os.log",
+        "printedName": "os.log",
+        "declKind": "Import",
+        "moduleName": "BDIdentityVerification"
       },
       {
         "kind": "TypeDecl",
@@ -228,8 +232,7 @@
               "HasInitialValue",
               "Final",
               "HasStorage",
-              "AccessControl",
-              "RawDocComment"
+              "AccessControl"
             ],
             "isLet": true,
             "hasStorage": true,
@@ -280,10 +283,11 @@
             "usr": "s:22BDIdentityVerification6LoggerC16configureLogging9isEnabledySb_tF",
             "mangledName": "$s22BDIdentityVerification6LoggerC16configureLogging9isEnabledySb_tF",
             "moduleName": "BDIdentityVerification",
+            "deprecated": true,
             "declAttributes": [
               "Final",
               "AccessControl",
-              "RawDocComment"
+              "Available"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -329,9 +333,11 @@
             "usr": "s:22BDIdentityVerification6LoggerC3log_4file8function4lineySS_S2SSitF",
             "mangledName": "$s22BDIdentityVerification6LoggerC3log_4file8function4lineySS_S2SSitF",
             "moduleName": "BDIdentityVerification",
+            "deprecated": true,
             "declAttributes": [
               "Final",
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
@@ -343,7 +349,8 @@
         "moduleName": "BDIdentityVerification",
         "declAttributes": [
           "Final",
-          "AccessControl"
+          "AccessControl",
+          "RawDocComment"
         ],
         "hasMissingDesignatedInitializers": true,
         "conformances": [
@@ -362,6 +369,13 @@
             "mangledName": "$ss9EscapableP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BDIdentityVerification"
       },
       {
         "kind": "Import",
@@ -1908,7 +1922,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(clienId:clientSecret:contractId:documenTypes:userId:customerLogo:customLocalizationFileName:performVerificationCheck:flow:pollingMaxAttempts:pollingTimeout:)",
+            "printedName": "init(clienId:clientSecret:contractId:documenTypes:userId:customerLogo:customLocalizationFileName:performVerificationCheck:flow:pollingMaxAttempts:pollingTimeout:debugLogsEnabled:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2003,11 +2017,18 @@
                 "printedName": "Swift.Double",
                 "hasDefaultArg": true,
                 "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE012customerLogo26customLocalizationFileName07performB5Check4flow18pollingMaxAttempts0U7TimeoutACSS_S2SSayAA12DocumentTypeOGS3SSgSbAC4FlowOSiSdtcfc",
-            "mangledName": "$s22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE012customerLogo26customLocalizationFileName07performB5Check4flow18pollingMaxAttempts0U7TimeoutACSS_S2SSayAA12DocumentTypeOGS3SSgSbAC4FlowOSiSdtcfc",
+            "usr": "s:22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE012customerLogo26customLocalizationFileName07performB5Check4flow18pollingMaxAttempts0U7Timeout16debugLogsEnabledACSS_S2SSayAA12DocumentTypeOGS3SSgSbAC4FlowOSiSdSbtcfc",
+            "mangledName": "$s22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE012customerLogo26customLocalizationFileName07performB5Check4flow18pollingMaxAttempts0U7Timeout16debugLogsEnabledACSS_S2SSayAA12DocumentTypeOGS3SSgSbAC4FlowOSiSdSbtcfc",
             "moduleName": "BDIdentityVerification",
             "declAttributes": [
               "AccessControl",
@@ -2607,6 +2628,51 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Var",
+            "name": "debugLogsEnabled",
+            "printedName": "debugLogsEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22BDIdentityVerification10BDIVConfigV16debugLogsEnabledSbvp",
+            "mangledName": "$s22BDIdentityVerification10BDIVConfigV16debugLogsEnabledSbvp",
+            "moduleName": "BDIdentityVerification",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV16debugLogsEnabledSbvg",
+                "mangledName": "$s22BDIdentityVerification10BDIVConfigV16debugLogsEnabledSbvg",
+                "moduleName": "BDIdentityVerification",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           }
         ],
         "declKind": "Struct",
@@ -2663,10 +2729,7 @@
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
-        "moduleName": "BDIdentityVerification",
-        "declAttributes": [
-          "RawDocComment"
-        ]
+        "moduleName": "BDIdentityVerification"
       },
       {
         "kind": "Import",
@@ -4176,6 +4239,13 @@
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
+        "moduleName": "BDIdentityVerification"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
         "moduleName": "BDIdentityVerification",
         "declAttributes": [
           "RawDocComment"
@@ -5349,7 +5419,6 @@
           "ObjC",
           "SynthesizedProtocol",
           "NonSendable",
-          "Sendable",
           "Dynamic"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
@@ -5744,7 +5813,6 @@
           "Available",
           "ObjC",
           "SynthesizedProtocol",
-          "Sendable",
           "Dynamic"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
@@ -5846,10 +5914,325 @@
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
-      "kind": "BooleanLiteral",
-      "offset": 294,
+      "kind": "StringLiteral",
+      "offset": 228,
+      "length": 23,
+      "value": "\"com.becomedigital.sdk\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 263,
+      "length": 13,
+      "value": "\"diagnostics\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "IntegerLiteral",
+      "offset": 423,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "IntegerLiteral",
+      "offset": 449,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "IntegerLiteral",
+      "offset": 482,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "IntegerLiteral",
+      "offset": 508,
       "length": 4,
-      "value": "true"
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 575,
+      "length": 12,
+      "value": "\"%{public}@\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1804,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3208,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4288,
+      "length": 20,
+      "value": "\"document_selection\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4329,
+      "length": 19,
+      "value": "\"country_selection\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4381,
+      "length": 23,
+      "value": "\"document_introduction\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4429,
+      "length": 23,
+      "value": "\"liveness_introduction\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4480,
+      "length": 18,
+      "value": "\"liveness_session\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4518,
+      "length": 18,
+      "value": "\"liveness_capture\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4555,
+      "length": 17,
+      "value": "\"liveness_result\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4600,
+      "length": 18,
+      "value": "\"document_capture\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4638,
+      "length": 18,
+      "value": "\"document_preview\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4679,
+      "length": 21,
+      "value": "\"document_validation\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4724,
+      "length": 14,
+      "value": "\"new_identity\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4906,
+      "length": 17,
+      "value": "\"request_started\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4944,
+      "length": 19,
+      "value": "\"response_received\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 4981,
+      "length": 16,
+      "value": "\"request_failed\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5021,
+      "length": 14,
+      "value": "\"parse_failed\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5054,
+      "length": 17,
+      "value": "\"missing_capture\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5092,
+      "length": 19,
+      "value": "\"permission_denied\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5133,
+      "length": 12,
+      "value": "\"retry_post\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5162,
+      "length": 15,
+      "value": "\"retry_results\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5195,
+      "length": 16,
+      "value": "\"document_retry\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5240,
+      "length": 19,
+      "value": "\"liveness_rejected\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5280,
+      "length": 19,
+      "value": "\"document_rejected\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5324,
+      "length": 15,
+      "value": "\"limit_reached\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5356,
+      "length": 15,
+      "value": "\"direct_result\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5391,
+      "length": 19,
+      "value": "\"user_agent_failed\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5509,
+      "length": 13,
+      "value": "\"invalid_url\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5542,
+      "length": 18,
+      "value": "\"invalid_response\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5651,
+      "length": 19,
+      "value": "\"missing_client_id\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5694,
+      "length": 23,
+      "value": "\"missing_client_secret\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5745,
+      "length": 18,
+      "value": "\"missing_contract\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5779,
+      "length": 14,
+      "value": "\"missing_user\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5818,
+      "length": 24,
+      "value": "\"missing_document_types\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5869,
+      "length": 17,
+      "value": "\"license_missing\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5905,
+      "length": 17,
+      "value": "\"license_invalid\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 5938,
+      "length": 14,
+      "value": "\"license_read\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SDKLifecycle.swift",
+      "kind": "BooleanLiteral",
+      "offset": 666,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SDKLifecycle.swift",
+      "kind": "BooleanLiteral",
+      "offset": 703,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/ProgressBarView.swift",
@@ -6043,58 +6426,65 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/CountryViewController.swift",
       "kind": "StringLiteral",
-      "offset": 663,
+      "offset": 627,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/CountryViewController.swift",
       "kind": "Array",
-      "offset": 731,
+      "offset": 695,
       "length": 12,
       "value": "[(\"\", \"\", \"\")]"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/CountryViewController.swift",
       "kind": "StringLiteral",
-      "offset": 771,
+      "offset": 735,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "StringLiteral",
-      "offset": 2323,
+      "offset": 2433,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "StringLiteral",
-      "offset": 2381,
+      "offset": 2491,
       "length": 15,
       "value": "\"MBLocalizable\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 2447,
+      "offset": 2557,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 2537,
+      "offset": 2647,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 2587,
+      "offset": 2697,
       "length": 1,
       "value": "2"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2741,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Main\/MainViewModel.swift",
@@ -6246,7 +6636,7 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 259,
+      "offset": 270,
       "length": 11,
       "value": "\"us-east-1\""
     },
@@ -6307,16 +6697,16 @@
       "value": "\"driving-license\""
     },
     {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/API\/AddDataServerAPI.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/API\/NewIdentityResponse.swift",
       "kind": "StringLiteral",
-      "offset": 464,
+      "offset": 1429,
       "length": 14,
       "value": "\"url_resource\""
     },
     {
-      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/API\/AddDataServerAPI.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/API\/NewIdentityResponse.swift",
       "kind": "StringLiteral",
-      "offset": 501,
+      "offset": 1466,
       "length": 9,
       "value": "\"user_id\""
     },
@@ -6386,56 +6776,56 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 766,
+      "offset": 821,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 799,
+      "offset": 854,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 835,
+      "offset": 890,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 928,
+      "offset": 983,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 973,
+      "offset": 1028,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/VerificationViewModel.swift",
-      "kind": "StringLiteral",
-      "offset": 1031,
-      "length": 31,
-      "value": "\"com.become.fetch.result.timer\""
+      "kind": "BooleanLiteral",
+      "offset": 1188,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessView.swift",
       "kind": "BooleanLiteral",
-      "offset": 332,
+      "offset": 343,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/SelfieCaptureAmplify\/View\/LivenessAmplify\/AmplifyFaceLivenessView.swift",
       "kind": "BooleanLiteral",
-      "offset": 383,
+      "offset": 394,
       "length": 5,
       "value": "false"
     },
@@ -6491,14 +6881,14 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Data\/API\/RestServices.swift",
       "kind": "IntegerLiteral",
-      "offset": 9872,
+      "offset": 10115,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/PersonalGit\/iOS_become_sdk\/sdk\/BDIdentityVerification\/Presentation\/UI\/Verification\/View\/VerificationViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1748,
+      "offset": 1961,
       "length": 5,
       "value": "false"
     },

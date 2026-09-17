@@ -1,126 +1,74 @@
-# Localización y personalización de textos en iOS
+# Personalizar textos — iOS
 
-Esta guía corresponde al `BDIdentityVerification.xcframework` incluido en este repositorio: Become 1.2.3, CaptureUX 1.4.3 y Amplify UI Swift Liveness 1.4.4. La plantilla [Localizable.strings](Localizable.strings) contiene claves de varios componentes; **no todas permiten sobrescritura desde la aplicación cliente**.
+## Implementación
 
-## Qué textos puede personalizar la aplicación
-
-| Componente | Claves | Origen y alcance |
-| --- | --- | --- |
-| Amplify Face Liveness | `amplify_ui_liveness_*` | Busca en `Localizable.strings` del bundle principal de la app. Si no encuentra la clave, usa su recurso interno. |
-| Microblink CaptureUX | `mbic_*` | Busca en la tabla del bundle principal indicada por `customLocalizationFileName`. Las claves no definidas mantienen el texto de los recursos de Microblink. |
-| Pantallas propias de Become | `text_*`, `error_*`, `unknown_error` y otras del bloque Become | Lee `Dictionary.stringsdict` del bundle de `BDIdentityVerification.framework`. **No busca estas claves en el archivo de la app.** |
-| Claves históricas de Identy | `identy_*`, `id_*`, `search_*` y claves de storyboard | Se conservan por compatibilidad; no son el mecanismo de personalización de Microblink ni de Amplify y no habilitan funcionalidades adicionales. |
-
-La sobrescritura de Face Liveness está documentada por [AWS Amplify](https://ui.docs.amplify.aws/swift/connected-components/liveness/customization#internationalization-i18n). Se verificó además la búsqueda `Bundle.main` con respaldo en `Bundle.module` del helper `String+Localizable.swift` de la versión 1.4.4.
-
-Para Microblink se verificó `MBIC_UI_LOCALIZED` en `CaptureUX.framework/Headers/MBICCaptureUISDK.h` de la versión 1.4.3. Su propiedad `customLocalizationFileName` sigue disponible, pero está marcada como **deprecated** por Microblink. Es el mecanismo expuesto actualmente por `BDIVConfig`; debe revisarse al actualizar CaptureUX. Consulte la [localización de Capture iOS 1.4.3](https://github.com/BlinkID/capture-ios/tree/v1.4.3#localization).
-
-## 1. Agregar los textos al target de la app
-
-1. Descargue [Localizable.strings](Localizable.strings). Si su app ya tiene ese archivo, combine únicamente las claves que necesite; no reemplace sus textos ni agregue claves duplicadas.
-2. Agréguelo a Xcode con **Add Files to…** y seleccione el target de la aplicación integradora en **Target Membership**. Debe quedar en el bundle principal de la app, no solamente en un framework o paquete auxiliar.
-3. Compruebe su inclusión en **Build Phases → Copy Bundle Resources**. Para archivos localizados se mostrará el grupo de variantes.
-4. Modifique los valores a la derecha de `=`; conserve las claves exactas. Puede incluir solo las claves compatibles que quiera sobrescribir.
-
-Ejemplo para los textos en español:
-
-```text
-/* Face Liveness */
-"amplify_ui_liveness_get_ready_begin_check" = "Iniciar verificación facial";
-"amplify_ui_liveness_challenge_connecting" = "Conectando...";
-
-/* Microblink */
-"mbic_scan_the_front_side" = "Escanea el frente del documento";
-"mbic_scan_the_back_side" = "Escanea el reverso del documento";
-"mbic_onboarding_title" = "Coloca el teléfono en horizontal";
-"mbic_onboarding_message" = "Mantén el teléfono en horizontal y verifica que todos los campos del documento sean visibles.";
-```
-
-La plantilla del repositorio es una base en inglés, no una traducción automática. Cambiar un texto no altera el flujo, las validaciones, los reintentos ni los resultados del servicio.
-
-## 2. Configurar Microblink desde BDIVConfig
-
-Use el nombre del archivo **sin extensión**, respetando mayúsculas y minúsculas:
+1. Agregue [Localizable.strings](Localizable.strings) al target de su app. Si ya existe, copie solo las claves que quiera cambiar.
+2. Edite el texto a la derecha de `=`; conserve el nombre de cada clave.
+3. Para traducir, cree las variantes `es.lproj/Localizable.strings` y `en.lproj/Localizable.strings` desde Xcode.
+4. Configure Microblink con `customLocalizationFileName: "Localizable"` y recompile la app.
 
 ```swift
-import BDIdentityVerification
-
 let config = BDIVConfig(
-    clienId: "TU_CLIENT_ID",
-    clientSecret: "TU_CLIENT_SECRET",
-    contractId: "TU_CONTRACT_ID",
+    clienId: clientId,
+    clientSecret: clientSecret,
+    contractId: contractId,
     documenTypes: [.DNI, .PASSPORT],
-    userId: "TU_USER_ID",
+    userId: userId,
     customLocalizationFileName: "Localizable"
 )
 ```
 
-Se conservan los nombres públicos `clienId` y `documenTypes` de la API. Use esta configuración al crear `BecomeDigitalSDK`, como muestra el [ejemplo de integración](README.md).
+Este framework permite personalizar **Become, Microblink y Face Liveness**. Las claves no incluidas conservan el texto original. El parámetro anterior selecciona la tabla de Microblink; Become y Face Liveness usan `Localizable.strings`.
 
-El valor predeterminado del parámetro sigue siendo `"MBLocalizable"`. Si agrega `Localizable.strings` pero omite el parámetro, Microblink buscará una tabla distinta. Amplify no utiliza ese parámetro: siempre consulta su tabla `Localizable`.
-
-Si prefiere separar los textos, deje las claves `amplify_ui_liveness_*` en `Localizable.strings`, coloque las `mbic_*` en `MBLocalizable.strings` y configure `"MBLocalizable"`. No renombre todo el archivo a `MBLocalizable.strings`: Amplify dejaría de encontrar allí sus personalizaciones.
-
-Establezca el nombre explícitamente en cada inicio. `nil` no configura una tabla nueva en esa inicialización y no garantiza limpiar una personalización previa del singleton de Microblink.
-
-## 3. Varios idiomas
-
-En **Project → Info → Localizations**, agregue los idiomas de la app. Seleccione el archivo y use **File Inspector → Localize…** para crear sus variantes. Traduzca los valores en cada variante, manteniendo las mismas claves:
+## Ejemplo
 
 ```text
-App/
-  en.lproj/Localizable.strings
-  es.lproj/Localizable.strings
-  es-419.lproj/Localizable.strings   (opcional, español latinoamericano)
+"text_start_btn" = "Comenzar";
+"text_title_button_retry" = "Volver a intentar";
+"text_title_document_error" = "Revisa las fotos de tu documento";
+"mbic_scan_the_front_side" = "Escanea el frente del documento";
+"amplify_ui_liveness_get_ready_begin_check" = "Iniciar prueba de vida";
 ```
 
-No mantenga además otra copia no localizada del mismo archivo en la raíz del bundle. La selección se basa en los idiomas soportados y las preferencias de la app; `customLocalizationFileName` selecciona una **tabla**, no un idioma. El framework Become distribuido incluye recursos `en`, `es` y `es-419`. Consulte [los recursos de cadenas de Apple](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html).
+## Claves por pantalla
 
-Si usa `Localizable.xcstrings` en su app, incorpore las claves en ese catálogo y evite producir dos tablas `Localizable` para el mismo idioma.
+Una clave compartida cambia en todos los lugares donde se utiliza.
+| Pantalla / uso | Claves |
+| --- | --- |
+| Inicio | `text_tittle_general_intro`, `text_sub_tittle_general_intro`, `text_selfie_intro_general`, `text_document_intr_general`, `text_start_btn` |
+| Selección de país y documento | `text_tittle_selec_document`, `text_body_country`, `text_select_country`, `text_cancel_close`, `text_dni_selec_document`, `text_license`, `text_passport` |
+| Introducción facial | `text_video_intro` |
+| Captura documental | `text_tittle_intro_doc_front`, `text_btn_introduction_doc` |
+| Vista previa | `text_info_preview`, `text_confirm_preview`, `text_retry_previe` |
+| Carga y envío | `text_loader_init`, `text_loading`, `text_varification_title`, `text_varification_body`, `text_varification_buttom`, `text_info_upload`, `text_info_upload_document`, `text_document_validation` |
+| Consulta de resultados | `text_progress_result`, `text_progress_delay_result`, `text_progress_delay_finish_result` |
+| Error de documento y reintento | `text_title_document_error`, `text_sub_title_document_error`, `text_title_button_retry` |
+| Error general o validación fallida | `text_varification_title_error`, `text_varification_body_error`, `text_varification_title_compliance_error`, `text_varification_body_compliance_error`, `text_error_compliance_not_allowed`, `general_error`, `unknown_error` |
+| Errores de conexión | `timeout_error`, `no_internet_error`, `connection_lost_error` |
+| Permisos y privacidad | `tittle_permisiions_not_aut`, `camera_error_permissions`, `text_screen_recording_not_allowed` |
+| Error facial | `liveness_detection_failed`, `error_low_confidence` |
+| Error de configuración (callback) | `text_msn_error_config`, `error_clientid_empty`, `error_client_secret_empty`, `error_contractid_empty`, `error_userid_emty`, `error_vallidationtype_empty` |
+| Resultado final | `text_finish`, `text_sub_tittle_finish`, `terminate_text` |
+| Confirmar salida | `text_undo`, `text_cancel`, `text_tittle_undo`, `text_sub_tittle_undo`, `cancel_by_user` |
 
-## 4. Limitaciones de los textos propios de Become
+## Captura Microblink y Face Liveness
 
-El método interno `String.localize(bundle:)` carga `Dictionary.stringsdict` desde el bundle de la clase del SDK. Por ejemplo, `text_title_button_retry` y `unknown_error` no se buscan en `Bundle.main`.
+`*` agrupa las claves con ese prefijo; copie el nombre completo desde la plantilla, nunca el asterisco.
+| Pantalla / uso | Claves |
+| --- | --- |
+| Microblink: frente/reverso | `mbic_scan_*`, `mbic_flip_document` |
+| Microblink: encuadre y calidad | `mbic_move_*`, `mbic_camera_angle_too_steep`, `mbic_document_too_close_to_edge`, `mbic_lightning_*`, `mbic_blur_detected`, `mbic_glare_detected`, `mbic_occluded`, `mbic_camer_orientation_*`, `mbic_torch_glare_tooltip_message` |
+| Microblink: ayuda y preparación | `mbic_onboarding_*`, `mbic_tutorial_*`, `mbic_need_help_tooltip` |
+| Microblink: cámara, red y botones | `mbic_camera_unavailable`, `mbic_camera_permission_error`, `mbic_camera_media_capture_error`, `mbic_camera_unable_to_resume_session`, `mbic_check_internet_connection`, `mbic_network_error`, `mbic_scanning_not_available`, `mbic_settings`, `mbic_done`, `mbic_cancel`, `mbic_back`, `mbic_next`, `mbic_ok`, `mbic_close` |
+| Face Liveness: preparación y fotosensibilidad | `amplify_ui_liveness_get_ready_*` |
+| Face Liveness: instrucciones de captura | `amplify_ui_liveness_challenge_*`, `amplify_ui_liveness_face_not_prepared_reason_*`, `amplify_ui_liveness_center_your_face_text` |
+| Face Liveness: permisos y cierre | `amplify_ui_liveness_camera_*`, `amplify_ui_liveness_close_button_a11y` |
 
-Las 103 claves del bloque **Become — SOLO REFERENCIA** permiten consultar el inventario completo del recurso distribuido. Agregarlas o traducirlas en el archivo de la app **no cambia las pantallas de Become en este binario**. También hay entradas técnicas, como `splitValidationTypes`, `validation_type_video` y `_07`, que no deben tratarse como textos de UI traducibles.
+## Antes de entregar
 
-Para habilitar esa personalización se necesita un cambio del resolvedor de textos en el código fuente de Become y una nueva distribución del SDK. No modifique los recursos internos del XCFramework entregado: alteraría el paquete y sus firmas. Esta actualización de documentación no cambia ese comportamiento ni sustituye el binario.
-
-Los mensajes enviados por el backend, los textos definidos directamente en código y los textos del sistema tampoco se sustituyen automáticamente con estas claves. Los mensajes de permisos de iOS, por ejemplo `NSCameraUsageDescription`, pertenecen a la configuración de la app y se localizan mediante `InfoPlist.strings`, no con `Localizable.strings`.
-
-## 5. Reglas de edición
-
-- Guarde como UTF-8 y use el formato `"clave" = "valor";`.
-- Mantenga una sola definición por clave e idioma. No corrija nombres como `mbic_lightning_too_dark` o `text_varification_title`: son identificadores existentes.
-- Conserve exactamente los parámetros de formato y sus tipos. En el inventario Become, `text_info_upload` y `text_info_upload_document` contienen `%d%%`; `liveness_detection_failed` y `error_low_confidence` contienen `%@`.
-- Use `\n` para saltos de línea, `\"` para comillas dentro de un valor y `\\` para una barra invertida.
-- No vacíe instrucciones esenciales ni advertencias de fotosensibilidad. Traduzca manteniendo su significado; AWS desaconseja modificar la pantalla de preparación y los parámetros del desafío por razones de éxito y seguridad. [Buenas prácticas de Face Liveness](https://ui.docs.amplify.aws/swift/connected-components/liveness/customization#best-practices).
-
-## 6. Verificación de la integración
-
-Valide la sintaxis de la plantilla y, en su proyecto, de cada traducción:
-
-```sh
-plutil -lint Localizable.strings
-plutil -lint en.lproj/Localizable.strings es.lproj/Localizable.strings
-```
-
-1. En Xcode, seleccione **Edit Scheme → Run → Options → App Language** y pruebe cada idioma.
-2. Cambie temporalmente una clave `mbic_*` y una `amplify_ui_liveness_*`; ejecute ambos pasos del flujo en un dispositivo y compruebe que aparecen sus valores.
-3. Retire temporalmente una de esas claves y verifique el respaldo del componente. Una clave con valor vacío no equivale a omitirla.
-4. Compruebe textos largos, accesibilidad y orientación. Si no cambia un texto, revise el target, la tabla configurada, la variante de idioma y a qué componente pertenece.
-5. Recompile la app después de editar sus recursos. No es necesario regenerar el SDK para las personalizaciones compatibles.
-
-## Inventario de esta actualización
-
-La comparación se hizo contra los recursos de ambas variantes del XCFramework (`ios-arm64` y `ios-arm64_x86_64-simulator`), en sus tres idiomas, y contra las dependencias indicadas al inicio:
-
-| Grupo | Claves en la plantilla | Cambios |
-| --- | ---: | --- |
-| Become | 103 | Agregadas como referencia, con los valores del recurso `en` sin modificaciones. |
-| CaptureUX | 40 | Agregadas `mbic_onboarding_title` y `mbic_onboarding_message`. |
-| Face Liveness | 38 | Ya estaban completas; se conservaron los valores personalizados existentes. |
-| Históricas de Identy | 163 | Se conservaron; se eliminaron seis definiciones repetidas manteniendo el último valor de cada clave. |
-| **Total** | **344** | **105 claves nuevas; sin claves duplicadas.** |
-
-La misma clave puede no mostrarse en todos los flujos. Este inventario corresponde a las versiones auditadas y debe revisarse cuando cambien los binarios o sus dependencias.
+- No duplique claves. Mantenga las instrucciones de cámara, accesibilidad y fotosensibilidad.
+- Conserve `%d%%` en `text_info_upload` y `text_info_upload_document`, y `%@` en `liveness_detection_failed` y `error_low_confidence`. Si el formato no coincide, Become conserva el texto original.
+- Los mensajes enviados por el servicio y los permisos del sistema no se cambian con estas claves.
+- Las claves `there_already_a_record`, `splitValidationTypes`, `validation_type_video`, `_07` son internas; no las modifique. Become no admite su sobrescritura.
+- El bloque de compatibilidad de la plantilla, incluidas las claves `identy_*`, `id_*`, `search_*` y de storyboard, pertenece a pantallas heredadas y no modifica el flujo actual.
+- Pruebe la app en cada idioma después de recompilar. No necesita volver a generar el framework por un cambio de textos.

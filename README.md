@@ -16,6 +16,9 @@ Estas librerías permiten habilitar correctamente:
 
 ## Cambios incluidos en esta versión
 
+* Logs opcionales mediante `debugLogsEnabled`, desactivados por defecto.
+* Personalización de textos de Become desde el `Localizable.strings` de la app.
+
 * Selección de flujo mediante `flow`: `.Onboarding` o `.Authentication`.
 * Control opcional de la consulta del resultado final con `performVerificationCheck`.
 * Configuración del número máximo de consultas mediante `pollingMaxAttempts`.
@@ -70,6 +73,7 @@ Asegúrese de que el [`Bundle Identifier`](https://developer.apple.com/documenta
 
 1. Agregue el archivo **BDIdentityVerification.xcframework** a su proyecto.
 2. Verifique que quede incluido en la sección **Frameworks, Libraries, and Embedded Content** dentro de la configuración del target en Xcode.
+3. Seleccione **Embed & Sign** para que la aplicación firme el framework al integrarlo.
 
 ---
 
@@ -158,11 +162,12 @@ identityVerification.startVerification()
 | `documenTypes` | `[DocumentType]` | Requerido | Documentos disponibles: `.DNI`, `.PASSPORT` y `.DRIVERLICENSE`. Debe contener al menos uno en onboarding. |
 | `userId` | `String` | Requerido | Identificador único del usuario. |
 | `customerLogo` | `String` | `""` | Nombre del recurso de imagen que se mostrará como logo. |
-| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Tabla de textos de **Microblink** en el bundle de la app, sin extensión. Use `"Localizable"` con la plantilla de este repositorio. No cambia los textos propios de Become ni la tabla de Amplify. |
+| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Tabla de Microblink, sin extensión. Use `"Localizable"` con la plantilla incluida; Become y Face Liveness usan siempre `Localizable.strings`. |
 | `performVerificationCheck` | `Bool` | `true` | Si es `true`, consulta el resultado final. Si es `false`, termina después de decodificar la respuesta de `POST /api/v1/newIdentity`. |
 | `flow` | `BDIVConfig.Flow` | `.Onboarding` | Selecciona el flujo completo o solo autenticación facial. |
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
 | `pollingTimeout` | `TimeInterval` | `2` | Timeout en segundos aplicado a cada GET de resultados. Los valores menores o iguales a cero se normalizan a `2`. |
+| `debugLogsEnabled` | `Bool` | `false` | Activa logs de diagnóstico sin datos personales. [Uso](LOGGING.md). |
 
 ### Tipos de flujo
 
@@ -233,14 +238,14 @@ El callback de éxito entrega un `AnyObject`, y el modelo público documentado p
 ```swift
 func BDIVResponseSuccess(bdivResult: AnyObject) {
     if let response = bdivResult as? BDIdentityVerificationResponse {
-        print(response.toJson() ?? "")
+        // Procese response sin imprimir datos personales.
     } else {
-        print(String(describing: bdivResult))
+        // Maneje un tipo de respuesta inesperado.
     }
 }
 
 func BDIVResponseError(error: String) {
-    print(error)
+    // Muestre o maneje el error; no lo registre completo.
 }
 ```
 
@@ -303,7 +308,7 @@ public struct BDIdentityVerificationResponse {
             let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: jsonData, encoding: .utf8)
         } catch {
-            print("Failed to convert BDIdentityVerificationResponse to JSON: \(error)")
+            // No registrar el contenido de la respuesta ni la excepción.
             return nil
         }
     }
@@ -316,11 +321,11 @@ No fuerce el desempaquetado de `responseDictionary`. Su contenido depende del ca
 func BDIVResponseSuccess(bdivResult: AnyObject) {
     guard let response = bdivResult as? BDIdentityVerificationResponse else { return }
 
-    print("Estado:", response.responseStatus.rawValue)
-    print("Mensaje:", response.message)
+    // Decida el siguiente paso según response.responseStatus.
+    // Use response.message en la interfaz, sin imprimirlo.
 
     if let details = response.responseDictionary {
-        print("Detalles:", details)
+        // Consuma únicamente los datos necesarios de details.
     }
 }
 ```
@@ -428,17 +433,17 @@ class ViewController: UIViewController {
 extension ViewController: BDIVDelegate {
     func BDIVResponseSuccess(bdivResult: AnyObject) {
         if let response = bdivResult as? BDIdentityVerificationResponse {
-            print(response.toJson() ?? "")
+            // Procese response sin imprimir datos personales.
             if let details = response.responseDictionary {
-                print(details)
+                // Consuma únicamente los datos necesarios de details.
             }
         } else {
-            print(String(describing: bdivResult))
+            // Maneje un tipo de respuesta inesperado.
         }
     }
 
     func BDIVResponseError(error: String) {
-        print(error)
+        // Muestre o maneje el error; no lo registre completo.
     }
 }
 ```
@@ -451,31 +456,23 @@ La integración usa `CaptureCore` y `CaptureUX` 1.4.3. La SDK configura la cáma
 
 Al completar la captura se envía la imagen original completa (`capturedImage`) del frente y, cuando aplica, del reverso. La imagen transformada o recortada (`transformedImage`) puede utilizarse internamente para previsualización, pero no se envía como documento a `newIdentity`.
 
-El paquete PROD incluido conserva los logs heredados deshabilitados (`logEnabled = NO`). Para la nueva API de diagnóstico y sus requisitos de disponibilidad, consulte [Logs de diagnóstico](#logs-de-diagnóstico). No imprima credenciales, imágenes ni respuestas completas desde los callbacks.
+Los logs están desactivados por defecto. Puede habilitarlos temporalmente con `debugLogsEnabled`; no imprima respuestas completas desde los callbacks.
 
 ---
 
 ## Logs de diagnóstico
 
-La nueva configuración es `BDIVConfig.debugLogsEnabled`, opcional y desactivada por defecto (`false`) en Debug y Release/PROD. En una SDK compatible, use `debugLogsEnabled: true` en el inicializador antes de `startVerification()`; omítalo o use `false` para desactivar.
+Use `debugLogsEnabled: true` al crear `BDIVConfig`. Para desactivar, use `false` u omita el argumento. En Xcode/Console, filtre `BecomeSDK` incluyendo nivel Debug.
 
-**Disponibilidad:** el XCFramework actualmente incluido todavía no expone este parámetro. Es necesario reemplazarlo por un build del repositorio fuente que incluya los diagnósticos y recompilar la app. Agregar `logEnabled` al `Info.plist` no incorpora la API nueva.
-
-La [guía de logging](LOGGING.md) incluye ejemplos Swift, filtros de Xcode/Console (`BecomeSDK`, subsistema `com.becomedigital.sdk`, categoría `diagnostics`), interpretación de errores de `newIdentity`, datos excluidos y envío seguro a soporte. El flag solo controla Become, no los logs del sistema ni de terceros; no imprime cuerpos JSON ni cambia el flujo funcional.
+[Ejemplo de implementación](LOGGING.md). No se imprimen datos personales ni respuestas completas.
 
 ---
 
 ## Localización
 
-Use la plantilla [Localizable.strings](Localizable.strings) y consulte la [guía de localización y personalización](LOCALIZACION.md).
+Agregue [Localizable.strings](Localizable.strings) al target de su app, cambie únicamente los valores y configure `customLocalizationFileName: "Localizable"`. Puede personalizar Become, Microblink y Face Liveness; las claves no modificadas conservan su texto original.
 
-1. Agregue o combine las claves con el `Localizable.strings` del target de su aplicación, sin duplicarlas.
-2. Cree las traducciones por idioma en Xcode y verifique su inclusión en los recursos de la app.
-3. Inicialice `BDIVConfig` con `customLocalizationFileName: "Localizable"`, sin la extensión `.strings`.
-
-**Alcance del binario actual:** Amplify Face Liveness lee las claves `amplify_ui_liveness_*` de la app; Microblink lee las claves `mbic_*` de la tabla configurada. Los textos propios de Become se leen del `Dictionary.stringsdict` interno del framework: las 103 claves incluidas en la plantilla son de referencia y no se pueden sobrescribir desde la app con esta versión.
-
-La plantilla conserva las personalizaciones anteriores y agrega las dos claves de onboarding que faltaban de CaptureUX 1.4.3. La guía explica los valores de respaldo, los formatos, las pruebas y las limitaciones. No es necesario editar el XCFramework para personalizar los textos compatibles.
+[Guía de implementación y claves por pantalla](LOCALIZACION.md). Recompile la app después de cambiar textos.
 
 ---
 
