@@ -138,7 +138,7 @@ let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                             documenTypes: [.DNI, .PASSPORT],
                             userId: "TU_USER_ID",
                             customerLogo: "icon",
-                            customLocalizationFileName: "MBLocalizable",
+                            customLocalizationFileName: "Localizable",
                             performVerificationCheck: true,
                             flow: .Onboarding,
                             pollingMaxAttempts: 0,
@@ -158,7 +158,7 @@ identityVerification.startVerification()
 | `documenTypes` | `[DocumentType]` | Requerido | Documentos disponibles: `.DNI`, `.PASSPORT` y `.DRIVERLICENSE`. Debe contener al menos uno en onboarding. |
 | `userId` | `String` | Requerido | Identificador único del usuario. |
 | `customerLogo` | `String` | `""` | Nombre del recurso de imagen que se mostrará como logo. |
-| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Nombre del archivo de localización personalizado, sin extensión. |
+| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Tabla de textos de **Microblink** en el bundle de la app, sin extensión. Use `"Localizable"` con la plantilla de este repositorio. No cambia los textos propios de Become ni la tabla de Amplify. |
 | `performVerificationCheck` | `Bool` | `true` | Si es `true`, consulta el resultado final. Si es `false`, termina después de decodificar la respuesta de `POST /api/v1/newIdentity`. |
 | `flow` | `BDIVConfig.Flow` | `.Onboarding` | Selecciona el flujo completo o solo autenticación facial. |
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
@@ -414,7 +414,7 @@ class ViewController: UIViewController {
                                     documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                                     userId: userId,
                                     customerLogo: "icon",
-                                    customLocalizationFileName: "MBLocalizable",
+                                    customLocalizationFileName: "Localizable",
                                     performVerificationCheck: true,
                                     flow: .Onboarding,
                                     pollingMaxAttempts: 30,
@@ -451,13 +451,31 @@ La integración usa `CaptureCore` y `CaptureUX` 1.4.3. La SDK configura la cáma
 
 Al completar la captura se envía la imagen original completa (`capturedImage`) del frente y, cuando aplica, del reverso. La imagen transformada o recortada (`transformedImage`) puede utilizarse internamente para previsualización, pero no se envía como documento a `newIdentity`.
 
-El paquete PROD incluido tiene los logs HTTP internos deshabilitados (`logEnabled = NO`). La aplicación integradora debe registrar únicamente la información necesaria desde los callbacks, evitando imprimir credenciales, imágenes o información sensible en producción.
+El paquete PROD incluido conserva los logs heredados deshabilitados (`logEnabled = NO`). Para la nueva API de diagnóstico y sus requisitos de disponibilidad, consulte [Logs de diagnóstico](#logs-de-diagnóstico). No imprima credenciales, imágenes ni respuestas completas desde los callbacks.
+
+---
+
+## Logs de diagnóstico
+
+La nueva configuración es `BDIVConfig.debugLogsEnabled`, opcional y desactivada por defecto (`false`) en Debug y Release/PROD. En una SDK compatible, use `debugLogsEnabled: true` en el inicializador antes de `startVerification()`; omítalo o use `false` para desactivar.
+
+**Disponibilidad:** el XCFramework actualmente incluido todavía no expone este parámetro. Es necesario reemplazarlo por un build del repositorio fuente que incluya los diagnósticos y recompilar la app. Agregar `logEnabled` al `Info.plist` no incorpora la API nueva.
+
+La [guía de logging](LOGGING.md) incluye ejemplos Swift, filtros de Xcode/Console (`BecomeSDK`, subsistema `com.becomedigital.sdk`, categoría `diagnostics`), interpretación de errores de `newIdentity`, datos excluidos y envío seguro a soporte. El flag solo controla Become, no los logs del sistema ni de terceros; no imprime cuerpos JSON ni cambia el flujo funcional.
 
 ---
 
 ## Localización
 
-Descargue el archivo `MBLocalizable.strings`, modifique los textos requeridos y establezca el nombre del archivo en `customLocalizationFileName`.
+Use la plantilla [Localizable.strings](Localizable.strings) y consulte la [guía de localización y personalización](LOCALIZACION.md).
+
+1. Agregue o combine las claves con el `Localizable.strings` del target de su aplicación, sin duplicarlas.
+2. Cree las traducciones por idioma en Xcode y verifique su inclusión en los recursos de la app.
+3. Inicialice `BDIVConfig` con `customLocalizationFileName: "Localizable"`, sin la extensión `.strings`.
+
+**Alcance del binario actual:** Amplify Face Liveness lee las claves `amplify_ui_liveness_*` de la app; Microblink lee las claves `mbic_*` de la tabla configurada. Los textos propios de Become se leen del `Dictionary.stringsdict` interno del framework: las 103 claves incluidas en la plantilla son de referencia y no se pueden sobrescribir desde la app con esta versión.
+
+La plantilla conserva las personalizaciones anteriores y agrega las dos claves de onboarding que faltaban de CaptureUX 1.4.3. La guía explica los valores de respaldo, los formatos, las pruebas y las limitaciones. No es necesario editar el XCFramework para personalizar los textos compatibles.
 
 ---
 

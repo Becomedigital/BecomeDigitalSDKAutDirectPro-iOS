@@ -6,7 +6,14 @@
   
 */
 
-// Amplify
+// Guía de integración: LOCALIZACION.md (en este repositorio).
+// Plantilla base en inglés: traduzca los valores para cada idioma de su app.
+// Amplify: estas claves se leen del Localizable.strings de la aplicación.
+// Microblink: establezca customLocalizationFileName: "Localizable".
+// Become: las claves agregadas al final son SOLO REFERENCIA; el framework
+// actual lee Dictionary.stringsdict desde su propio bundle, no desde la app.
+
+// Amplify UI Swift Liveness 1.4.4
 "amplify_ui_liveness_get_ready_page_title" = "Liveness Check";
 "amplify_ui_liveness_get_ready_photosensitivity_title" = "Photosensitivity Warning";
 "amplify_ui_liveness_get_ready_photosensitivity_description" = "This check flashes different colors. Use caution if you are photosensitive.";
@@ -52,6 +59,9 @@
 "amplify_ui_liveness_face_not_prepared_reason_multiple_faces" = "Only one face per verification";
 "amplify_ui_liveness_face_not_prepared_reason_face_too_close" = "Move your face a bit farther back";
 
+// Microblink CaptureUX 1.4.3.
+// Configure customLocalizationFileName: "Localizable" (sin ".strings").
+// Se conservan los nombres oficiales, incluidos "lightning" y "camer".
 // Microblink Capture messages
 "mbic_scan_the_front_side" = "Scan the front side of the document";
 "mbic_flip_document" = "Flip the document";
@@ -69,6 +79,8 @@
 "mbic_camer_orientation_unsuitable" = "Rotate the phone or the card";
 
 // Tutorial
+"mbic_onboarding_message" = "For the best results, hold your phone in landscape mode when you scan the document. Scan it as shown in the picture, and make sure you can see all the fields on the screen.";
+"mbic_onboarding_title" = "Turn your phone to landscape mode";
 "mbic_need_help_tooltip" = "Need help?";
 "mbic_onboarding_field_visible_title" = "Keep all details visible";
 "mbic_onboarding_field_visible_details" = "Make sure the document is well lit. All document fields must be visible on the camera screen.";
@@ -102,7 +114,9 @@
 "mbic_network_error" = "Network error";
 "mbic_scanning_not_available" = "Scanning not available";
 
-// Identy
+// Identy — claves históricas conservadas por compatibilidad.
+// No corresponden al flujo actual de captura Microblink / Face Liveness.
+// Su presencia no habilita la captura de huellas ni garantiza uso en esta versión.
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "2t2-G7-8Gr"; */
 "2t2-G7-8Gr.placeholder" = "Username";
 
@@ -253,12 +267,6 @@
 
 /*IntroScreenViewController*/
 
-"id_keep_fingers" = "1.Extend and keep fingers together";
-"id_in_front_camera" = "2.Place fingers in front of camera";
-"id_stay_still_blue" = "3.Stay still inside the blue rectangle";
-"id_wait_auto" = "4.Wait for automatic capture(Until flash goes off)";
-"id_next" = "Next";
-"id_dshow_again" = "Don't show me again";
 
 
 
@@ -346,3 +354,121 @@
 "id_timed_out_no_next_detection" = "We are having trouble capturing. Please review the best practices and try again!";
 "id_spoof_final_message" = "Maximum number of attempts reached";
 "id_EXIT" = "EXIT";
+
+// -----------------------------------------------------------------------------
+// Become iOS SDK 1.2.3 — SOLO REFERENCIA, NO SOBRESCRITURA DESDE LA APP.
+// Inventario de Dictionary.stringsdict incluido en BDIdentityVerification.framework.
+// Hay 103 claves coincidentes en en, es y es-419, tanto para dispositivo como
+// para simulador. Se preservan exactamente los valores del recurso en inglés,
+// incluidos espacios y textos que el propio recurso contiene en español.
+// Editar estas entradas aquí NO cambia la UI de Become en el binario actual.
+// No edite recursos dentro del XCFramework distribuido.
+// Consulte LOCALIZACION.md para el alcance de cada grupo.
+// Conserve los marcadores de formato: %@, %d y %%.
+// -----------------------------------------------------------------------------
+"and_intro_general" = "and";
+"btn_text_recording_video" = " Record a video ";
+"camera_error" = "This device doesn\\'t support Camera2 API.";
+"camera_error_permissions" = " You do not have permission to use the camera, please change your privacy settings.";
+"cancel_by_user" = " Canceled by user ";
+"connection_lost_error" = "The Internet connection was lost. Please try again.";
+"description_info" = "Info";
+"error_client_secret_empty" = "ClientSecret parameters cannot be empty";
+"error_clientid_empty" = "ClienId parameters cannot be empty";
+"error_contractid_empty" = "ContractId parameters cannot be empty";
+"error_inputs_wrong" = "Input parameters are wrong";
+"error_insufficient_balance" = "Insufficient balance to complete the verification.";
+"error_low_confidence" = "Verification failed, confidence: %@";
+"error_tittle_resume_camera" = "Error ";
+"error_userid_emty" = "UserId parameters cannot be empty";
+"error_vallidationtype_empty" = "The validationTypes parameter cannot be empty";
+"error_videoonly_empty" = "The process cannot be initialized with video only";
+"general_error" = "An unexpected error occurred. Please try again.";
+"liveness_detection_failed" = "Liveness detection failed: %@";
+"no_internet_error" = "You are not connected to the Internet. Check your network.";
+"request_permission" = "This sample needs camera permission.";
+"retry_send_text" = " Consulting again...";
+"terminate_text" = "Finish";
+"textLoaderFinal" = " Our artificial intelligence is performing a biometric analysis of your face ";
+"text_body_country" = " Select the type of document ";
+"text_btn_confirm_video" = " Yes, I made 2 circles ";
+"text_btn_intro_doc_galery" = "Gallery";
+"text_btn_introduction_doc" = "Capture document ";
+"text_cancel" = "Finish";
+"text_cancel_close" = "Cancelar";
+"text_confirm_finger_preview" = "Yes, the fingerprints are clear";
+"text_confirm_preview" = " Yes, the image is clear ";
+"text_created_resource" = "The resource was created";
+"text_dni_selec_document" = " National Identification ";
+"text_document_intr_general" = " Capture your documents, so you will verify your identity ";
+"text_document_validation" = "Validating documents...";
+"text_empty_balance" = "Insufficient balance";
+"text_error_capture_document" = "Capture failed, please try again.";
+"text_error_capture_finger" = "Capture failed, please try again.";
+"text_error_compliance_not_allowed" = "Validation error, we cannot continue with the process";
+"text_error_session" = " Unable to resume camera ";
+"text_finger_intro" = "Now we will perform a contactless fingerprint capture. Please follow the instructions on the screen.";
+"text_finish" = "You finished!";
+"text_finish_upload" = " Send information ";
+"text_index_finger" = "Index finger";
+"text_info_preview" = "Is the photo clear? It has no reflection and it is not blurred ";
+"text_info_upload" = "We are uploading your information... %d%%";
+"text_info_upload_document" = "We are uploading your documents... %d%%";
+"text_lbl_ficial" = " Place the phone at the level of your face ";
+"text_lbl_tittle_selfie" = "Perform a proof of life test using a video selfie to verify your identity.";
+"text_license" = " Driving License ";
+"text_little_finger" = "Little finger";
+"text_loader_init" = " Starting...";
+"text_loading" = "Loading...";
+"text_middle_finger" = "Middle finger";
+"text_more_full_bar" = " Sending information to the server ";
+"text_msn_error_config" = " Incorrect SDK configuration ";
+"text_msn_selec_document" = " Please confirm that you have actual documents or their images available on your device ";
+"text_passport" = " Passport ";
+"text_progres_complete" = " It is taking longer than normal ";
+"text_progress_delay_finish_result" = "It is taking longer than normal ";
+"text_progress_delay_result" = "We are about to finish";
+"text_progress_more_70" = " validating authentication status ";
+"text_progress_result" = "Checking the result...";
+"text_retry_previe" = " No, retry ";
+"text_ring_finger" = "Ring finger";
+"text_save_img" = " Saving ...";
+"text_screen_recording_not_allowed" = "Recording or mirroring is not allowed";
+"text_select_country" = " Select your country ";
+"text_selfie_intro_general" = "Perform a proof of life test using a video selfie to verify your identity.";
+"text_start_btn" = "Continue";
+"text_sub_title_document_error" = "The quality of the photos did not meet the minimum requirements.";
+"text_sub_tittle_finish" = "Congratulations, the capture of your data is complete ";
+"text_sub_tittle_general_intro" = " To be verified, you will have to:";
+"text_sub_tittle_undo" = "Do you want to finish the process?";
+"text_time_out_msn" = "\\ The waiting time has expired. Do you want to try again?";
+"text_title_button_retry" = "Retry";
+"text_title_document_error" = "¡Ups!";
+"text_title_finger_intro" = "To continue with your verification, we will capture your fingerprints.";
+"text_tittle_general_intro" = " Let's verify your identity ";
+"text_tittle_intro_doc" = " REAR SIDE ";
+"text_tittle_intro_doc_front" = "DOCUMENT CAPTURE";
+"text_tittle_selec_document" = " We need you to provide some of the following documents:";
+"text_tittle_undo" = "You're sure?";
+"text_tittle_video" = " Make two circles with your nose ";
+"text_undo" = "Back";
+"text_varification_body" = "We will analyze the information provided to continue with the process";
+"text_varification_body_compliance_error" = "We cannot continue with the process.";
+"text_varification_body_error" = "Try again";
+"text_varification_buttom" = "Send information";
+"text_varification_title" = "Finished initial capture";
+"text_varification_title_compliance_error" = "Validation failed";
+"text_varification_title_error" = "An error occurred.";
+"text_video_confirm" = "Did you make 2 circles with your nose?";
+"text_video_intro" = "We will now perform a liveness detection test to verify your identity. Please follow the instructions on the screen.";
+"text_video_intro_general" = "Perform a proof of life test using a video selfie to verify your identity and";
+"timeout_error" = "The connection timed out. Please try again.";
+"tittle_permisiions_not_aut" = " Permissions denied ";
+"unknown_error" = "An unknown error occurred. Please try again.";
+
+// Valores técnicos / de comparación presentes en Dictionary.stringsdict.
+// SOLO REFERENCIA: no traducir ni cambiar códigos, separadores o coincidencias.
+"_07" = "07";
+"splitValidationTypes" = "/";
+"there_already_a_record" = "Ya existe un registro con el mismo ID para esta compañia";
+"validation_type_video" = "VIDEO";
