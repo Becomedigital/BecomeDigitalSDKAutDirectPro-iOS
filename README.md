@@ -18,6 +18,8 @@ Estas librerías permiten habilitar correctamente:
 
 * Logs opcionales mediante `debugLogsEnabled`, desactivados por defecto.
 * Personalización de textos de Become desde el `Localizable.strings` de la app.
+* Mensajes específicos y rutas de recuperación para errores de creación de identidad y resultados. [Catálogo](ERRORES.md).
+* Carga multipart en segundo plano para redes lentas, hasta 15 minutos por transferencia. [Integración](CARGAS_SEGUNDO_PLANO.md).
 
 * Selección de flujo mediante `flow`: `.Onboarding` o `.Authentication`.
 * Control opcional de la consulta del resultado final con `performVerificationCheck`.
@@ -201,7 +203,7 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
 
 Con `performVerificationCheck: true`, la SDK usa la URL retornada por `newIdentity` para consultar el resultado. Si debe usar el fallback, consulta `GET /api/v1/identity/<user_id>`.
 
-Las consultas se programan cada 4 segundos. `pollingTimeout` controla el timeout individual de cada GET; no cambia ese intervalo. Si `pollingMaxAttempts` es mayor que cero, al agotarse los intentos la SDK finaliza con error. El valor predeterminado `0` conserva el polling ilimitado.
+Las consultas se programan cada 4 segundos. `pollingTimeout` controla el timeout individual de cada GET; no cambia ese intervalo. Si `pollingMaxAttempts` es mayor que cero, al agotarse los intentos se detiene el polling y la SDK muestra un error con opción de reintento; no se cierra automáticamente. El valor predeterminado `0` conserva el polling ilimitado.
 
 ```swift
 let config = BDIVConfig(clienId: "TU_CLIENT_ID",
@@ -226,7 +228,7 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
                         performVerificationCheck: false)
 ```
 
-> `POST /api/v1/newIdentity` tiene un timeout fijo de 120 segundos porque carga la prueba de vida y las imágenes completas del documento. `pollingTimeout` solo aplica a las consultas GET del resultado.
+> Las cargas multipart disponen de hasta 15 minutos por transferencia, con timeout de petición de 120 segundos. Configure el puente de `AppDelegate` para recibir los eventos de segundo plano: [guía de integración](CARGAS_SEGUNDO_PLANO.md). `pollingTimeout` solo aplica a las consultas GET del resultado.
 
 ---
 
@@ -330,7 +332,11 @@ func BDIVResponseSuccess(bdivResult: AnyObject) {
 }
 ```
 
-Los errores terminales, incluidos un liveness no superado y el agotamiento de los intentos de polling, cierran la interfaz de la SDK y se entregan mediante `BDIVResponseError(error:)`. Para reintentar un liveness rechazado por `newIdentity`, inicie un proceso nuevo.
+Los errores terminales, incluido un liveness no superado reconocido por la SDK, cierran su interfaz y se entregan mediante `BDIVResponseError(error:)`. Para reintentar un liveness rechazado por `newIdentity`, inicie un proceso nuevo. Los errores recuperables y el agotamiento de intentos de polling muestran reintento dentro de la SDK.
+
+### Catálogo y manejo de errores
+
+Consulte la [guía de errores](ERRORES.md): callbacks, cancelación, configuración, errores faciales, documentos, red y resultados, con acciones recomendadas y ejemplo Swift. El callback de error devuelve texto, no un código por causa. El catálogo ampliado está incluido en este XCFramework.
 
 ---
 

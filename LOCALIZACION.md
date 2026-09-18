@@ -43,6 +43,7 @@ Una clave compartida cambia en todos los lugares donde se utiliza.
 | Carga y envío | `text_loader_init`, `text_loading`, `text_varification_title`, `text_varification_body`, `text_varification_buttom`, `text_info_upload`, `text_info_upload_document`, `text_document_validation` |
 | Consulta de resultados | `text_progress_result`, `text_progress_delay_result`, `text_progress_delay_finish_result` |
 | Error de documento y reintento | `text_title_document_error`, `text_sub_title_document_error`, `text_title_button_retry` |
+| Creación de identidad y resultados: cierre facial, recaptura y reintento | Las 24 claves `identity_error_*` de la plantilla. [Listado y acción por clave](ERRORES.md#catálogo-ampliado-de-creación-y-resultados). |
 | Error general o validación fallida | `text_varification_title_error`, `text_varification_body_error`, `text_varification_title_compliance_error`, `text_varification_body_compliance_error`, `text_error_compliance_not_allowed`, `general_error`, `unknown_error` |
 | Errores de conexión | `timeout_error`, `no_internet_error`, `connection_lost_error` |
 | Permisos y privacidad | `tittle_permisiions_not_aut`, `camera_error_permissions`, `text_screen_recording_not_allowed` |

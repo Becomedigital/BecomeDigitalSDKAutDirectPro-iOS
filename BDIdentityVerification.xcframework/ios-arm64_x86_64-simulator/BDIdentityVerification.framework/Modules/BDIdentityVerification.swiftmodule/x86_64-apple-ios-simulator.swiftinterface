@@ -6,6 +6,7 @@ import AVFoundation
 import CaptureCore
 import CaptureUX
 import CoreData
+import CoreFoundation
 import DeveloperToolsSupport
 import Foundation
 import ImageIO
@@ -150,6 +151,8 @@ public enum DocumentType : Swift::String {
 public class BecomeDigitalSDK {
   public init(bdivConfig: BDIdentityVerification::BDIVConfig, delegate: any BDIdentityVerification::BDIVDelegate)
   public func startVerification()
+  @discardableResult
+  public static func handleEventsForBackgroundURLSession(_ identifier: Swift::String, completionHandler: @escaping () -> Swift::Void) -> Swift::Bool
   @objc deinit
 }
 extension CoreData::NSPersistentStoreCoordinator {

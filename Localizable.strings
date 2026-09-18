@@ -8,6 +8,32 @@
  Los bloques de compatibilidad no cambian las pantallas del flujo actual.
 */
 
+// Errores de creación de identidad y resultados (ver ERRORES.md)
+"identity_error_liveness" = "We could not confirm your liveness check. Start a new verification and try again in good lighting.";
+"identity_error_face" = "We could not verify your face. Start a new verification with your own document and your face uncovered.";
+"identity_error_documentFront" = "We could not read the front of your document. Capture it again in full, in focus and without glare.";
+"identity_error_documentBack" = "We could not read the back of your document. Capture the correct side again in full and without glare.";
+"identity_error_documentFiles" = "Your document images were not received correctly. Capture the requested sides again.";
+"identity_error_documentQuality" = "We could not read your document details. Capture it again in good lighting, in focus and without glare.";
+"identity_error_documentUnsupported" = "This document type was not recognized. Select a supported document and capture it again.";
+"identity_error_documentValidation" = "We could not validate your document. Check that it is the original, is valid and matches the selected type. If the issue persists, contact support.";
+"identity_error_session" = "Your verification session has expired or is invalid. Close this process and start a new verification.";
+"identity_error_permission" = "This verification is not enabled for your account. Contact support to continue.";
+"identity_error_configuration" = "Some verification details are missing or the configuration is invalid. Contact support to continue.";
+"identity_error_contract" = "We could not validate the configured service. Contact support to continue.";
+"identity_error_quota" = "No verifications are available for this service right now. Contact support.";
+"identity_error_notFound" = "We could not find this verification. Check that the process was started correctly or contact support.";
+"identity_error_conflict" = "A process is already associated with this verification. Contact support if you cannot continue.";
+"identity_error_uploadSize" = "The files exceed the allowed size. Close this process and start a new capture. If it persists, contact support.";
+"identity_error_fileFormat" = "The file format is not supported. Start a new capture or contact support.";
+"identity_error_rateLimit" = "Too many requests were made. Wait a moment before trying again.";
+"identity_error_unavailable" = "The service is temporarily unavailable. Please wait a moment and try again.";
+"identity_error_processing" = "We could not finish processing your verification. Try again; if the issue persists, contact support.";
+"identity_error_invalidResponse" = "We could not confirm the response from the service. Try again; if the issue persists, contact support.";
+"identity_error_timeout" = "The response is taking longer than expected. Check your connection and try again.";
+"identity_error_offline" = "There is no internet connection. Connect to a network and try again.";
+"identity_error_connection" = "The connection to the service was interrupted. Check your network and try again.";
+
 // Inicio
 "text_tittle_general_intro" = " Let's verify your identity ";
 "text_sub_tittle_general_intro" = " To be verified, you will have to:";
