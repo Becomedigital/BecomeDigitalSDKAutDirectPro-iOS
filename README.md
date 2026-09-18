@@ -16,6 +16,11 @@ Estas librerías permiten habilitar correctamente:
 
 ## Cambios incluidos en esta versión
 
+* Logs opcionales mediante `debugLogsEnabled`, desactivados por defecto.
+* Personalización de textos de Become desde el `Localizable.strings` de la app.
+* Mensajes específicos y rutas de recuperación para errores de creación de identidad y resultados. [Catálogo](ERRORES.md).
+* Carga multipart en segundo plano para redes lentas, hasta 15 minutos por transferencia. [Integración](CARGAS_SEGUNDO_PLANO.md).
+
 * Selección de flujo mediante `flow`: `.Onboarding` o `.Authentication`.
 * Control opcional de la consulta del resultado final con `performVerificationCheck`.
 * Configuración del número máximo de consultas mediante `pollingMaxAttempts`.
@@ -70,6 +75,7 @@ Asegúrese de que el [`Bundle Identifier`](https://developer.apple.com/documenta
 
 1. Agregue el archivo **BDIdentityVerification.xcframework** a su proyecto.
 2. Verifique que quede incluido en la sección **Frameworks, Libraries, and Embedded Content** dentro de la configuración del target en Xcode.
+3. Seleccione **Embed & Sign** para que la aplicación firme el framework al integrarlo.
 
 ---
 
@@ -138,7 +144,7 @@ let bdivConfig = BDIVConfig(clienId: "TU_CLIENT_ID",
                             documenTypes: [.DNI, .PASSPORT],
                             userId: "TU_USER_ID",
                             customerLogo: "icon",
-                            customLocalizationFileName: "MBLocalizable",
+                            customLocalizationFileName: "Localizable",
                             performVerificationCheck: true,
                             flow: .Onboarding,
                             pollingMaxAttempts: 0,
@@ -158,11 +164,12 @@ identityVerification.startVerification()
 | `documenTypes` | `[DocumentType]` | Requerido | Documentos disponibles: `.DNI`, `.PASSPORT` y `.DRIVERLICENSE`. Debe contener al menos uno en onboarding. |
 | `userId` | `String` | Requerido | Identificador único del usuario. |
 | `customerLogo` | `String` | `""` | Nombre del recurso de imagen que se mostrará como logo. |
-| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Nombre del archivo de localización personalizado, sin extensión. |
+| `customLocalizationFileName` | `String?` | `"MBLocalizable"` | Tabla de Microblink, sin extensión. Use `"Localizable"` con la plantilla incluida; Become y Face Liveness usan siempre `Localizable.strings`. |
 | `performVerificationCheck` | `Bool` | `true` | Si es `true`, consulta el resultado final. Si es `false`, termina después de decodificar la respuesta de `POST /api/v1/newIdentity`. |
 | `flow` | `BDIVConfig.Flow` | `.Onboarding` | Selecciona el flujo completo o solo autenticación facial. |
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
 | `pollingTimeout` | `TimeInterval` | `2` | Timeout en segundos aplicado a cada GET de resultados. Los valores menores o iguales a cero se normalizan a `2`. |
+| `debugLogsEnabled` | `Bool` | `false` | Activa logs de diagnóstico sin datos personales. [Uso](LOGGING.md). |
 
 ### Tipos de flujo
 
@@ -196,7 +203,7 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
 
 Con `performVerificationCheck: true`, la SDK usa la URL retornada por `newIdentity` para consultar el resultado. Si debe usar el fallback, consulta `GET /api/v1/identity/<user_id>`.
 
-Las consultas se programan cada 4 segundos. `pollingTimeout` controla el timeout individual de cada GET; no cambia ese intervalo. Si `pollingMaxAttempts` es mayor que cero, al agotarse los intentos la SDK finaliza con error. El valor predeterminado `0` conserva el polling ilimitado.
+Las consultas se programan cada 4 segundos. `pollingTimeout` controla el timeout individual de cada GET; no cambia ese intervalo. Si `pollingMaxAttempts` es mayor que cero, al agotarse los intentos se detiene el polling y la SDK muestra un error con opción de reintento; no se cierra automáticamente. El valor predeterminado `0` conserva el polling ilimitado.
 
 ```swift
 let config = BDIVConfig(clienId: "TU_CLIENT_ID",
@@ -221,7 +228,7 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
                         performVerificationCheck: false)
 ```
 
-> `POST /api/v1/newIdentity` tiene un timeout fijo de 120 segundos porque carga la prueba de vida y las imágenes completas del documento. `pollingTimeout` solo aplica a las consultas GET del resultado.
+> Las cargas multipart disponen de hasta 15 minutos por transferencia, con timeout de petición de 120 segundos. Configure el puente de `AppDelegate` para recibir los eventos de segundo plano: [guía de integración](CARGAS_SEGUNDO_PLANO.md). `pollingTimeout` solo aplica a las consultas GET del resultado.
 
 ---
 
@@ -233,14 +240,14 @@ El callback de éxito entrega un `AnyObject`, y el modelo público documentado p
 ```swift
 func BDIVResponseSuccess(bdivResult: AnyObject) {
     if let response = bdivResult as? BDIdentityVerificationResponse {
-        print(response.toJson() ?? "")
+        // Procese response sin imprimir datos personales.
     } else {
-        print(String(describing: bdivResult))
+        // Maneje un tipo de respuesta inesperado.
     }
 }
 
 func BDIVResponseError(error: String) {
-    print(error)
+    // Muestre o maneje el error; no lo registre completo.
 }
 ```
 
@@ -303,7 +310,7 @@ public struct BDIdentityVerificationResponse {
             let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted)
             return String(data: jsonData, encoding: .utf8)
         } catch {
-            print("Failed to convert BDIdentityVerificationResponse to JSON: \(error)")
+            // No registrar el contenido de la respuesta ni la excepción.
             return nil
         }
     }
@@ -316,16 +323,20 @@ No fuerce el desempaquetado de `responseDictionary`. Su contenido depende del ca
 func BDIVResponseSuccess(bdivResult: AnyObject) {
     guard let response = bdivResult as? BDIdentityVerificationResponse else { return }
 
-    print("Estado:", response.responseStatus.rawValue)
-    print("Mensaje:", response.message)
+    // Decida el siguiente paso según response.responseStatus.
+    // Use response.message en la interfaz, sin imprimirlo.
 
     if let details = response.responseDictionary {
-        print("Detalles:", details)
+        // Consuma únicamente los datos necesarios de details.
     }
 }
 ```
 
-Los errores terminales, incluidos un liveness no superado y el agotamiento de los intentos de polling, cierran la interfaz de la SDK y se entregan mediante `BDIVResponseError(error:)`. Para reintentar un liveness rechazado por `newIdentity`, inicie un proceso nuevo.
+Los errores terminales, incluido un liveness no superado reconocido por la SDK, cierran su interfaz y se entregan mediante `BDIVResponseError(error:)`. Para reintentar un liveness rechazado por `newIdentity`, inicie un proceso nuevo. Los errores recuperables y el agotamiento de intentos de polling muestran reintento dentro de la SDK.
+
+### Catálogo y manejo de errores
+
+Consulte la [guía de errores](ERRORES.md): callbacks, cancelación, configuración, errores faciales, documentos, red y resultados, con acciones recomendadas y ejemplo Swift. El callback de error devuelve texto, no un código por causa. El catálogo ampliado está incluido en este XCFramework.
 
 ---
 
@@ -414,7 +425,7 @@ class ViewController: UIViewController {
                                     documenTypes: [.DNI, .DRIVERLICENSE, .PASSPORT],
                                     userId: userId,
                                     customerLogo: "icon",
-                                    customLocalizationFileName: "MBLocalizable",
+                                    customLocalizationFileName: "Localizable",
                                     performVerificationCheck: true,
                                     flow: .Onboarding,
                                     pollingMaxAttempts: 30,
@@ -428,17 +439,17 @@ class ViewController: UIViewController {
 extension ViewController: BDIVDelegate {
     func BDIVResponseSuccess(bdivResult: AnyObject) {
         if let response = bdivResult as? BDIdentityVerificationResponse {
-            print(response.toJson() ?? "")
+            // Procese response sin imprimir datos personales.
             if let details = response.responseDictionary {
-                print(details)
+                // Consuma únicamente los datos necesarios de details.
             }
         } else {
-            print(String(describing: bdivResult))
+            // Maneje un tipo de respuesta inesperado.
         }
     }
 
     func BDIVResponseError(error: String) {
-        print(error)
+        // Muestre o maneje el error; no lo registre completo.
     }
 }
 ```
@@ -451,13 +462,23 @@ La integración usa `CaptureCore` y `CaptureUX` 1.4.3. La SDK configura la cáma
 
 Al completar la captura se envía la imagen original completa (`capturedImage`) del frente y, cuando aplica, del reverso. La imagen transformada o recortada (`transformedImage`) puede utilizarse internamente para previsualización, pero no se envía como documento a `newIdentity`.
 
-El paquete PROD incluido tiene los logs HTTP internos deshabilitados (`logEnabled = NO`). La aplicación integradora debe registrar únicamente la información necesaria desde los callbacks, evitando imprimir credenciales, imágenes o información sensible en producción.
+Los logs están desactivados por defecto. Puede habilitarlos temporalmente con `debugLogsEnabled`; no imprima respuestas completas desde los callbacks.
+
+---
+
+## Logs de diagnóstico
+
+Use `debugLogsEnabled: true` al crear `BDIVConfig`. Para desactivar, use `false` u omita el argumento. En Xcode/Console, filtre `BecomeSDK` incluyendo nivel Debug.
+
+[Ejemplo de implementación](LOGGING.md). No se imprimen datos personales ni respuestas completas.
 
 ---
 
 ## Localización
 
-Descargue el archivo `MBLocalizable.strings`, modifique los textos requeridos y establezca el nombre del archivo en `customLocalizationFileName`.
+Agregue [Localizable.strings](Localizable.strings) al target de su app, cambie únicamente los valores y configure `customLocalizationFileName: "Localizable"`. Puede personalizar Become, Microblink y Face Liveness; las claves no modificadas conservan su texto original.
+
+[Guía de implementación y claves por pantalla](LOCALIZACION.md). Recompile la app después de cambiar textos.
 
 ---
 

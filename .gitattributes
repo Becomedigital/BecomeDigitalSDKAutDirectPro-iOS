@@ -1,0 +1,2 @@
+# Xcode packages these localization resources as binary property lists.
+BDIdentityVerification.xcframework/**/Dictionary.stringsdict binary
