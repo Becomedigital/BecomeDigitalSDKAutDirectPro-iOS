@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		1+UEqHvhnm6zKuaI+ZXwothKx4g=
+		oQjnziCIlsnaozuZq54WYA3EU2U=
 		</data>
 		<key>CloseViewController.nib</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		buepCZxnZ5XinH6IL5vp6lkKyTs=
+		SM40aVNcugKqr0unbNw4wjbYpz4=
 		</data>
 		<key>IntroDocumentCaptureViewController.nib</key>
 		<data>
@@ -62,35 +62,35 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fapgz4nZNy6TZXooT5Sx6F+OFWA=
+		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		SM1c2AEzumMIL0XRw8n6GCnxVTQ=
+		ZTNvAHPO04ua/hk8awIgH3bRIqY=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		pP8GISsqHA5ISYJIrnkmHa9ZGxE=
+		L7eKHxEjDvAjPSqXaVmzhmSoLrk=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		SM1c2AEzumMIL0XRw8n6GCnxVTQ=
+		ZTNvAHPO04ua/hk8awIgH3bRIqY=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fapgz4nZNy6TZXooT5Sx6F+OFWA=
+		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		SpZZ4XfpE9/NIzMSq+DLF4t9A+g=
+		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		/dQWlPhwIRFvV8lt/XJMWCIjmn4=
+		J5TF9KUF0pfVkITvvEl+WLWP1Xw=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		SpZZ4XfpE9/NIzMSq+DLF4t9A+g=
+		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -162,7 +162,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vvO+SOGnl8u31dO2nU/TNH19B9wniZBHYJxOHFxd/sc=
+			EWNq4wf52x1gwcFA/Fe5qxGZl8wYy7P0XjlRq+3jGGE=
 			</data>
 		</dict>
 		<key>CloseViewController.nib</key>
@@ -253,56 +253,56 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/ofu/cRK1LkdS29SCaDnnyWm41O6I2Va09g2qcKBskQ=
+			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ydGObX8k0adftYBn2TMTPTwBamcb+GZx8rsSlNGRJsI=
+			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wV1CebYb/LKC6foQkADdtQFKE2MgHJ1cpNROHosbZAU=
+			9NZXzddrm3Jn+XXH95QwYQxEPH41iCzBEfDXK/4T6t4=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ydGObX8k0adftYBn2TMTPTwBamcb+GZx8rsSlNGRJsI=
+			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/ofu/cRK1LkdS29SCaDnnyWm41O6I2Va09g2qcKBskQ=
+			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PeULxXMAkL89gW+9wpT1axMXHQRPa6pIXBDqDdPQwqM=
+			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			509uf5W/0nd4m0L33tVOAZNqJJAbDXxxsmjpxEbzMLI=
+			WAB6+UpGq4nNHCJ7j0+vzt2OdBhYuVl27UnoAJQ8GmI=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PeULxXMAkL89gW+9wpT1axMXHQRPa6pIXBDqDdPQwqM=
+			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
