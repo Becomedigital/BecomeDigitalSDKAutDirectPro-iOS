@@ -200,9 +200,11 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
                         flow: .Authentication)
 ```
 
-Cuando `POST /api/v1/matches` retorna `result = true`, `BDIVResponseSuccess` entrega un
-`BDIdentityVerificationResponse` con estado `.SUCCES` y el siguiente contrato en
-`responseDictionary`:
+Cuando `POST /api/v1/matches` retorna una respuesta válida, `BDIVResponseSuccess`
+entrega un `BDIdentityVerificationResponse` con estado `.SUCCES`. Esto aplica tanto
+para `result = true` como para `result = false`; el valor de `result` representa el
+resultado de negocio de la autenticación. `responseDictionary` usa el siguiente
+contrato:
 
 | Clave | Tipo |
 | --- | --- |
@@ -213,8 +215,8 @@ Cuando `POST /api/v1/matches` retorna `result = true`, `BDIVResponseSuccess` ent
 | `result` | `Bool` |
 | `user_id` | `String` |
 
-El flujo `Authentication` no retorna `urlGetData`. Si `result = false`, la SDK llama
-`BDIVResponseError(error:)` con el mensaje de baja confianza y sin diccionario de éxito.
+El flujo `Authentication` no retorna `urlGetData`. `BDIVResponseError(error:)` se
+reserva para errores de transporte, decodificación o serialización de la respuesta.
 
 ### Consulta del resultado y polling
 
