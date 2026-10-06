@@ -28,6 +28,7 @@ Estas librerías permiten habilitar correctamente:
 * Compatibilidad con `CaptureCore` y `CaptureUX` 1.4.3, incluyendo ajustes de cámara para dispositivos con lente macro.
 * Envío de las capturas completas del documento, sin usar la imagen recortada por Microblink.
 * `responseDictionary` ahora es opcional en `BDIdentityVerificationResponse`.
+* La autenticación facial exitosa retorna la respuesta completa de `POST /api/v1/matches` en `responseDictionary`.
 * Cuando `newIdentity` informa que no se superó la prueba de vida, la SDK finaliza con error. Para reintentar, la aplicación debe iniciar una instancia nueva del proceso.
 
 ---
@@ -198,6 +199,24 @@ let config = BDIVConfig(clienId: "TU_CLIENT_ID",
                         userId: "USUARIO_CON_ONBOARDING_PREVIO",
                         flow: .Authentication)
 ```
+
+Cuando `POST /api/v1/matches` retorna una respuesta válida, `BDIVResponseSuccess`
+entrega un `BDIdentityVerificationResponse` con estado `.SUCCES`. Esto aplica tanto
+para `result = true` como para `result = false`; el valor de `result` representa el
+resultado de negocio de la autenticación. `responseDictionary` usa el siguiente
+contrato:
+
+| Clave | Tipo |
+| --- | --- |
+| `company` | `String` |
+| `confidence` | `Double` |
+| `executionId` | `String` |
+| `liveness` | `Double` (se omite cuando el servicio retorna `null`) |
+| `result` | `Bool` |
+| `user_id` | `String` |
+
+El flujo `Authentication` no retorna `urlGetData`. `BDIVResponseError(error:)` se
+reserva para errores de transporte, decodificación o serialización de la respuesta.
 
 ### Consulta del resultado y polling
 
