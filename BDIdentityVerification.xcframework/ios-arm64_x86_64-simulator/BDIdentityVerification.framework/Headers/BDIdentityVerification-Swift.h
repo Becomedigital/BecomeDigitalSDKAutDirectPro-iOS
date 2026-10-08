@@ -374,21 +374,6 @@ extern "C" {
 
 #if defined(__OBJC__)
 
-@class NSString;
-/// <code>BDIVDelegate</code> is a protocol that defines methods to handle the responses of the identity verification process.
-/// This protocol is implemented by objects that wish to receive success or failure notifications from the <code>BDIdentityVerification</code> process.
-SWIFT_PROTOCOL("_TtP22BDIdentityVerification12BDIVDelegate_")
-@protocol BDIVDelegate
-/// Notifies the delegate when the identity verification process is successful.
-/// \param bdivResult An <code>AnyObject</code> representing the result of the verification process.
-///
-- (void)BDIVResponseSuccessWithBdivResult:(id _Nonnull)bdivResult;
-/// Notifies the delegate when the identity verification process encounters an error.
-/// \param error A <code>String</code> containing the error message describing the failure reason.
-///
-- (void)BDIVResponseErrorWithError:(NSString * _Nonnull)error;
-@end
-
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 SWIFT_CLASS_NAMED("Countries")
@@ -396,6 +381,7 @@ SWIFT_CLASS_NAMED("Countries")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
 @interface Countries (SWIFT_EXTENSION(BDIdentityVerification))
 @property (nonatomic) int16_t id;
 @property (nonatomic) int16_t type;
@@ -407,15 +393,22 @@ SWIFT_CLASS_NAMED("Countries")
 
 @class NSCoder;
 @class NSBundle;
+/// UIKit is only the lifecycle/camera-provider boundary. SDK-owned content is SwiftUI.
+SWIFT_CLASS("_TtC22BDIdentityVerification19SDKScreenController")
+@interface SDKScreenController : UIViewController
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)loadView;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
 SWIFT_CLASS("_TtC22BDIdentityVerification18MainViewController")
-@interface MainViewController : UIViewController
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@interface MainViewController : SDKScreenController
 - (void)viewDidLoad;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillAppear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 SWIFT_CLASS("_TtC22BDIdentityVerification11Permissions")
@@ -814,21 +807,6 @@ extern "C" {
 
 #if defined(__OBJC__)
 
-@class NSString;
-/// <code>BDIVDelegate</code> is a protocol that defines methods to handle the responses of the identity verification process.
-/// This protocol is implemented by objects that wish to receive success or failure notifications from the <code>BDIdentityVerification</code> process.
-SWIFT_PROTOCOL("_TtP22BDIdentityVerification12BDIVDelegate_")
-@protocol BDIVDelegate
-/// Notifies the delegate when the identity verification process is successful.
-/// \param bdivResult An <code>AnyObject</code> representing the result of the verification process.
-///
-- (void)BDIVResponseSuccessWithBdivResult:(id _Nonnull)bdivResult;
-/// Notifies the delegate when the identity verification process encounters an error.
-/// \param error A <code>String</code> containing the error message describing the failure reason.
-///
-- (void)BDIVResponseErrorWithError:(NSString * _Nonnull)error;
-@end
-
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 SWIFT_CLASS_NAMED("Countries")
@@ -836,6 +814,7 @@ SWIFT_CLASS_NAMED("Countries")
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
 @interface Countries (SWIFT_EXTENSION(BDIdentityVerification))
 @property (nonatomic) int16_t id;
 @property (nonatomic) int16_t type;
@@ -847,15 +826,22 @@ SWIFT_CLASS_NAMED("Countries")
 
 @class NSCoder;
 @class NSBundle;
+/// UIKit is only the lifecycle/camera-provider boundary. SDK-owned content is SwiftUI.
+SWIFT_CLASS("_TtC22BDIdentityVerification19SDKScreenController")
+@interface SDKScreenController : UIViewController
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)loadView;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
 SWIFT_CLASS("_TtC22BDIdentityVerification18MainViewController")
-@interface MainViewController : UIViewController
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@interface MainViewController : SDKScreenController
 - (void)viewDidLoad;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)viewWillAppear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 SWIFT_CLASS("_TtC22BDIdentityVerification11Permissions")

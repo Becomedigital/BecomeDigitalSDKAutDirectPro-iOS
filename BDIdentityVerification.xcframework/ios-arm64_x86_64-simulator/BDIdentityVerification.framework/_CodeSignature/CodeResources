@@ -6,31 +6,43 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		1+UEqHvhnm6zKuaI+ZXwothKx4g=
+		5N+owHfWTdCP2WNRDDKSw/pswGE=
 		</data>
-		<key>CloseViewController.nib</key>
+		<key>Fonts/Inter.ttf</key>
 		<data>
-		A7ce1LG4UoiLV2HCl5Bc1kpICvY=
+		l9Tzci1ixsxTQL9iIK2j1kyjZ7E=
 		</data>
-		<key>CountryDocumentViewController.nib</key>
+		<key>Fonts/JetBrainsMono.ttf</key>
 		<data>
-		2LvIkJ5UbEw9RmZIkZ/OldQJUe8=
+		vvJCs22QUXAAfK7VPNagd3Xb+4I=
 		</data>
-		<key>CountryViewController.nib</key>
+		<key>Fonts/Lora.ttf</key>
 		<data>
-		q/Aqo1eSaYj89d05PV+QpWD8mJo=
+		K3cPrkHH4e54HtRYvT35Tj3A/OM=
 		</data>
-		<key>DocumentErrorViewController.nib</key>
+		<key>Fonts/OFL-Inter.txt</key>
 		<data>
-		9g7nJXEog1M/IWtVHjibQZJQrQQ=
+		ptKeJscdLLNk+Po3D2ndt2uF7Po=
 		</data>
-		<key>FinishViewController.nib</key>
+		<key>Fonts/OFL-JetBrainsMono.txt</key>
 		<data>
-		D98IeiKwyJnprRTtdvgTQdlgL+U=
+		rAtOnqwhcevnD6uau8IpTgzUaUQ=
+		</data>
+		<key>Fonts/OFL-Lora.txt</key>
+		<data>
+		AOSzXPITv/r2mPLLCdLPUCuEXys=
+		</data>
+		<key>Fonts/OFL-SourceSans3.txt</key>
+		<data>
+		HhcZZu2k9V0wmGH6jQBkO8qQBMs=
+		</data>
+		<key>Fonts/SourceSans3.ttf</key>
+		<data>
+		mOQCncRJb0aWcnRklq0NiiDCU6Y=
 		</data>
 		<key>Headers/BDIdentityVerification-Swift.h</key>
 		<data>
-		4Q7ev0DxoPxtob6xf7Tz3S8G77A=
+		D1klf59y8gcKkKDfvno799el+1M=
 		</data>
 		<key>Headers/BecomeDigitalV.h</key>
 		<data>
@@ -38,19 +50,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		SM40aVNcugKqr0unbNw4wjbYpz4=
-		</data>
-		<key>IntroDocumentCaptureViewController.nib</key>
-		<data>
-		3rsX0+kzzYUw9uy6Y/YD3B1PVqc=
-		</data>
-		<key>IntroductionVideoViewController.nib</key>
-		<data>
-		nfAJZxmKwcfNWnAbxAjGTMe7F1s=
-		</data>
-		<key>MainViewController.nib</key>
-		<data>
-		mMUdFpXkUmBDt26O0Ifg2SD90NQ=
+		xzREdULhVJN+JJxKE1ZeW1n78DU=
 		</data>
 		<key>Model.momd/Model.mom</key>
 		<data>
@@ -60,57 +60,49 @@
 		<data>
 		vu7PO2347WGMe/nAPdKdUX8GEkw=
 		</data>
+		<key>Modules/BDIdentityVerification.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<data>
+		Xf25bHwM3sC8HamNPgpDm0KtpEo=
+		</data>
+		<key>Modules/BDIdentityVerification.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<data>
+		ZF/t1K8D/LyExRnlzKQl2OiFjhY=
+		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
+		pfGYq/S4T3PM9bsrlSHHROkR49w=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		ZTNvAHPO04ua/hk8awIgH3bRIqY=
+		C9ggbRJFD+B5rfyfmYYeGobAHkw=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		L7eKHxEjDvAjPSqXaVmzhmSoLrk=
+		fg38vy3k72+hw0I/ocukF4X3Nj0=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ZTNvAHPO04ua/hk8awIgH3bRIqY=
+		C9ggbRJFD+B5rfyfmYYeGobAHkw=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
+		pfGYq/S4T3PM9bsrlSHHROkR49w=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
+		m92+Qf6mlp4y5DL3y5Z2pX/Pjvg=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		J5TF9KUF0pfVkITvvEl+WLWP1Xw=
+		TjXuaePK9SoeRxVQknyKE0JrjBE=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
+		m92+Qf6mlp4y5DL3y5Z2pX/Pjvg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		gmjWEoJ28wST307dTa/rQxobN88=
-		</data>
-		<key>PreviewImageViewController.nib</key>
-		<data>
-		1UGo+yPtb078aRO90XL7z3GuqN0=
-		</data>
-		<key>ProgressBarView.nib</key>
-		<data>
-		XDLTvC8+JV1nQ9l77cw+i7o5+ag=
-		</data>
-		<key>SelectDocumentViewController.nib</key>
-		<data>
-		S+7+CwNViuWvN3Cjlf6XI3CU6kE=
-		</data>
-		<key>VerificationView.nib</key>
-		<data>
-		qjX5embV0ecdvlmRxFK0G6rtkbI=
 		</data>
 		<key>amplifyconfiguration.json</key>
 		<data>
@@ -120,7 +112,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			619fEtqfMvwN9JXvFdl+qQmLAE4=
+			wjjJvgdJ7aWh+gxBMNVQjsO8Y6I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -129,7 +121,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bi+L/tfIFNaCjF8UB3IKw3utIec=
+			neRx+20TRbwdb/AibNR5zEOofi8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -138,7 +130,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nonX0dU8Adjl2fpAbuVK6Y+EORc=
+			ZP1fRNYqYjJNllvDe9pESEuzx4I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -162,49 +154,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vvO+SOGnl8u31dO2nU/TNH19B9wniZBHYJxOHFxd/sc=
+			LVnLh7d2Wk7dWhaqe3wXdOCsEX8Tbj02Zf2pkUZ7VHE=
 			</data>
 		</dict>
-		<key>CloseViewController.nib</key>
+		<key>Fonts/Inter.ttf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2hHxdQ/z+cbApG4vca5DxAXHkq82TZIWgRSGG37jsL0=
+			KRYKgP9J3cqyyXcRJH4IsfqyekhKMpzouBPYINxVkDE=
 			</data>
 		</dict>
-		<key>CountryDocumentViewController.nib</key>
+		<key>Fonts/JetBrainsMono.ttf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X9MXeRKPZ+tKz7HR20GomcXQfJ8ILvf+PZ202g/tD+w=
+			SHFaQuwkLCHp8CaSiR4UfQIimaUuSNXkE+GpQhk//to=
 			</data>
 		</dict>
-		<key>CountryViewController.nib</key>
+		<key>Fonts/Lora.ttf</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sSRnJK86oiG3ugdHj0IqCyeOMQ2XMoL4QY4zI76qXQQ=
+			gipmIcy+jZfSCsiMHEH1YVycLCAuqnXycs1FKqxkdac=
 			</data>
 		</dict>
-		<key>DocumentErrorViewController.nib</key>
+		<key>Fonts/OFL-Inter.txt</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2BYzx532bzOHhhx/Ng1uOBJoECGxic67GYZysMXJSgs=
+			XdVI0xqF91bgHWPgDX+vHjJBA+0+kQL8u6vyzC223Tk=
 			</data>
 		</dict>
-		<key>FinishViewController.nib</key>
+		<key>Fonts/OFL-JetBrainsMono.txt</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u0OaQwyYQxH+XiPkGFoeKiEi4ixK8g221DGerFS6794=
+			sv5eiYdZTp/9HSylKi9dc+uDNSQ4k8XWJUta1pJpWR0=
+			</data>
+		</dict>
+		<key>Fonts/OFL-Lora.txt</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bWvHu7goUUkl2ryvieR3E5jRLGDdHLK7uQ7qEpU10PQ=
+			</data>
+		</dict>
+		<key>Fonts/OFL-SourceSans3.txt</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			f6wvbGvEcUTiw16PQRR7PIyJVJDUS0YmalMS/pM2TS4=
+			</data>
+		</dict>
+		<key>Fonts/SourceSans3.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BC/izAuTPjKEENesvQqmoYc9ylrvgYdfS8IUsIglx7k=
 			</data>
 		</dict>
 		<key>Headers/BDIdentityVerification-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nDvzczPtS1BaKx6y0CjRt7qwk1Z84eHp+izZMgALsYw=
+			a3F3uQ7KUXl385gH/o55sMi+eD3uu9YPZFfwBU/jj0s=
 			</data>
 		</dict>
 		<key>Headers/BecomeDigitalV.h</key>
@@ -212,27 +225,6 @@
 			<key>hash2</key>
 			<data>
 			oKvJBLN6W3MVF+PGbtsk8Hyxhf+jry6aYvSbKvzy8rA=
-			</data>
-		</dict>
-		<key>IntroDocumentCaptureViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sNlbaP1fK6c0sKwnkb1pgWr1OnvD36EELiCPSaJO4c4=
-			</data>
-		</dict>
-		<key>IntroductionVideoViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			D3DvqX/KkZoLutnB40zCSjJdPEZLyp64YhkPf9eQMk4=
-			</data>
-		</dict>
-		<key>MainViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			646sqoxUM7efJ3tXtUa52S0CayaIWgNd6gwumfIf2Tw=
 			</data>
 		</dict>
 		<key>Model.momd/Model.mom</key>
@@ -249,60 +241,74 @@
 			lKBDTn+5cJpVKb8ePIEf+CYMfCnb4QlNH7MaDtJ+7iU=
 			</data>
 		</dict>
+		<key>Modules/BDIdentityVerification.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JovTsAThLqeYrgGAb6J2Ad4IsqN1kpBeBQoRixYkEJI=
+			</data>
+		</dict>
+		<key>Modules/BDIdentityVerification.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Uv92xPMa0M0YLY3NZXv4moRHggdP2f+YzabO9LPIGSM=
+			</data>
+		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
+			Kb5b6qpmzdV1GZInjvgctuD4FpslCkfngqx/l1lNEU0=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
+			0u9AgWy/7JtHOuRaK7LD/JzPehcy27o2x/t1QEU225w=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9NZXzddrm3Jn+XXH95QwYQxEPH41iCzBEfDXK/4T6t4=
+			1RASMsN6Zkh+YiL0GUXWXZI/bKI7oInfQHcb2jnGaoQ=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
+			0u9AgWy/7JtHOuRaK7LD/JzPehcy27o2x/t1QEU225w=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
+			Kb5b6qpmzdV1GZInjvgctuD4FpslCkfngqx/l1lNEU0=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
+			3MBJtyisGxGAvqiPPx6SDWjkQ/4FvRtbKSPm8fq7Jzc=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WAB6+UpGq4nNHCJ7j0+vzt2OdBhYuVl27UnoAJQ8GmI=
+			7q7+eAi3s0G+bkX3B8cd1kXO9OAfv1NX3ZmEi4HxpD8=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
+			3MBJtyisGxGAvqiPPx6SDWjkQ/4FvRtbKSPm8fq7Jzc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -310,34 +316,6 @@
 			<key>hash2</key>
 			<data>
 			YXCWTQSypfUSbP7dhhd/94tD/sbks0wvVtGsTfAQpfw=
-			</data>
-		</dict>
-		<key>PreviewImageViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3lZ645Ed6uaKkmKX2KIbI9tiWXpLmt+Ibo7E2bfjmPA=
-			</data>
-		</dict>
-		<key>ProgressBarView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			eLoOb9HB8bC656Cid9spWDWT1vdjo+saWZ0ZOorXwEQ=
-			</data>
-		</dict>
-		<key>SelectDocumentViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			IcGCO6VNwzubnXCuUCkzQkRP1dut8d99XCRPB4LiJ9s=
-			</data>
-		</dict>
-		<key>VerificationView.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			GB7ZgsQvV1Wb1VLJI+KT4TbGJEmgPobEx8DeWyYRY1s=
 			</data>
 		</dict>
 		<key>amplifyconfiguration.json</key>
@@ -351,7 +329,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z4ZwD2oqQMWepgTjtH8s2sgxomXO7R5XF6wljS/guQQ=
+			J1hj/ZnLmRDIZe0Be5O8TndZLTgCYSzRRHPmsSWYxKQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -360,7 +338,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wp49rPhiBET2fI2vOEK3AxyMCayO8yNgAAZlgCQ9KuE=
+			CweBkFWA2jIVlkVHO2pGeE9euzgG/7qX8+8Alsmpj4I=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -369,7 +347,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			L86ai+D4YczzUy6wq1jI0LXY7DIRfAq6fIBKpL3rmP8=
+			zdDcheZHgrgrvqxr4gaJTl+jVy+3CKCf8a5pdwsqdAc=
 			</data>
 			<key>optional</key>
 			<true/>
