@@ -5,20 +5,11 @@
 1. Agregue [Localizable.strings](Localizable.strings) al target de su app. Si ya existe, copie solo las claves que quiera cambiar.
 2. Edite el texto a la derecha de `=`; conserve el nombre de cada clave.
 3. Para traducir, cree las variantes `es.lproj/Localizable.strings` y `en.lproj/Localizable.strings` desde Xcode.
-4. Configure Microblink con `customLocalizationFileName: "Localizable"` y recompile la app.
+4. Recompile la app. `BDIVConfig` no acepta un nombre de tabla: la SDK consulta `Localizable.strings` del target integrador.
 
-```swift
-let config = BDIVConfig(
-    clienId: clientId,
-    clientSecret: clientSecret,
-    contractId: contractId,
-    documenTypes: [.DNI, .PASSPORT],
-    userId: userId,
-    customLocalizationFileName: "Localizable"
-)
-```
+La SDK resuelve primero `texts.{locale}.{namespace}.{clave}` de `GET /api/v1/public-config`; una clave ausente recurre al locale `es` y después al valor predeterminado del binario. Una clave nativa definida por la app en `Localizable.strings` tiene prioridad sobre la frase correspondiente del contrato. Los namespaces visibles son `intro`, `atdp`, `contactValidation`, `documentType`, `countrySelection`, `capture`, `liveness`, `result`, `errors`, `confirmation`, `common`, `faceliveness` y `branding`. `faceliveness` corresponde al copy del detector de Amplify; las claves nativas de Become, Microblink y Face Liveness no siempre coinciden con el nombre del namespace web. Use las entradas concretas de la plantilla.
 
-Este framework permite personalizar **Become, Microblink y Face Liveness**. Las claves no incluidas conservan el texto original. El parámetro anterior selecciona la tabla de Microblink; Become y Face Liveness usan `Localizable.strings`.
+Este framework permite personalizar **Become, Microblink y Face Liveness**. Las claves no incluidas conservan el texto del contrato o el predeterminado. El host no modifica los textos mediante `BDIVConfig`.
 
 ## Ejemplo
 

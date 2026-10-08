@@ -9,9 +9,9 @@
 | Cancelación del proceso | El mismo callback de error, con el texto de `cancel_by_user` | Permitir continuar en la app sin considerar la identidad aprobada. No existe `onCancel` en iOS. |
 | Error recuperable | Pantalla de reintento o recaptura dentro de la SDK | Dejar que la SDK gestione el flujo; no se emite un callback por cada fallo. |
 
-`SUCCES` conserva esa escritura por compatibilidad. Aunque el modelo define `ERROR`, `PENDING` y `NOFOUND`, el coordinador entrega las salidas no exitosas por el callback **de texto**, no como un objeto de error. `responseDictionary` es opcional y no es un catálogo de errores.
+`SUCCES` conserva esa escritura por compatibilidad. Aunque el modelo define `ERROR`, `PENDING` y `NOFOUND`, el coordinador entrega las salidas no exitosas por el callback **de texto**, no como un objeto de error. Los objetos `onboarding`, `authentication` y `verification` son opcionales y no son un catálogo de errores.
 
-Con `performVerificationCheck: false`, un éxito significa que `newIdentity` aceptó la creación, **no que terminó o aprobó la validación biométrica**. El diccionario puede contener `code`, `message`, `url_resource` y `user_id`.
+Con `performVerificationCheck: false`, un éxito significa que `newIdentity` aceptó la creación, **no que terminó o aprobó la validación biométrica**. El objeto `onboarding` puede contener `code`, `message`, `urlResource` y `userId`.
 
 ### Límite del mapeo
 
@@ -44,7 +44,7 @@ Los permisos de cámara y avisos de captura también pueden mostrarse dentro de 
 
 ## Catálogo ampliado de creación y resultados
 
-Este catálogo está incluido en el XCFramework de este repositorio e incorpora el mapeo del repositorio fuente `4118013`. Si utiliza una copia anterior, reemplace el XCFramework completo; agregar textos en la app no actualiza el comportamiento del binario.
+Este catálogo está incluido en el XCFramework de este repositorio. Si utiliza una copia anterior, reemplace el XCFramework completo; agregar textos en la app no actualiza el comportamiento del binario.
 
 Aplica a `POST /api/v1/newIdentity`, con o sin polling, y a GET de resultados cuando está habilitado. No sustituye el manejo independiente de `/matches`, autenticación inicial ni los errores de las dependencias.
 
@@ -92,14 +92,12 @@ Un resultado pendiente no es un error: sigue consultándose. `pollingMaxAttempts
 Implemente estos métodos en el controlador que actúa como `BDIVDelegate`:
 
 ```swift
-func BDIVResponseSuccess(bdivResult: AnyObject) {
-    guard let response = bdivResult as? BDIdentityVerificationResponse,
-          response.responseStatus == .SUCCES else {
-        BDIVResponseError(error: "")
-        return
-    }
-    // Si performVerificationCheck es false: creación aceptada, no aprobación final.
-    // Continúe según el flujo configurado. responseDictionary puede ser nil.
+func BDIVResponseSuccess(bdivResult: BDIdentityVerificationResponse) {
+    guard bdivResult.responseStatus == .SUCCES else { return }
+    // Sin polling, onboarding indica creación aceptada, no aprobación final.
+    if let identity = bdivResult.onboarding { _ = identity.userId }
+    if let checked = bdivResult.verification { _ = checked.urlGetData }
+    if let match = bdivResult.authentication { _ = match.result }
 }
 
 func BDIVResponseError(error: String) {
