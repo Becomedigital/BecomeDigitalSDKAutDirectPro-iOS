@@ -7,9 +7,7 @@
 3. Para traducir, cree las variantes `es.lproj/Localizable.strings` y `en.lproj/Localizable.strings` desde Xcode.
 4. Recompile la app. `BDIVConfig` no acepta un nombre de tabla: la SDK consulta `Localizable.strings` del target integrador.
 
-La SDK resuelve primero `texts.{locale}.{namespace}.{clave}` de `GET /api/v1/public-config`; una clave ausente recurre al locale `es` y después al valor predeterminado del binario. Una clave nativa definida por la app en `Localizable.strings` tiene prioridad sobre la frase correspondiente del contrato. Los namespaces visibles son `intro`, `atdp`, `contactValidation`, `documentType`, `countrySelection`, `capture`, `liveness`, `result`, `errors`, `confirmation`, `common`, `faceliveness` y `branding`. `faceliveness` corresponde al copy del detector de Amplify; las claves nativas de Become, Microblink y Face Liveness no siempre coinciden con el nombre del namespace web. Use las entradas concretas de la plantilla.
-
-Este framework permite personalizar **Become, Microblink y Face Liveness**. Las claves no incluidas conservan el texto del contrato o el predeterminado. El host no modifica los textos mediante `BDIVConfig`.
+Las claves que la app defina en `Localizable.strings` tienen prioridad para esas frases. Las demás conservan los textos asignados al contrato o los valores predeterminados de la SDK. El host no modifica textos mediante `BDIVConfig`.
 
 ## Ejemplo
 
@@ -34,7 +32,7 @@ Una clave compartida cambia en todos los lugares donde se utiliza.
 | Carga y envío | `text_loader_init`, `text_loading`, `text_varification_title`, `text_varification_body`, `text_varification_buttom`, `text_info_upload`, `text_info_upload_document`, `text_document_validation` |
 | Consulta de resultados | `text_progress_result`, `text_progress_delay_result`, `text_progress_delay_finish_result` |
 | Error de documento y reintento | `text_title_document_error`, `text_sub_title_document_error`, `text_title_button_retry` |
-| Creación de identidad y resultados: cierre facial, recaptura y reintento | Las 24 claves `identity_error_*` de la plantilla. [Listado y acción por clave](ERRORES.md#catálogo-ampliado-de-creación-y-resultados). |
+| Creación de identidad y resultados: cierre facial, recaptura y reintento | Las claves `identity_error_*` de la plantilla. |
 | Error general o validación fallida | `text_varification_title_error`, `text_varification_body_error`, `text_varification_title_compliance_error`, `text_varification_body_compliance_error`, `text_error_compliance_not_allowed`, `general_error`, `unknown_error` |
 | Errores de conexión | `timeout_error`, `no_internet_error`, `connection_lost_error` |
 | Permisos y privacidad | `tittle_permisiions_not_aut`, `camera_error_permissions`, `text_screen_recording_not_allowed` |
@@ -60,7 +58,4 @@ Una clave compartida cambia en todos los lugares donde se utiliza.
 
 - No duplique claves. Mantenga las instrucciones de cámara, accesibilidad y fotosensibilidad.
 - Conserve `%d%%` en `text_info_upload` y `text_info_upload_document`, y `%@` en `liveness_detection_failed` y `error_low_confidence`. Si el formato no coincide, Become conserva el texto original.
-- Los mensajes enviados por el servicio y los permisos del sistema no se cambian con estas claves.
-- Las claves `there_already_a_record`, `splitValidationTypes`, `validation_type_video`, `_07` son internas; no las modifique. Become no admite su sobrescritura.
-- El bloque de compatibilidad de la plantilla, incluidas las claves `identy_*`, `id_*`, `search_*` y de storyboard, pertenece a pantallas heredadas y no modifica el flujo actual.
 - Pruebe la app en cada idioma después de recompilar. No necesita volver a generar el framework por un cambio de textos.

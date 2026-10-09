@@ -14,13 +14,12 @@ Estas librerías permiten habilitar correctamente:
 
 ---
 
-## Cambios incluidos en esta versión
+## Funciones públicas
 
-* `Onboarding` y `Authentication` leen pasos y políticas de `GET /api/v1/sdk-config`; la interfaz SwiftUI conserva la coordinación nativa de captura y navegación.
-* `GET /api/v1/public-config` define paletas, componentes, branding, textos y alineación. El host elige `themeMode`; el logo proviene de `branding.logo.url`.
-* La selección de país usa una pantalla completa con búsqueda y banderas. Los textos y botones de la SDK usan el tema del contrato con contraste legible.
-* El delegado entrega `BDIdentityVerificationResponse` directamente, con objetos públicos opcionales `onboarding`, `authentication` y `verification`; se eliminó `responseDictionary`.
-* Se conservan HTTP 201 de `newIdentity`, polling opcional, carga multipart en segundo plano y logs seguros optativos.
+- Flujos de onboarding y autenticación con respuestas tipadas.
+- Selección de país con búsqueda, captura documental y verificación facial según el flujo disponible.
+- Interfaz SwiftUI adaptada a la identidad visual del contrato.
+- Modo visual elegible mediante `themeMode` y textos personalizables con `Localizable.strings`.
 
 ---
 
@@ -118,7 +117,7 @@ El SDK requiere permisos de acceso a la cámara. Agregue la siguiente clave en s
 
 ## Inicialización del SDK
 
-Importe `BDIdentityVerification`. `BecomeDigitalSDK` es la clase pública; el delegado debe ser un `UIViewController` que implemente `BDIVDelegate`.
+Importe `BDIdentityVerification`. El delegado debe ser un `UIViewController` que implemente `BDIVDelegate`. Conserve la instancia de `BecomeDigitalSDK` durante la ejecución.
 
 ```swift
 import UIKit
@@ -142,106 +141,63 @@ final class ViewController: UIViewController, BDIVDelegate {
     }
 
     func BDIVResponseSuccess(bdivResult: BDIdentityVerificationResponse) {
-        switch bdivResult.responseStatus {
-        case .SUCCES:
-            if let accepted = bdivResult.onboarding {
-                // newIdentity aceptó la creación cuando el polling está desactivado.
-            }
-            if let checked = bdivResult.verification {
-                // Polling completado: checked.urlGetData.
-            }
-            if let match = bdivResult.authentication {
-                // Evalúe match.result por separado del éxito HTTP.
-            }
-        case .ERROR, .PENDING, .NOFOUND:
-            break
+        guard bdivResult.responseStatus == .SUCCES else { return }
+        if let started = bdivResult.onboarding { _ = started.userId }
+        if let final = bdivResult.verification { _ = final.urlGetData }
+        if let authentication = bdivResult.authentication {
+            // Evalúe authentication.result por separado.
+            _ = authentication.result
         }
     }
 
     func BDIVResponseError(error: String) {
-        // Muestre una salida segura; no registre datos personales.
+        // Restaure la pantalla de la app y permita un nuevo inicio.
     }
 }
 ```
 
-Conserve `identityVerification` durante la ejecución. Los nombres `clienId` y `documenTypes` se mantienen por compatibilidad pública.
+Los nombres públicos `clienId` y `documenTypes` se conservan por compatibilidad.
 
-### Parámetros que controla la app
+### Parámetros públicos
 
-| Parámetro | Tipo y valor predeterminado | Uso |
+| Parámetro | Predeterminado | Uso |
 | --- | --- | --- |
-| `clienId`, `clientSecret`, `contractId`, `userId` | `String`, requeridos | Credenciales, contrato e identificador del usuario. |
-| `documenTypes` | `[DocumentType]`, requerido en onboarding | Acota documentos del contrato: `.DNI`, `.PASSPORT`, `.DRIVERLICENSE`. Authentication admite `[]`. |
+| `clienId`, `clientSecret`, `contractId`, `userId` | Requeridos | Identifican al cliente, contrato y usuario. |
+| `documenTypes` | Requerido en onboarding | `.DNI`, `.PASSPORT`, `.DRIVERLICENSE`; en autenticación admite `[]`. |
 | `flow` | `.Onboarding` | `.Onboarding` o `.Authentication`. |
-| `performVerificationCheck` | `true` | Espera el resultado posterior a `newIdentity` cuando corresponde. |
-| `pollingMaxAttempts` | `0` | Límite de consultas; `0` conserva intentos ilimitados. |
-| `pollingTimeout` | `2` segundos | Timeout de cada GET de polling; no cambia el intervalo. |
-| `debugLogsEnabled` | `false` | Habilita diagnósticos seguros antes de iniciar. |
-| `preventScreenCapture` | `false` | Cuando es `true`, bloquea capturas y grabaciones mientras se muestra la SDK. |
-| `country`, `state` | `nil` | País ISO de dos letras y, para EE. UU., estado precargado. |
-| `nationalIdType`, `nationalIdTypeChoices`, `documentNumber` | `nil` / `[]` | Valores documentales precargados, sujetos a las políticas del contrato. |
-| `themeMode` | `.system` | `.light`, `.dark` o `.system`, elegido por la app. |
+| `performVerificationCheck` | `true` | Espera el resultado final de onboarding antes de devolverlo. |
+| `pollingMaxAttempts` | `0` | Límite de intentos de espera; `0` no establece límite. |
+| `pollingTimeout` | `2` segundos | Tiempo máximo de cada intento de espera. |
+| `debugLogsEnabled` | `false` | Activa diagnósticos durante una prueba. |
+| `preventScreenCapture` | `false` | Protege el contenido mostrado por la SDK cuando es `true`. |
+| `country`, `state` | `nil` | País de dos letras y estado precargado para EE. UU. |
+| `nationalIdType`, `nationalIdTypeChoices`, `documentNumber` | Vacíos | Datos documentales precargados, si corresponden. |
+| `themeMode` | `.system` | `.light`, `.dark` o `.system`. |
 
-`BDIVConfig` no admite `customerLogo`, `customLocalizationFileName`, colores, URL base ni políticas de captura. Para usar una tabla `Localizable.strings` propia, inclúyala en el target de la app; no se selecciona mediante un parámetro de la SDK.
+La SDK presenta los pasos y la identidad visual asignados al contrato. El host solo elige el modo claro u oscuro; colores, logo, contenido y diseño no se configuran en `BDIVConfig`. Las frases pueden personalizarse con el [archivo de localización](Localizable.strings) y la [guía de claves](LOCALIZACION.md).
 
-## Configuración del contrato y presentación
+## Respuestas
 
-La SDK consulta `GET /api/v1/sdk-config` y `GET /api/v1/public-config` con la sesión del cliente. `.Onboarding` selecciona `flows.onboarding`; `.Authentication`, `flows.reverification`. Las políticas y el orden del contrato determinan introducción, ATDP, contacto, país, tipo documental, captura y liveness. El contrato decide modo de captura, reverso, holograma, implementación facial, umbrales y revisión de selfie. Si queda un solo documento permitido, se muestra seleccionado para informar qué se capturará. La selección de país tiene búsqueda en la misma pantalla y solicita estado para EE. UU. cuando corresponde.
+`BDIVResponseSuccess` entrega `BDIdentityVerificationResponse`, con `responseStatus`, `message` y estos objetos opcionales:
 
-`public-config` aporta `theming`, `components`, `branding`, `texts` y `ui`: paletas, tipografía, densidad, radios, alineación, componentes, logo y textos. `themeMode` no forma parte de ese JSON; `.system` sigue la preferencia del dispositivo. El logo se carga de `branding.logo.url` para la ejecución actual sin conservarlo en caché. Los colores de texto se ajustan cuando el contraste con el fondo es insuficiente.
+| Objeto | Campos públicos | Cuándo consultarlo |
+| --- | --- | --- |
+| `onboarding` | `code`, `message`, `urlResource`, `userId` | Onboarding con `performVerificationCheck=false`; indica que se inició el proceso, no que haya sido aprobado. |
+| `verification` | `urlGetData` | Onboarding con espera del resultado final. |
+| `authentication` | `company`, `confidence`, `executionId`, `liveness`, `result`, `userId` | Autenticación. Evalúe `result` por separado de `responseStatus`. |
 
-Los textos se resuelven por `texts.{locale}.{namespace}.{clave}`. Una clave ausente recurre a `es` y después al valor predeterminado de la SDK. Los valores nativos que la app incluya en `Localizable.strings` tienen prioridad para esa frase. [Mapa de claves y localización](LOCALIZACION.md). El parámetro web `webhookUrl` no se envía desde mobile.
+Para autenticación use `flow: .Authentication` y, si no corresponde capturar documentos, `documenTypes: []`. Los errores y cancelaciones llegan a `BDIVResponseError(error:)`; consulte [manejo de errores](ERRORES.md).
 
-El XCFramework de este repositorio apunta a **producción** (`https://api.svi.becomedigital.net`). El ambiente está incorporado en ambas slices y no puede cambiarse con `BDIVConfig`. El repositorio fuente genera un paquete `dev` separado para pruebas internas contra `https://api.dev.svi.becomedigital.net`.
+## Permisos y diagnóstico
 
-## Flujos y objetos de respuesta
+La app debe declarar `NSCameraUsageDescription`. Si utiliza ubicación, declare también `NSLocationWhenInUseUsageDescription`.
 
-### Onboarding
+`debugLogsEnabled: true` habilita diagnósticos para una prueba; desactívelos al terminar. [Guía de logs](LOGGING.md).
 
-Con `performVerificationCheck: false`, `POST /api/v1/newIdentity` se considera exitoso con HTTP 201 y el delegado recibe `onboarding: BDIVOnboardingResult?` con `code`, `message`, `urlResource` y `userId`, todos opcionales. Esto indica creación aceptada, no aprobación biométrica final.
-
-Con `performVerificationCheck: true` (predeterminado), la SDK conserva el polling y al finalizar entrega `verification: BDIVVerificationResult?` con `urlGetData`. Las consultas se programan cada 4 segundos; `pollingTimeout` rige cada GET y `pollingMaxAttempts` limita el total. Un límite positivo agotado presenta un reintento en la SDK.
-
-```swift
-let config = BDIVConfig(
-    clienId: clientId, clientSecret: clientSecret, contractId: contractId,
-    documenTypes: [.DNI], userId: userId,
-    performVerificationCheck: false,
-    pollingMaxAttempts: 0, pollingTimeout: 2
-)
-```
-
-### Authentication
-
-`.Authentication` selecciona `reverification` y, según el contrato, ejecuta liveness y `POST /api/v1/matches`. Puede usar `documenTypes: []`. Un HTTP exitoso entrega `.SUCCES` aun cuando `authentication?.result == false`; ese booleano es el resultado de negocio y debe evaluarse por separado. `BDIVAuthenticationResult` expone `company`, `confidence`, `executionId`, `liveness` y `userId` como opcionales, y `result` como `Bool`.
-
-```swift
-let config = BDIVConfig(
-    clienId: clientId, clientSecret: clientSecret, contractId: contractId,
-    documenTypes: [], userId: userId, flow: .Authentication
-)
-```
-
-Solo se llena el objeto de respuesta que corresponde al flujo y al modo de respuesta. `BDIdentityVerificationResponse` contiene `responseStatus`, `message`, `onboarding`, `authentication` y `verification`; el delegado ya recibe ese tipo directamente. `toJson()` está disponible para interoperabilidad, pero evite registrar datos personales. Los errores terminales se entregan por `BDIVResponseError(error:)` y las cancelaciones utilizan ese callback con el texto de cancelación. [Catálogo de errores](ERRORES.md).
-
-## Localización y diagnósticos
-
-Agregue [Localizable.strings](Localizable.strings) al target y cambie únicamente las claves que requiera. La app prevalece para esas claves sobre el contrato; las restantes conservan el valor del contrato o el predeterminado. [Guía de localización](LOCALIZACION.md).
-
-`debugLogsEnabled: true` activa eventos seguros `BecomeSDK` sin credenciales, imágenes ni respuestas completas; está desactivado por defecto. [Guía de logs](LOGGING.md).
-
-## Captura y carga documental
-
-La SDK envía las imágenes originales completas del frente y, cuando corresponde, del reverso; la imagen recortada se usa para vista previa. Las cargas multipart pueden continuar en segundo plano hasta 15 minutos por transferencia. La app debe reenviar al SDK los eventos de sesión de fondo desde `AppDelegate`: [guía de integración](CARGAS_SEGUNDO_PLANO.md). `pollingTimeout` solo se aplica a las consultas GET del resultado.
-
-La app debe declarar `NSCameraUsageDescription`. Si el contrato habilita GPS opcional, declare también `NSLocationWhenInUseUsageDescription`; una denegación de ubicación no bloquea el flujo.
+Si su app gestiona eventos de segundo plano, implemente el método público indicado en [integración de segundo plano](CARGAS_SEGUNDO_PLANO.md).
 
 ## Requisitos
 
-* **iOS 17.0 o superior**, según `MinimumOSVersion` de la slice de dispositivo incluida.
-* Las dependencias de Amplify y Microblink indicadas arriba, con licencias y permisos de cámara correspondientes.
-* Integrar el XCFramework con **Embed & Sign** y firmar el framework dentro de la app.
-
-## Procedencia del artefacto
-
-Este XCFramework se generó desde `iOS_become_sdk` en `feature/mobile-contract-parity` (commit `afbec9a`), esquema `BDIdentityVerification_PROD` / `Release`. SHA-256 de la slice de dispositivo: `4f754913605881743287e3e84b11f956fdc16c81fcf97a4a098ad6770de92a39`. La slice de simulador conserva `arm64` y `x86_64`; se eliminaron sus símbolos de depuración para mantener cada archivo por debajo del límite de GitHub y se volvió a firmar. SHA-256 de su ejecutable: `717d0c9c8ed46da0335f6210613ce5cd6fbbdfc83769c83c0bfde598061771f3`.
+- iOS 17.0 o superior.
+- Las dependencias y licencias indicadas arriba.
+- Integrar el XCFramework con **Embed & Sign**.
