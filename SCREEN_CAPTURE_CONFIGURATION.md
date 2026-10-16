@@ -48,6 +48,8 @@ Screen capture policy should be chosen by the integrator based on the applicatio
 
 The public Swift interface inside each XCFramework slice exposes a `preventScreenCapture` argument with a `false` default in the `BDIVConfig` initializer. The framework contains an iOS device slice (`arm64`) and an iOS simulator slice (`arm64` and `x86_64`), both at version `1.2.3`. Functional capture and face liveness require the integrator's licensed application and a physical device.
 
+The framework version remains `1.2.3` despite the changed default. When replacing a locally stored XCFramework, use the executable checksums below to identify this build rather than relying on the version string alone.
+
 SHA-256 checksums of the framework executables:
 
 | Slice | SHA-256 |
