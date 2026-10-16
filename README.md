@@ -171,6 +171,18 @@ identityVerification.startVerification()
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
 | `pollingTimeout` | `TimeInterval` | `2` | Timeout en segundos aplicado a cada GET de resultados. Los valores menores o iguales a cero se normalizan a `2`. |
 | `debugLogsEnabled` | `Bool` | `false` | Activa logs de diagnóstico sin datos personales. [Uso](LOGGING.md). |
+| `preventScreenCapture` | `Bool` | `true` | Protege contra capturas de pantalla el contenido mostrado por la SDK. Pase `false` para desactivar esta protección. |
+
+La protección de pantalla está activada por defecto. Si necesita desactivarla, indique el valor al crear la configuración:
+
+```swift
+let config = BDIVConfig(clienId: "TU_CLIENT_ID",
+                        clientSecret: "TU_CLIENT_SECRET",
+                        contractId: "TU_CONTRACT_ID",
+                        documenTypes: [.DNI, .PASSPORT],
+                        userId: "TU_USER_ID",
+                        preventScreenCapture: false)
+```
 
 ### Tipos de flujo
 
