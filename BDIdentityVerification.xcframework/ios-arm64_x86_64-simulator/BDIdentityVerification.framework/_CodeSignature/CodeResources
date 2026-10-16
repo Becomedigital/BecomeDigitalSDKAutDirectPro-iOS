@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		lkk12n2Efta0tNWiryuxF6w2zmU=
+		Y7RfqfgaeT7hfmSL/KjL0wqsGvs=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		dsGpQKtz+Kii0Z2YIjP9LKeOYsY=
+		LwNwi+c2byNoSrI8tsthG5EKRIo=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		lkk12n2Efta0tNWiryuxF6w2zmU=
+		Y7RfqfgaeT7hfmSL/KjL0wqsGvs=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1aDT9CCYUzmBHXGBQb1imrYfwCU=
+		Fv2XYjlZlA03mVRLS7kv/v+JT2M=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
@@ -120,7 +120,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			619fEtqfMvwN9JXvFdl+qQmLAE4=
+			fCGhlRb2Til8bOfqXW4NQnLpi0c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bi+L/tfIFNaCjF8UB3IKw3utIec=
+			K0aEj2mE+hCgJwnQadHKFp5V3ys=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -138,7 +138,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nonX0dU8Adjl2fpAbuVK6Y+EORc=
+			zlFIzGLggGESYhHpcJX5pM7YtRw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -253,7 +253,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0SssYr+h49BeEJQnbiULy9wyBiO7U10p69AvICemFQA=
+			7yHI5wK/d8+sAbmV0IKHRgqrljYKUEnsOjh+JbfBUw0=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -267,7 +267,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SHeBlBi2rsu7SdY/wVXLu+ElsXTHaVGvtvi2ANivWo4=
+			mv8FJlOJ5lSkhDc+uNHASJo+kz7n0ZYtCzKOnPQjZ6M=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
@@ -281,7 +281,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0SssYr+h49BeEJQnbiULy9wyBiO7U10p69AvICemFQA=
+			7yHI5wK/d8+sAbmV0IKHRgqrljYKUEnsOjh+JbfBUw0=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -295,7 +295,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zlQBC4jY3xiYhgziJfwmTQr7ilMWS3Jmqld4Ve92FBo=
+			9B7Mtal79OL2LJXuBu8rgM+yR/Ap28ORgH5Wf8WZX6c=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
@@ -351,7 +351,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z4ZwD2oqQMWepgTjtH8s2sgxomXO7R5XF6wljS/guQQ=
+			WcQI5QC5BbXvzELeTyVW5WsWEg6IkEBy7yA15t4f/7Y=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -360,7 +360,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wp49rPhiBET2fI2vOEK3AxyMCayO8yNgAAZlgCQ9KuE=
+			9lyPFgubbECM7ELnk17QlmIyiZ0tzJ3b43WXkDQyinc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -369,7 +369,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			L86ai+D4YczzUy6wq1jI0LXY7DIRfAq6fIBKpL3rmP8=
+			XdRWFA7zop41ta8CmLJVqmj6TWH6pXPD0mvEVaQFTKg=
 			</data>
 			<key>optional</key>
 			<true/>

@@ -1,6 +1,6 @@
 # Screen capture configuration for the iOS SDK
 
-This guide applies to the `BDIdentityVerification.xcframework` included in this repository. The XCFramework was built from source commit `54ba9b8421de9f9be4169cd12a2294a272946c10` using the production Release scheme `BDIdentityVerification_PROD`.
+This guide applies to the `BDIdentityVerification.xcframework` included in this repository. The XCFramework was built from source commit `7206a972f4694dca1ec2fe0fd2dff6e5f76caf97` using the production Release scheme `BDIdentityVerification_PROD`.
 
 ## Behavior change
 
@@ -10,6 +10,8 @@ This guide applies to the `BDIdentityVerification.xcframework` included in this 
 | --- | --- |
 | `false` (default) | The SDK does not apply its screen capture protection or recording blocker to its UI. |
 | `true` | The SDK protects its UI during screenshots and displays a blocking view while screen recording is detected. |
+
+When screen recording or mirroring stops, the blocking view remains visible and shows a **Close** button. Selecting it cancels the verification, dismisses the SDK, and reports the cancellation through the normal delegate error callback. If recording resumes before selection, the button is hidden again. The SDK also checks capture status while the blocking view is visible, so the exit action can appear even if a system status notification is missed.
 
 The option applies to the screens presented by the Become SDK while its verification flow is active. It does not configure unrelated screens in the host application or override protection applied independently by the operating system or another component.
 
@@ -40,7 +42,7 @@ Omit the argument or pass `false` to use the new default. `preventScreenCapture`
 1. Review every `BDIVConfig` creation in the host application. Calls that omit `preventScreenCapture` change from protected to unprotected when this XCFramework is integrated.
 2. Add `preventScreenCapture: true` wherever the previous protected behavior must continue. Calls that already pass `true` or `false` need no change.
 3. Rebuild the host application with this XCFramework. Continue to embed and sign it in the application target as described in the main README.
-4. On a physical device, check screenshots and screen recording during document capture, face liveness, cancellation, and return to the host application. Run this check once with the default and once with `true` if your application supports both modes.
+4. On a physical device, check screenshots and screen recording during document capture, face liveness, cancellation, and return to the host application. With `true`, stop the recording and confirm that **Close** appears, dismisses the SDK, and reports cancellation to the host application. Run this check once with the default and once with `true` if your application supports both modes.
 
 Screen capture policy should be chosen by the integrator based on the application's privacy requirements. This flag controls the SDK presentation; it is not a substitute for application-wide data handling or device policy.
 
@@ -54,5 +56,5 @@ SHA-256 checksums of the framework executables:
 
 | Slice | SHA-256 |
 | --- | --- |
-| iOS device | `28300403cf9113839f4e3b75ad53bf8ce983ce21a147ec5984e4dc5e37c7dc68` |
-| iOS simulator | `80b8d10ed52584edce3763c0e9a2738e2980a5eef7187c90c80ee4ab111a4f74` |
+| iOS device | `63631e1a5f0c2640dfed86a7814bdf1463f59bab434143161f80e1b83702ec70` |
+| iOS simulator | `f121f537795add4dbc9e4d97c6eddb961b3b7ff18ab6aeadfa449012c9092253` |
