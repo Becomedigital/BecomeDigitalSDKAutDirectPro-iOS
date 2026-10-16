@@ -1,5 +1,7 @@
 # Documentación del SDK de Become iOS
 
+> **Screen capture behavior changed in this XCFramework:** protection is now off by default. Applications that require it must set `preventScreenCapture: true`. See the [English screen capture integration and migration guide](SCREEN_CAPTURE_CONFIGURATION.md).
+
 ## Descripción general
 
 El SDK de Become para iOS permite ejecutar procesos de verificación de identidad dentro de una aplicación nativa. Para que el flujo funcione correctamente, es necesario integrar el framework principal de Become junto con las dependencias de **AWS Amplify Face Liveness** y **Microblink**.
@@ -171,6 +173,7 @@ identityVerification.startVerification()
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
 | `pollingTimeout` | `TimeInterval` | `2` | Timeout en segundos aplicado a cada GET de resultados. Los valores menores o iguales a cero se normalizan a `2`. |
 | `debugLogsEnabled` | `Bool` | `false` | Activa logs de diagnóstico sin datos personales. [Uso](LOGGING.md). |
+| `preventScreenCapture` | `Bool` | `false` | Screen capture protection is opt-in. Set `true` before starting the SDK to protect its UI. [English guide](SCREEN_CAPTURE_CONFIGURATION.md). |
 
 ### Tipos de flujo
 
