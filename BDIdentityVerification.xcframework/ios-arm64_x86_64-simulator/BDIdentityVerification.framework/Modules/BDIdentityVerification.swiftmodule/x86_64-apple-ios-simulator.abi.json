@@ -501,13 +501,20 @@
       },
       {
         "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "BDIdentityVerification",
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BDIdentityVerification"
       },
       {
         "kind": "Import",
@@ -6573,14 +6580,14 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/.worktrees\/ios-default-screen-capture\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SecureCaptureDetector\/ScreenRecordingPreventing.swift",
       "kind": "BooleanLiteral",
-      "offset": 868,
+      "offset": 1140,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/.worktrees\/ios-default-screen-capture\/sdk\/BDIdentityVerification\/Presentation\/Utils\/SecureCaptureDetector\/ScreenRecordingPreventing.swift",
       "kind": "BooleanLiteral",
-      "offset": 904,
+      "offset": 1176,
       "length": 5,
       "value": "false"
     },
