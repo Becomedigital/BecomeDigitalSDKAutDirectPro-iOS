@@ -62,35 +62,35 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
+		dMGR1D57fXuHACGEJDD2fwQSrr0=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		ZTNvAHPO04ua/hk8awIgH3bRIqY=
+		XAnomUhFypNdS6/Byi+jDbiLIzk=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		L7eKHxEjDvAjPSqXaVmzhmSoLrk=
+		dsGpQKtz+Kii0Z2YIjP9LKeOYsY=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ZTNvAHPO04ua/hk8awIgH3bRIqY=
+		XAnomUhFypNdS6/Byi+jDbiLIzk=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Fkq0BTxY7wiWXKk9tmzXtvOjy1s=
+		dMGR1D57fXuHACGEJDD2fwQSrr0=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
+		JeUTC//EF8ltylo31lZud1OdPRI=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		J5TF9KUF0pfVkITvvEl+WLWP1Xw=
+		1aDT9CCYUzmBHXGBQb1imrYfwCU=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		yUmsdN1cIdpd7jewLKwEhmRbr6Y=
+		JeUTC//EF8ltylo31lZud1OdPRI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -120,7 +120,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			619fEtqfMvwN9JXvFdl+qQmLAE4=
+			fCGhlRb2Til8bOfqXW4NQnLpi0c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bi+L/tfIFNaCjF8UB3IKw3utIec=
+			K0aEj2mE+hCgJwnQadHKFp5V3ys=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -138,7 +138,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nonX0dU8Adjl2fpAbuVK6Y+EORc=
+			zlFIzGLggGESYhHpcJX5pM7YtRw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -253,56 +253,56 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
+			/Nl5UExfkpxUah5JH+2kvknX7Dl4dee6e1/DTPHGdUE=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
+			a/F6CDdmRXjabJw29SEEh2pQ+h+XTLNrln618iceYH8=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9NZXzddrm3Jn+XXH95QwYQxEPH41iCzBEfDXK/4T6t4=
+			SHeBlBi2rsu7SdY/wVXLu+ElsXTHaVGvtvi2ANivWo4=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iws5ZuhH3zbr+H38ODO/taUEYUPJ5QNlvgQUu0AUH0Y=
+			a/F6CDdmRXjabJw29SEEh2pQ+h+XTLNrln618iceYH8=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			02/AuuhfE5QoO/XRg56j0fcdcvnEoxJoLbd/y6wUGcE=
+			/Nl5UExfkpxUah5JH+2kvknX7Dl4dee6e1/DTPHGdUE=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
+			hc1JoBXaARrSl9ujj2x1Frvuc0DlKxMdX6H2qGVlB8A=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WAB6+UpGq4nNHCJ7j0+vzt2OdBhYuVl27UnoAJQ8GmI=
+			zlQBC4jY3xiYhgziJfwmTQr7ilMWS3Jmqld4Ve92FBo=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9YLJSu7x4oe8pZ/6OsEJqKeBzTogGhcdzq2cFqfLbHI=
+			hc1JoBXaARrSl9ujj2x1Frvuc0DlKxMdX6H2qGVlB8A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -351,7 +351,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z4ZwD2oqQMWepgTjtH8s2sgxomXO7R5XF6wljS/guQQ=
+			WcQI5QC5BbXvzELeTyVW5WsWEg6IkEBy7yA15t4f/7Y=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -360,7 +360,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wp49rPhiBET2fI2vOEK3AxyMCayO8yNgAAZlgCQ9KuE=
+			9lyPFgubbECM7ELnk17QlmIyiZ0tzJ3b43WXkDQyinc=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -369,7 +369,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			L86ai+D4YczzUy6wq1jI0LXY7DIRfAq6fIBKpL3rmP8=
+			XdRWFA7zop41ta8CmLJVqmj6TWH6pXPD0mvEVaQFTKg=
 			</data>
 			<key>optional</key>
 			<true/>
