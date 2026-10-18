@@ -1,6 +1,6 @@
 # Documentación del SDK de Become iOS
 
-> **Screen capture behavior changed in this XCFramework:** protection is now off by default. Applications that require it must set `preventScreenCapture: true`. See the [screen capture integration and migration guide](SCREEN_CAPTURE_CONFIGURATION.md).
+> **Cambio en la protección contra capturas:** este XCFramework la desactiva de forma predeterminada. Si su aplicación la requiere, configure `preventScreenCapture: true`. Consulte la [guía de integración y migración](SCREEN_CAPTURE_CONFIGURATION.md).
 
 ## Descripción general
 
@@ -173,7 +173,7 @@ identityVerification.startVerification()
 | `pollingMaxAttempts` | `Int` | `0` | Máximo de consultas del resultado. `0` mantiene consultas ilimitadas. Los valores negativos se normalizan a `0`. |
 | `pollingTimeout` | `TimeInterval` | `2` | Timeout en segundos aplicado a cada GET de resultados. Los valores menores o iguales a cero se normalizan a `2`. |
 | `debugLogsEnabled` | `Bool` | `false` | Activa logs de diagnóstico sin datos personales. [Uso](LOGGING.md). |
-| `preventScreenCapture` | `Bool` | `false` | Screen capture protection is opt-in. Set `true` before starting the SDK to protect its UI. [Integration guide](SCREEN_CAPTURE_CONFIGURATION.md). |
+| `preventScreenCapture` | `Bool` | `false` | La protección contra capturas es opcional. Configure `true` antes de iniciar la SDK para proteger las pantallas del flujo. [Guía de integración](SCREEN_CAPTURE_CONFIGURATION.md). |
 
 ### Tipos de flujo
 

@@ -1,31 +1,31 @@
-# Screen capture configuration for the iOS SDK
+# Configuración de la protección contra capturas de pantalla en iOS
 
-This guide applies to the `BDIdentityVerification.xcframework` included in this repository. The XCFramework was built from source commit `0d22bec693177a2da6853ab7339a1c5180b71761` using the production Release scheme `BDIdentityVerification_PROD`.
+Esta guía corresponde al `BDIdentityVerification.xcframework` incluido en este repositorio. El XCFramework se compiló a partir del commit `0d22bec693177a2da6853ab7339a1c5180b71761` con el esquema de producción `BDIdentityVerification_PROD` en configuración Release.
 
-## Behavior change
+## Cambio de comportamiento
 
-`BDIVConfig.preventScreenCapture` now defaults to `false`. Earlier distributed builds defaulted to `true`. An application that omits the argument now allows screenshots and screen recording of SDK content. This default is the same in Debug and Release builds. An application that passes an explicit value keeps the behavior it requested.
+`BDIVConfig.preventScreenCapture` ahora tiene el valor predeterminado `false`. En versiones distribuidas anteriores, el valor predeterminado era `true`. Si la aplicación omite el parámetro, se permiten las capturas de pantalla y la grabación del contenido de la SDK. El valor predeterminado es el mismo en Debug y Release. Los valores indicados explícitamente conservan el comportamiento solicitado.
 
-| Value | SDK behavior |
+| Valor | Comportamiento de la SDK |
 | --- | --- |
-| `false` (default) | The SDK does not apply its screen capture protection or recording blocker to its UI. |
-| `true` | The SDK protects its UI during screenshots and displays a blocking view while screen recording is detected. |
+| `false` (predeterminado) | La SDK no aplica su protección contra capturas ni el bloqueo de grabación a sus pantallas. |
+| `true` | La SDK protege sus pantallas contra capturas y muestra una vista de bloqueo mientras detecta una grabación. |
 
-The option applies to the screens presented by the Become SDK while its verification flow is active. It does not configure unrelated screens in the host application or override protection applied independently by the operating system or another component.
+La opción se aplica a las pantallas que presenta la SDK durante el flujo de verificación. No configura otras pantallas de la aplicación anfitriona ni modifica protecciones aplicadas de forma independiente por iOS u otros componentes.
 
-## Enable protection explicitly
+## Activar la protección explícitamente
 
-Pass `preventScreenCapture: true` when constructing `BDIVConfig`, before calling `startVerification()`:
+Indique `preventScreenCapture: true` al crear `BDIVConfig`, antes de llamar a `startVerification()`:
 
 ```swift
 import BDIdentityVerification
 
 let config = BDIVConfig(
-    clienId: "YOUR_CLIENT_ID",
-    clientSecret: "YOUR_CLIENT_SECRET",
-    contractId: "YOUR_CONTRACT_ID",
+    clienId: "TU_CLIENT_ID",
+    clientSecret: "TU_CLIENT_SECRET",
+    contractId: "TU_CONTRACT_ID",
     documenTypes: [.DNI, .PASSPORT],
-    userId: "YOUR_USER_ID",
+    userId: "TU_USER_ID",
     preventScreenCapture: true
 )
 
@@ -33,26 +33,24 @@ let verification = BecomeDigitalSDK(bdivConfig: config, delegate: self)
 verification.startVerification()
 ```
 
-Omit the argument or pass `false` to use the new default. `preventScreenCapture` is fixed for a `BDIVConfig` instance; create a new configuration for a later flow that needs a different value. The setting is available for both `.Onboarding` and `.Authentication`.
+Omita el parámetro o indique `false` para usar el nuevo valor predeterminado. El valor de `preventScreenCapture` queda fijo para cada instancia de `BDIVConfig`; cree otra configuración si un flujo posterior necesita un valor diferente. La opción está disponible para `.Onboarding` y `.Authentication`.
 
-## Migration from an earlier XCFramework
+## Migración desde un XCFramework anterior
 
-1. Review every `BDIVConfig` creation in the host application. Calls that omit `preventScreenCapture` change from protected to unprotected when this XCFramework is integrated.
-2. Add `preventScreenCapture: true` wherever the previous protected behavior must continue. Calls that already pass `true` or `false` need no change.
-3. Rebuild the host application with this XCFramework. Continue to embed and sign it in the application target as described in the main README.
-4. On a physical device, check screenshots and screen recording during document capture, face liveness, cancellation, and return to the host application. Run this check once with the default and once with `true` if your application supports both modes.
+1. Revise cada creación de `BDIVConfig` en la aplicación. Las llamadas que omiten `preventScreenCapture` pasan de tener protección a permitir capturas al integrar este XCFramework.
+2. Agregue `preventScreenCapture: true` donde deba mantenerse la protección anterior. Las llamadas que ya indican `true` o `false` no requieren cambios.
+3. Recompile la aplicación con este XCFramework. Intégrelo y fírmelo en el target de la aplicación según el [README](README.md).
+4. En un dispositivo físico, compruebe las capturas de pantalla y la grabación durante la captura del documento, la prueba de vida, la cancelación y el regreso a la aplicación. Si la aplicación admite ambos modos, pruebe el valor predeterminado y el valor `true`.
 
-Screen capture policy should be chosen by the integrator based on the application's privacy requirements. This flag controls the SDK presentation; it is not a substitute for application-wide data handling or device policy.
+La aplicación integradora debe elegir esta configuración según sus requisitos de privacidad. El parámetro controla las pantallas de la SDK; no reemplaza las políticas de tratamiento de datos ni la protección general de la aplicación.
 
-## Artifact verification
+## Verificación del artefacto
 
-The public Swift interface inside each XCFramework slice exposes a `preventScreenCapture` argument with a `false` default in the `BDIVConfig` initializer. The framework contains an iOS device slice (`arm64`) and an iOS simulator slice (`arm64` and `x86_64`), both at version `1.2.3`. Functional capture and face liveness require the integrator's licensed application and a physical device.
+La interfaz Swift pública de cada variante del XCFramework expone `preventScreenCapture` con valor predeterminado `false` en el inicializador de `BDIVConfig`. El framework incluye una variante para dispositivo iOS (`arm64`) y otra para simulador (`arm64` y `x86_64`), ambas con versión `1.2.3`. Las pruebas funcionales de captura de documentos y validación facial requieren una aplicación con licencia y un dispositivo físico.
 
-The framework version remains `1.2.3` despite the changed default. When replacing a locally stored XCFramework, use the executable checksums below to identify this build rather than relying on the version string alone.
+La versión del framework sigue siendo `1.2.3` aunque cambió el valor predeterminado. Al reemplazar una copia local, identifique este artefacto mediante los SHA-256 de sus ejecutables:
 
-SHA-256 checksums of the framework executables:
-
-| Slice | SHA-256 |
+| Variante | SHA-256 |
 | --- | --- |
-| iOS device | `f66db7db53e414ab70ae27ce0673a9707077a8870d4010a37bd43b00bb100983` |
-| iOS simulator | `215773bf965276609d0d6bb6b2cd374bbaf511c2c42185614c0cfcbe1b85c245` |
+| Dispositivo iOS | `f66db7db53e414ab70ae27ce0673a9707077a8870d4010a37bd43b00bb100983` |
+| Simulador iOS | `215773bf965276609d0d6bb6b2cd374bbaf511c2c42185614c0cfcbe1b85c245` |
