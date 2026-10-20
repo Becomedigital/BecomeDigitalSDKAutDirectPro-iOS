@@ -28,8 +28,8 @@ Estas librerías permiten habilitar correctamente:
 El XCFramework incluido fue generado y validado con estas versiones exactas:
 
 * **Become iOS SDK**: `1.2.3`
-* **Amplify Swift**: `2.58.5`
-* **Amplify UI Swift Liveness**: `1.4.5`
+* **Amplify Swift**: `2.53.3`
+* **Amplify UI Swift Liveness**: `1.4.4`
 * **BlinkID Capture Core**: `1.4.3`
 * **BlinkID Capture UX**: `1.4.3`
 
@@ -97,8 +97,8 @@ https://github.com/BlinkID/capture-ux-sp
 
 Para reproducir la combinación con la que fue generado el XCFramework, seleccione `Exact Version`:
 
-* **amplify-swift** → `2.58.5`
-* **amplify-ui-swift-liveness** → `1.4.5`
+* **amplify-swift** → `2.53.3`
+* **amplify-ui-swift-liveness** → `1.4.4`
 * **capture-core-sp** → `1.4.3`
 * **capture-ux-sp** → `1.4.3`
 
@@ -175,6 +175,8 @@ Los nombres públicos `clienId` y `documenTypes` se conservan por compatibilidad
 | `themeMode` | `.system` | `.light`, `.dark` o `.system`. |
 
 La SDK presenta los pasos y la identidad visual asignados al contrato. El host solo elige el modo claro u oscuro; colores, logo, contenido y diseño no se configuran en `BDIVConfig`. Las frases pueden personalizarse con el [archivo de localización](Localizable.strings) y la [guía de claves](LOCALIZACION.md).
+
+Si la consulta del resultado tarda más que `pollingTimeout`, configure un valor mayor en la app (por ejemplo, `pollingTimeout: 30`). Este valor afecta cada consulta; `pollingMaxAttempts` controla cuántas se realizan.
 
 Para habilitar la protección de capturas de pantalla y grabaciones, consulte la [guía de capturas](SCREEN_CAPTURE_CONFIGURATION.md).
 
