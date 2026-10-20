@@ -176,6 +176,8 @@ Los nombres públicos `clienId` y `documenTypes` se conservan por compatibilidad
 
 La SDK presenta los pasos y la identidad visual asignados al contrato. El host solo elige el modo claro u oscuro; colores, logo, contenido y diseño no se configuran en `BDIVConfig`. Las frases pueden personalizarse con el [archivo de localización](Localizable.strings) y la [guía de claves](LOCALIZACION.md).
 
+Para habilitar la protección de capturas de pantalla y grabaciones, consulte la [guía de capturas](SCREEN_CAPTURE_CONFIGURATION.md).
+
 ## Respuestas
 
 `BDIVResponseSuccess` entrega `BDIdentityVerificationResponse`, con `responseStatus`, `message` y estos objetos opcionales:
