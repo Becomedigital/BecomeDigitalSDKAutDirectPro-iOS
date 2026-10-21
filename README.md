@@ -2,7 +2,7 @@
 
 ## Descripción general
 
-El SDK de Become para iOS permite ejecutar procesos de verificación de identidad dentro de una aplicación nativa. Para que el flujo funcione correctamente, es necesario integrar el framework principal de Become junto con las dependencias de **AWS Amplify Face Liveness** y **Microblink**.
+The Become iOS SDK provides native identity verification. Integrate the Become framework with **AWS Amplify Face Liveness** and **Microblink Capture Core/UX legacy** using the versions below.
 
 Estas librerías permiten habilitar correctamente:
 
@@ -10,7 +10,7 @@ Estas librerías permiten habilitar correctamente:
 * Flujo de cámara
 * Validación facial
 * Face Liveness
-* Componentes de captura de Microblink
+* Capture legacy camera guidance and contract-driven manual capture
 
 ---
 
@@ -30,27 +30,24 @@ El XCFramework incluido fue generado y validado con estas versiones exactas:
 * **Become iOS SDK**: `1.2.3`
 * **Amplify Swift**: `2.53.3`
 * **Amplify UI Swift Liveness**: `1.4.4`
-* **BlinkID Capture Core**: `1.4.3`
-* **BlinkID Capture UX**: `1.4.3`
+* **Capture Core / Capture UX**: `1.4.3`
 
-Referencias de la versión de captura integrada:
+Document capture package:
 
-* [Guía de integración Capture iOS 1.4.3](https://github.com/BlinkID/capture-ios/tree/v1.4.3)
-* [Notas de versión de Capture iOS 1.4.3](https://github.com/BlinkID/capture-ios/blob/v1.4.3/Release_notes.md)
-* [CaptureCore 1.4.3](https://github.com/BlinkID/capture-core-sp/tree/v1.4.3)
-* [CaptureUX 1.4.3](https://github.com/BlinkID/capture-ux-sp/tree/v1.4.3)
+* [Capture Core package](https://github.com/BlinkID/capture-core-sp)
+* [Capture UX package](https://github.com/BlinkID/capture-ux-sp)
 
 ---
 
 ## Agregar licencias al proyecto
 
-Agregue los archivos de licencia proporcionados para la inicialización del SDK y la captura de documentos.
+Add the Capture Core license provided for the application's Bundle Identifier to the app target resources.
 
 ### Archivos requeridos
 
 * **com.become.document.key.txt**
 
-Este archivo debe estar incluido en los recursos del proyecto y en el target correspondiente.
+Enable target membership and ensure this file is included in **Copy Bundle Resources**. Keep its contents out of source control. A development app with a different Bundle Identifier requires its own valid license.
 
 <p align="center">
   <img src="https://github.com/Becomedigital/become_IOS_SDK/blob/master/IMG_4.png">
@@ -102,7 +99,23 @@ Para reproducir la combinación con la que fue generado el XCFramework, seleccio
 * **capture-core-sp** → `1.4.3`
 * **capture-ux-sp** → `1.4.3`
 
+Add both **CaptureCore** and **CaptureUX** products to the app target. Use a Swift 6 compatible Xcode toolchain and iOS 16 or later.
+
+The final application must embed and sign **BDIdentityVerification.framework**, **CaptureCore.framework**, and **CaptureUX.framework**. Check the target's **Frameworks, Libraries, and Embedded Content** settings and verify that all three appear in the built app's `Frameworks` directory.
+
+This branch uses Capture legacy. Remove BlinkID Core/UX packages if the host previously integrated the BlinkID migration build.
+
+### Document capture
+
+Automatic scanning uses Capture UX guidance and collects the sides required by the contract. The SDK also supports the configured manual camera path and retries for incomplete captures. The surrounding SwiftUI screens, navigation, and appearance match the contract experience. No BlinkID OCR dependency is required.
+
 ---
+
+### Startup appearance
+
+The SDK displays an animated loading screen until the flow and its presentation are ready. The indicator initially uses the application's `AccentColor` asset or inherited view tint and shows a localized loading message (`Cargando…` in Spanish).
+
+The first visible screen already uses the contract's colors, branding, and text. This also applies when the flow starts after the introduction. Initialization failures are delivered through the existing SDK callback so the application can offer a new attempt. No additional `BDIVConfig` setting is required.
 
 ## Configuración en `Info.plist`
 
@@ -202,6 +215,6 @@ Si su app gestiona eventos de segundo plano, implemente el método público indi
 
 ## Requisitos
 
-- iOS 17.0 o superior.
+- iOS 16.0 or later.
 - Las dependencias y licencias indicadas arriba.
 - Integrar el XCFramework con **Embed & Sign**.
