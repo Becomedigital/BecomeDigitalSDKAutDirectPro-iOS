@@ -1,136 +1,56 @@
-# Documentación del SDK de Become iOS
+# Become iOS SDK — Capture legacy
 
-## Descripción general
+This guide matches the `BDIdentityVerification.xcframework` distributed on `feature/mobile-contract-parity`. It provides SwiftUI verification screens with onboarding and authentication, typed results, contract-controlled appearance, and Microblink Capture legacy document capture.
 
-The Become iOS SDK provides native identity verification. Integrate the Become framework with **AWS Amplify Face Liveness** and **Microblink Capture Core/UX legacy** using the versions below.
+## Validated versions
 
-Estas librerías permiten habilitar correctamente:
+| Component | Version |
+| --- | --- |
+| Become framework | 1.2.3 |
+| Minimum iOS | 16.0 |
+| Validated Xcode | 27.0 (27A266a) |
+| Framework compiler | Apple Swift 6.4, Swift 5 language mode |
+| Amplify Swift | 2.53.3 |
+| Amplify UI Swift Liveness | 1.4.4 |
+| CaptureCore | 1.4.3 |
+| CaptureUX | 1.4.3 |
 
-* Captura de documentos
-* Flujo de cámara
-* Validación facial
-* Face Liveness
-* Capture legacy camera guidance and contract-driven manual capture
+Use Xcode 27.0 or a compatible newer toolchain capable of reading the supplied Swift 6.4 module interfaces. The XCFramework contains an arm64 device slice and arm64/x86_64 simulator slices. Camera and identity checks require a physical device.
 
----
+The supplied framework is the production build. `BDIVConfig` has no environment selector. A separate development build and a valid license for its application identifier are required when testing another environment.
 
-## Funciones públicas
+## Installation and dependencies
 
-- Flujos de onboarding y autenticación con respuestas tipadas.
-- Selección de país con búsqueda, captura documental y verificación facial según el flujo disponible.
-- Interfaz SwiftUI adaptada a la identidad visual del contrato.
-- Modo visual elegible mediante `themeMode` y textos personalizables con `Localizable.strings`.
+1. Add `BDIdentityVerification.xcframework` to the application target and select **Embed & Sign**.
+2. In Xcode, use **File > Add Package Dependencies** and select **Exact Version** for each package below.
 
----
+| Package URL | Exact version | App target products |
+| --- | --- | --- |
+| https://github.com/aws-amplify/amplify-swift | 2.53.3 | `Amplify` |
+| https://github.com/aws-amplify/amplify-ui-swift-liveness | 1.4.4 | `FaceLiveness` |
+| https://github.com/BlinkID/capture-core-sp | 1.4.3 | `CaptureCore` |
+| https://github.com/BlinkID/capture-ux-sp | 1.4.3 | `CaptureUX` |
 
-## Versiones requeridas
+3. Embed and sign `BDIdentityVerification.framework`, `CaptureCore.framework`, and `CaptureUX.framework`. Confirm that all three are present in the built app's `Frameworks` directory. Let Swift Package Manager manage the other package products and their transitive dependencies.
+4. Remove BlinkID Core/UX migration packages when integrating this Capture legacy build. Keep versions aligned if the host already uses Amplify.
+5. Add the license issued for the application's Bundle Identifier as **`com.become.document.key.txt`**. Enable app target membership and include it in **Copy Bundle Resources**. Keep license contents out of source control.
 
-El XCFramework incluido fue generado y validado con estas versiones exactas:
+All listed dependencies remain required when a particular contract omits facial capture.
 
-* **Become iOS SDK**: `1.2.3`
-* **Amplify Swift**: `2.53.3`
-* **Amplify UI Swift Liveness**: `1.4.4`
-* **Capture Core / Capture UX**: `1.4.3`
+## Permissions
 
-Document capture package:
-
-* [Capture Core package](https://github.com/BlinkID/capture-core-sp)
-* [Capture UX package](https://github.com/BlinkID/capture-ux-sp)
-
----
-
-## Agregar licencias al proyecto
-
-Add the Capture Core license provided for the application's Bundle Identifier to the app target resources.
-
-### Archivos requeridos
-
-* **com.become.document.key.txt**
-
-Enable target membership and ensure this file is included in **Copy Bundle Resources**. Keep its contents out of source control. A development app with a different Bundle Identifier requires its own valid license.
-
-<p align="center">
-  <img src="https://github.com/Becomedigital/become_IOS_SDK/blob/master/IMG_4.png">
-</p>
-
-### Importante
-
-Asegúrese de que el [`Bundle Identifier`](https://developer.apple.com/documentation/appstoreconnectapi/bundle_ids) del proyecto coincida con la licencia asignada al cliente.
-
----
-
-## Agregar el framework de Become al proyecto
-
-1. Agregue el archivo **BDIdentityVerification.xcframework** a su proyecto.
-2. Verifique que quede incluido en la sección **Frameworks, Libraries, and Embedded Content** dentro de la configuración del target en Xcode.
-3. Seleccione **Embed & Sign** para que la aplicación firme el framework al integrarlo.
-
----
-
-## Integración con Swift Package Manager
-
-Además del framework de Become, es necesario agregar las dependencias externas requeridas por el SDK.
-
-### 1. Agregar paquetes
-
-Abra su proyecto en Xcode y vaya a:
-
-**File > Add Packages**
-
-![Agregar dependencia del paquete Amplify](https://github.com/user-attachments/assets/f845c6f2-d235-43a8-a1e3-a796cc1426a4)
-
-### 2. Registrar las URLs de los paquetes
-
-Agregue las siguientes URLs:
-
-```text
-https://github.com/aws-amplify/amplify-swift
-https://github.com/aws-amplify/amplify-ui-swift-liveness
-https://github.com/BlinkID/capture-core-sp
-https://github.com/BlinkID/capture-ux-sp
-```
-
-### 3. Configurar versiones
-
-Para reproducir la combinación con la que fue generado el XCFramework, seleccione `Exact Version`:
-
-* **amplify-swift** → `2.53.3`
-* **amplify-ui-swift-liveness** → `1.4.4`
-* **capture-core-sp** → `1.4.3`
-* **capture-ux-sp** → `1.4.3`
-
-Add both **CaptureCore** and **CaptureUX** products to the app target. Use a Swift 6 compatible Xcode toolchain and iOS 16 or later.
-
-The final application must embed and sign **BDIdentityVerification.framework**, **CaptureCore.framework**, and **CaptureUX.framework**. Check the target's **Frameworks, Libraries, and Embedded Content** settings and verify that all three appear in the built app's `Frameworks` directory.
-
-This branch uses Capture legacy. Remove BlinkID Core/UX packages if the host previously integrated the BlinkID migration build.
-
-### Document capture
-
-Automatic scanning uses Capture UX guidance and collects the sides required by the contract. The SDK also supports the configured manual camera path and retries for incomplete captures. The surrounding SwiftUI screens, navigation, and appearance match the contract experience. No BlinkID OCR dependency is required.
-
----
-
-### Startup appearance
-
-The SDK displays an animated loading screen until the flow and its presentation are ready. The indicator initially uses the application's `AccentColor` asset or inherited view tint and shows a localized loading message (`Cargando…` in Spanish).
-
-The first visible screen already uses the contract's colors, branding, and text. This also applies when the flow starts after the introduction. Initialization failures are delivered through the existing SDK callback so the application can offer a new attempt. No additional `BDIVConfig` setting is required.
-
-## Configuración en `Info.plist`
-
-El SDK requiere permisos de acceso a la cámara. Agregue la siguiente clave en su `Info.plist`:
+Add a camera usage description to the app's `Info.plist`:
 
 ```xml
 <key>NSCameraUsageDescription</key>
-<string>Requerimos acceso a la cámara para propósitos de verificación de identidad.</string>
+<string>Camera access is required to verify your identity.</string>
 ```
 
----
+If the integration uses optional location collection, also declare `NSLocationWhenInUseUsageDescription`. Denying location does not block verification.
 
-## Inicialización del SDK
+## Initialization
 
-Importe `BDIdentityVerification`. El delegado debe ser un `UIViewController` que implemente `BDIVDelegate`. Conserve la instancia de `BecomeDigitalSDK` durante la ejecución.
+The delegate must be a `UIViewController` implementing `BDIVDelegate`. Retain the SDK instance while verification is active. The public spellings `clienId` and `documenTypes` are retained for compatibility.
 
 ```swift
 import UIKit
@@ -139,13 +59,13 @@ import BDIdentityVerification
 final class ViewController: UIViewController, BDIVDelegate {
     private var identityVerification: BecomeDigitalSDK?
 
-    func iniciar() {
+    func startOnboarding() {
         let config = BDIVConfig(
-            clienId: "TU_CLIENT_ID",
-            clientSecret: "TU_CLIENT_SECRET",
-            contractId: "TU_CONTRACT_ID",
-            documenTypes: [.DNI, .PASSPORT],
-            userId: "TU_USER_ID",
+            clienId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            contractId: "YOUR_CONTRACT_ID",
+            documenTypes: [.DNI, .PASSPORT, .DRIVERLICENSE],
+            userId: "YOUR_USER_ID",
             flow: .Onboarding,
             themeMode: .system
         )
@@ -158,63 +78,64 @@ final class ViewController: UIViewController, BDIVDelegate {
         if let started = bdivResult.onboarding { _ = started.userId }
         if let final = bdivResult.verification { _ = final.urlGetData }
         if let authentication = bdivResult.authentication {
-            // Evalúe authentication.result por separado.
+            // Evaluate the authentication decision separately from SDK success.
             _ = authentication.result
         }
     }
 
     func BDIVResponseError(error: String) {
-        // Restaure la pantalla de la app y permita un nuevo inicio.
+        // Restore the host UI and offer a new user-initiated attempt.
     }
 }
 ```
 
-Los nombres públicos `clienId` y `documenTypes` se conservan por compatibilidad.
+### Public configuration
 
-### Parámetros públicos
-
-| Parámetro | Predeterminado | Uso |
+| Parameter | Default | Meaning |
 | --- | --- | --- |
-| `clienId`, `clientSecret`, `contractId`, `userId` | Requeridos | Identifican al cliente, contrato y usuario. |
-| `documenTypes` | Requerido en onboarding | `.DNI`, `.PASSPORT`, `.DRIVERLICENSE`; en autenticación admite `[]`. |
-| `flow` | `.Onboarding` | `.Onboarding` o `.Authentication`. |
-| `performVerificationCheck` | `true` | Espera el resultado final de onboarding antes de devolverlo. |
-| `pollingMaxAttempts` | `0` | Límite de intentos de espera; `0` no establece límite. |
-| `pollingTimeout` | `2` segundos | Tiempo máximo de cada intento de espera. |
-| `debugLogsEnabled` | `false` | Activa diagnósticos durante una prueba. |
-| `preventScreenCapture` | `false` | Protege el contenido mostrado por la SDK cuando es `true`. |
-| `country`, `state` | `nil` | País de dos letras y estado precargado para EE. UU. |
-| `nationalIdType`, `nationalIdTypeChoices`, `documentNumber` | Vacíos | Datos documentales precargados, si corresponden. |
-| `themeMode` | `.system` | `.light`, `.dark` o `.system`. |
+| `clienId`, `clientSecret`, `contractId` | Required arguments | Nonempty client credentials and contract identifier. |
+| `userId` | Required argument | Nonempty for `.Authentication`; onboarding also accepts an empty string. |
+| `documenTypes` | Required argument | `.DNI`, `.PASSPORT`, `.DRIVERLICENSE`. The contract filters this list. An empty list uses the contract's available types. |
+| `flow` | `.Onboarding` | `.Onboarding` or `.Authentication`. |
+| `performVerificationCheck` | `true` | Wait for final onboarding confirmation. Set `false` to return the creation result directly. |
+| `pollingMaxAttempts` | `0` | Maximum result checks; `0` means no attempt limit. |
+| `pollingTimeout` | `2` seconds | Timeout for each result check. For slow connections, use a larger value such as `30`. |
+| `debugLogsEnabled` | `false` | Enable optional client diagnostics. |
+| `preventScreenCapture` | `false` | Enable the SDK's screen-capture protection when `true`. |
+| `country`, `state` | `nil` | Optional two-letter country code or comma-separated country list; optional US postal state code. |
+| `nationalIdType`, `documentNumber` | `nil` | Optional prefilled document details. |
+| `nationalIdTypeChoices` | `[]` | Optional document subtype choices. |
+| `themeMode` | `.system` | `.light`, `.dark`, or the device's preferred appearance. |
 
-La SDK presenta los pasos y la identidad visual asignados al contrato. El host solo elige el modo claro u oscuro; colores, logo, contenido y diseño no se configuran en `BDIVConfig`. Las frases pueden personalizarse con el [archivo de localización](Localizable.strings) y la [guía de claves](LOCALIZACION.md).
+For authentication, use `flow: .Authentication`, an existing nonempty `userId`, and `documenTypes: []` when documents are not required. Create a new configuration to change immutable parameters for another run.
 
-Si la consulta del resultado tarda más que `pollingTimeout`, configure un valor mayor en la app (por ejemplo, `pollingTimeout: 30`). Este valor afecta cada consulta; `pollingMaxAttempts` controla cuántas se realizan.
+### Documents and presentation
 
-Para habilitar la protección de capturas de pantalla y grabaciones, consulte la [guía de capturas](SCREEN_CAPTURE_CONFIGURATION.md).
+The SDK displays the steps and document types available for the contract. Supplying fewer document types restricts the requested list to supported types; when there is no overlap, the SDK uses the contract list. A single document type is still displayed for confirmation. Passport capture uses the front; other required sides follow the contract.
 
-## Respuestas
+Complete frames are used for document uploads. Cropped, perspective-corrected images are used for preview; if no crop is available, the preview can show the complete frame. Full-frame uploads preserve the image bounds while applying JPEG encoding and size limits.
 
-`BDIVResponseSuccess` entrega `BDIdentityVerificationResponse`, con `responseStatus`, `message` y estos objetos opcionales:
+The host selects `themeMode`. Colors, logos, typography, component appearance, and layout are assigned to the contract and are not configurable through `BDIVConfig`. Supported per-key text overrides use the app's `Localizable.strings`; see [localization](LOCALIZACION.md).
 
-| Objeto | Campos públicos | Cuándo consultarlo |
+An animated loader remains visible until the first configured screen is ready. Its initial color uses the host's `AccentColor` or inherited tint. Document-only contracts do not require a facial result to complete.
+
+## Typed results and errors
+
+`BDIVResponseSuccess` receives `BDIdentityVerificationResponse`, containing `responseStatus`, `message`, and optional flow-specific objects:
+
+| Object | Public fields | When to inspect it |
 | --- | --- | --- |
-| `onboarding` | `code`, `message`, `urlResource`, `userId` | Onboarding con `performVerificationCheck=false`; indica que se inició el proceso, no que haya sido aprobado. |
-| `verification` | `urlGetData` | Onboarding con espera del resultado final. |
-| `authentication` | `company`, `confidence`, `executionId`, `liveness`, `result`, `userId` | Autenticación. Evalúe `result` por separado de `responseStatus`. |
+| `onboarding` | `code`, `message`, `urlResource`, `userId` | Direct creation result when `performVerificationCheck` is `false`. Creation is not final approval. |
+| `verification` | `urlGetData` | Confirmed onboarding result when waiting for completion. |
+| `authentication` | `company`, `confidence`, `executionId`, `liveness`, `result`, `userId` | Authentication result; evaluate the Boolean `result` separately. |
 
-Para autenticación use `flow: .Authentication` y, si no corresponde capturar documentos, `documenTypes: []`. Los errores y cancelaciones llegan a `BDIVResponseError(error:)`; consulte [manejo de errores](ERRORES.md).
+The response object provides `toJson()`. Do not expect a response dictionary. `SUCCES` retains its historical spelling; other declared statuses are `ERROR`, `PENDING`, and `NOFOUND`. Errors and user cancellation are delivered through `BDIVResponseError(error:)`. Message text is not a stable error code. See [error handling](ERRORES.md).
 
-## Permisos y diagnóstico
+## Additional guides
 
-La app debe declarar `NSCameraUsageDescription`. Si utiliza ubicación, declare también `NSLocationWhenInUseUsageDescription`.
+- [Text overrides and language fallback](LOCALIZACION.md)
+- [Optional client diagnostics](LOGGING.md)
+- [Screen-capture protection](SCREEN_CAPTURE_CONFIGURATION.md)
+- [Background session events](CARGAS_SEGUNDO_PLANO.md)
 
-`debugLogsEnabled: true` habilita diagnósticos para una prueba; desactívelos al terminar. [Guía de logs](LOGGING.md).
-
-Si su app gestiona eventos de segundo plano, implemente el método público indicado en [integración de segundo plano](CARGAS_SEGUNDO_PLANO.md).
-
-## Requisitos
-
-- iOS 16.0 or later.
-- Las dependencias y licencias indicadas arriba.
-- Integrar el XCFramework con **Embed & Sign**.
+Before release, validate camera permissions, the licensed app identifier, both requested document sides, cancellation, and the configured flow on a physical device.

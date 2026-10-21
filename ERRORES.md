@@ -1,22 +1,26 @@
-# Manejo de errores — iOS
+# Error and result handling — iOS
 
-## Salidas públicas
+## Public callbacks
 
-| Salida | Manejo recomendado |
+| Callback or status | Host action |
 | --- | --- |
-| `BDIVResponseSuccess(bdivResult:)` con `.SUCCES` | Revise el objeto opcional correspondiente al flujo. En autenticación, evalúe también `authentication.result`. |
-| `BDIVResponseError(error:)` | Restaure la pantalla de la app y ofrezca una acción para iniciar de nuevo. También se usa cuando el usuario cancela. |
+| `BDIVResponseSuccess(bdivResult:)` with `.SUCCES` | Inspect the optional object for the completed SDK operation. For authentication, evaluate `authentication.result` separately. |
+| A declared `PENDING` or `NOFOUND` result | Do not treat it as approval. |
+| `BDIVResponseError(error:)` | Restore the host UI and offer a new user-initiated attempt. User cancellation also uses this callback. |
 
-`SUCCES` mantiene esa escritura por compatibilidad. `error` es un texto descriptivo, no un código estable. Los objetos `onboarding`, `authentication` y `verification` pueden ser `nil`. Si `performVerificationCheck=false`, `onboarding` indica que se inició el proceso; no equivale a un resultado final aprobado.
+`SUCCES` retains its historical spelling. `error` and response `message` values are descriptive text, not stable error codes. The `onboarding`, `authentication`, and `verification` objects can be `nil`.
 
-La SDK muestra dentro de su propia interfaz las opciones de reintento disponibles. La app no recibe un callback por cada intento de captura.
+With `performVerificationCheck: false`, an `onboarding` object confirms creation, not final approval. With final-result checking enabled, inspect the `verification` object. Document-only flows do not require a facial result.
 
-## Problemas que puede resolver la app
+The SDK presents its available capture and retry actions inside its own UI. The host does not receive a callback for every capture attempt.
 
-- **Configuración incompleta:** compruebe `clienId`, `clientSecret`, `contractId`, `userId` y los tipos documentales requeridos para onboarding.
-- **Cámara no disponible o permiso denegado:** compruebe el dispositivo y `NSCameraUsageDescription`.
-- **Capture license:** verify `com.become.document.key.txt`, its app target membership, and the licensed Bundle Identifier.
-- **Conexión interrumpida:** permita un nuevo intento iniciado por el usuario cuando vuelva la conectividad.
-- **Captura no completada:** deje que el usuario repita la captura desde la SDK.
+## Integration checks
 
-No use comparaciones de `error` para decidir aprobación o reintentos automáticos: el texto puede cambiar por idioma o personalización. Si el problema persiste, comparta con soporte la versión de la SDK, el paso donde ocurrió y los [logs de diagnóstico](LOGGING.md). No incluya credenciales ni imágenes.
+- **Configuration:** provide nonempty client credentials and a contract ID. Authentication also requires a nonempty existing user ID. An empty document array uses the contract's available document types.
+- **Camera:** verify the device and `NSCameraUsageDescription`, then allow a new attempt after permissions are corrected.
+- **Capture license:** verify `com.become.document.key.txt`, app target membership, and the licensed Bundle Identifier.
+- **Missing module or framework:** use the exact package versions in the [README](README.md), the compatible Xcode toolchain, and all three required embedded frameworks.
+- **Connection:** allow a new user-initiated attempt after connectivity returns. Adjust `pollingTimeout` when individual result checks time out; `pollingMaxAttempts` controls the number of checks.
+- **Incomplete capture:** allow the SDK to request the required sides again. A cropped preview is not a substitute for a missing full-frame capture.
+
+Do not branch on localized message text to approve an identity or trigger automatic retries. When requesting support, provide the SDK version, device, visible step, and relevant [client diagnostics](LOGGING.md), excluding credentials and images.
