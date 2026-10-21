@@ -108,6 +108,12 @@ Automatic document capture includes framing, image quality guidance, and instruc
 
 ---
 
+### Startup appearance
+
+The SDK displays an animated loading screen until the flow and its presentation are ready. The indicator initially uses the application's `AccentColor` asset or inherited view tint and shows a localized loading message (`Cargando…` in Spanish).
+
+The first visible screen already uses the contract's colors, branding, and text. This also applies when the flow starts after the introduction. Initialization failures are delivered through the existing SDK callback so the application can offer a new attempt. No additional `BDIVConfig` setting is required.
+
 ## Configuración en `Info.plist`
 
 El SDK requiere permisos de acceso a la cámara. Agregue la siguiente clave en su `Info.plist`:
