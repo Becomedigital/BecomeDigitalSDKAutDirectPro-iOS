@@ -2,7 +2,7 @@
 
 ## Descripción general
 
-El SDK de Become para iOS permite ejecutar procesos de verificación de identidad dentro de una aplicación nativa. Para que el flujo funcione correctamente, es necesario integrar el framework principal de Become junto con las dependencias de **AWS Amplify Face Liveness** y **Microblink**.
+The Become iOS SDK provides native identity verification. Integrate the Become framework with **AWS Amplify Face Liveness** and **Microblink BlinkID Core/UX** using the versions below.
 
 Estas librerías permiten habilitar correctamente:
 
@@ -10,7 +10,7 @@ Estas librerías permiten habilitar correctamente:
 * Flujo de cámara
 * Validación facial
 * Face Liveness
-* Componentes de captura de Microblink
+* BlinkID document capture guidance and manual capture fallback
 
 ---
 
@@ -30,27 +30,23 @@ El XCFramework incluido fue generado y validado con estas versiones exactas:
 * **Become iOS SDK**: `1.2.3`
 * **Amplify Swift**: `2.53.3`
 * **Amplify UI Swift Liveness**: `1.4.4`
-* **BlinkID Capture Core**: `1.4.3`
-* **BlinkID Capture UX**: `1.4.3`
+* **BlinkID iOS package (`BlinkID` / `BlinkIDUX`)**: `8002.0.2`
 
-Referencias de la versión de captura integrada:
+Document capture package:
 
-* [Guía de integración Capture iOS 1.4.3](https://github.com/BlinkID/capture-ios/tree/v1.4.3)
-* [Notas de versión de Capture iOS 1.4.3](https://github.com/BlinkID/capture-ios/blob/v1.4.3/Release_notes.md)
-* [CaptureCore 1.4.3](https://github.com/BlinkID/capture-core-sp/tree/v1.4.3)
-* [CaptureUX 1.4.3](https://github.com/BlinkID/capture-ux-sp/tree/v1.4.3)
+* [BlinkID iOS package](https://github.com/microblink/blinkid-ios)
 
 ---
 
 ## Agregar licencias al proyecto
 
-Agregue los archivos de licencia proporcionados para la inicialización del SDK y la captura de documentos.
+Add the BlinkID Core license provided for the application's Bundle Identifier to the app target resources.
 
 ### Archivos requeridos
 
-* **com.become.document.key.txt**
+* **com.become.blinkid.key.txt**
 
-Este archivo debe estar incluido en los recursos del proyecto y en el target correspondiente.
+Enable target membership and ensure this file is included in **Copy Bundle Resources**. Keep its contents out of source control. A development app with a different Bundle Identifier requires its own valid license.
 
 <p align="center">
   <img src="https://github.com/Becomedigital/become_IOS_SDK/blob/master/IMG_4.png">
@@ -89,8 +85,7 @@ Agregue las siguientes URLs:
 ```text
 https://github.com/aws-amplify/amplify-swift
 https://github.com/aws-amplify/amplify-ui-swift-liveness
-https://github.com/BlinkID/capture-core-sp
-https://github.com/BlinkID/capture-ux-sp
+https://github.com/microblink/blinkid-ios
 ```
 
 ### 3. Configurar versiones
@@ -99,8 +94,17 @@ Para reproducir la combinación con la que fue generado el XCFramework, seleccio
 
 * **amplify-swift** → `2.53.3`
 * **amplify-ui-swift-liveness** → `1.4.4`
-* **capture-core-sp** → `1.4.3`
-* **capture-ux-sp** → `1.4.3`
+* **blinkid-ios** → `8002.0.2`
+
+Add the **BlinkIDUX** package product to the application target. Its package also supplies the **BlinkID** binary dependency. Use a Swift 6 compatible Xcode toolchain.
+
+The final application must embed and sign **BDIdentityVerification.framework**, **BlinkID.framework**, and **BlinkIDUX.framework**. Check the target's **Frameworks, Libraries, and Embedded Content** settings and verify that all three appear in the built app's `Frameworks` directory.
+
+When upgrading, remove the previous Capture Core/UX package dependencies and their embedded frameworks.
+
+### Document capture
+
+Automatic document capture includes framing, image quality guidance, and instructions for scanning the other side when required. If automatic capture does not finish, a manual capture button becomes available after 30 seconds by default. Manual photographs retain document recognition, and the user can retry an invalid capture.
 
 ---
 
@@ -202,6 +206,6 @@ Si su app gestiona eventos de segundo plano, implemente el método público indi
 
 ## Requisitos
 
-- iOS 17.0 o superior.
+- iOS 16.0 or later.
 - Las dependencias y licencias indicadas arriba.
 - Integrar el XCFramework con **Embed & Sign**.

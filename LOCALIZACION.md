@@ -15,7 +15,7 @@ Las claves que la app defina en `Localizable.strings` tienen prioridad para esas
 "text_start_btn" = "Comenzar";
 "text_title_button_retry" = "Volver a intentar";
 "text_title_document_error" = "Revisa las fotos de tu documento";
-"mbic_scan_the_front_side" = "Escanea el frente del documento";
+"text_btn_introduction_doc" = "Capturar documento";
 "amplify_ui_liveness_get_ready_begin_check" = "Iniciar prueba de vida";
 ```
 
@@ -41,15 +41,13 @@ Una clave compartida cambia en todos los lugares donde se utiliza.
 | Resultado final | `text_finish`, `text_sub_tittle_finish`, `terminate_text` |
 | Confirmar salida | `text_undo`, `text_cancel`, `text_tittle_undo`, `text_sub_tittle_undo`, `cancel_by_user` |
 
-## Captura Microblink y Face Liveness
+## BlinkID capture and Face Liveness
+
+BlinkIDUX provides its own localized capture guidance. The `mbic_*` entries retained in the template belong to the previous Capture UI and do not customize BlinkIDUX. Use the localization keys supplied by the pinned BlinkIDUX package for its capture interface. Become's introduction, preview, and error screens continue to use the keys listed above.
 
 `*` agrupa las claves con ese prefijo; copie el nombre completo desde la plantilla, nunca el asterisco.
 | Pantalla / uso | Claves |
 | --- | --- |
-| Microblink: frente/reverso | `mbic_scan_*`, `mbic_flip_document` |
-| Microblink: encuadre y calidad | `mbic_move_*`, `mbic_camera_angle_too_steep`, `mbic_document_too_close_to_edge`, `mbic_lightning_*`, `mbic_blur_detected`, `mbic_glare_detected`, `mbic_occluded`, `mbic_camer_orientation_*`, `mbic_torch_glare_tooltip_message` |
-| Microblink: ayuda y preparación | `mbic_onboarding_*`, `mbic_tutorial_*`, `mbic_need_help_tooltip` |
-| Microblink: cámara, red y botones | `mbic_camera_unavailable`, `mbic_camera_permission_error`, `mbic_camera_media_capture_error`, `mbic_camera_unable_to_resume_session`, `mbic_check_internet_connection`, `mbic_network_error`, `mbic_scanning_not_available`, `mbic_settings`, `mbic_done`, `mbic_cancel`, `mbic_back`, `mbic_next`, `mbic_ok`, `mbic_close` |
 | Face Liveness: preparación y fotosensibilidad | `amplify_ui_liveness_get_ready_*` |
 | Face Liveness: instrucciones de captura | `amplify_ui_liveness_challenge_*`, `amplify_ui_liveness_face_not_prepared_reason_*`, `amplify_ui_liveness_center_your_face_text` |
 | Face Liveness: permisos y cierre | `amplify_ui_liveness_camera_*`, `amplify_ui_liveness_close_button_a11y` |
