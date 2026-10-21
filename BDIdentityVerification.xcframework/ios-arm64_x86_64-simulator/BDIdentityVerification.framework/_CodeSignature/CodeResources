@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		WX37WBk4sj3lfZrQybxGklhp338=
+		hjU3HxSbSULFiPNil27Yuq2W3Ms=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		WX37WBk4sj3lfZrQybxGklhp338=
+		hjU3HxSbSULFiPNil27Yuq2W3Ms=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -104,7 +104,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4s6lZj9+QYd2HaEszewuKAXFFi4=
+			HwU4J10GJW7ebxBkkmnjLq06xWQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -113,7 +113,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TfluwQNIvpezDcmp7kpFThb+ZoA=
+			mkL6CKTG6XhJWrDD+e6d6amSZ7U=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -122,7 +122,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			V/2DZJ2UpPL+kLyvKXGYNlsS44g=
+			kq/hxVQ8UgiU8LR9zJL0ourvvZw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -237,7 +237,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Dvub51pLgtSLyQsBwLXXsXrY2eD+/HdhOdA12HWqXvY=
+			i5Gf/OiM3aFhlpeHgCYcJ3s8m/4LABtrAKBhC2pHqCs=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -265,7 +265,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Dvub51pLgtSLyQsBwLXXsXrY2eD+/HdhOdA12HWqXvY=
+			i5Gf/OiM3aFhlpeHgCYcJ3s8m/4LABtrAKBhC2pHqCs=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -307,7 +307,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a5EbEH3xOGUonKDkyb7QbTtrZm3HqWfg8BBs7sY5ulo=
+			FcxLBJm+lT0jp3llGnWzEDjZ6FMUmw6JTAzRHvTboSQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -316,7 +316,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8Z3fsyLgXbZjf7+0Hp3ehEelNHIlq7vaFhrfs44w300=
+			po9ujyGPc0jxq3TnK3+Ipu+9Gf2YxqUyVtn115/zIPs=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -325,7 +325,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HLJXBgHOwoBQ/r9cOc/j2L5iHwJ2vF5GT1WiEs6Vuv8=
+			HqiQwPeB96OkAw7O2boDiUwJqiRkB0aNcJI0hcPIC0c=
 			</data>
 			<key>optional</key>
 			<true/>
