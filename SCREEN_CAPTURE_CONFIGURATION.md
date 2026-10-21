@@ -1,6 +1,6 @@
 # Configuración de la protección contra capturas de pantalla en iOS
 
-Esta guía corresponde al `BDIdentityVerification.xcframework` incluido en este repositorio. El XCFramework se compiló a partir del commit `0d22bec693177a2da6853ab7339a1c5180b71761` con el esquema de producción `BDIdentityVerification_PROD` en configuración Release.
+Esta guía corresponde al `BDIdentityVerification.xcframework` incluido en este repositorio.
 
 ## Cambio de comportamiento
 
@@ -43,14 +43,3 @@ Omita el parámetro o indique `false` para usar el nuevo valor predeterminado. E
 4. En un dispositivo físico, compruebe las capturas de pantalla y la grabación durante la captura del documento, la prueba de vida, la cancelación y el regreso a la aplicación. Si la aplicación admite ambos modos, pruebe el valor predeterminado y el valor `true`.
 
 La aplicación integradora debe elegir esta configuración según sus requisitos de privacidad. El parámetro controla las pantallas de la SDK; no reemplaza las políticas de tratamiento de datos ni la protección general de la aplicación.
-
-## Verificación del artefacto
-
-La interfaz Swift pública de cada variante del XCFramework expone `preventScreenCapture` con valor predeterminado `false` en el inicializador de `BDIVConfig`. El framework incluye una variante para dispositivo iOS (`arm64`) y otra para simulador (`arm64` y `x86_64`), ambas con versión `1.2.3`. Las pruebas funcionales de captura de documentos y validación facial requieren una aplicación con licencia y un dispositivo físico.
-
-La versión del framework sigue siendo `1.2.3` aunque cambió el valor predeterminado. Al reemplazar una copia local, identifique este artefacto mediante los SHA-256 de sus ejecutables:
-
-| Variante | SHA-256 |
-| --- | --- |
-| Dispositivo iOS | `f66db7db53e414ab70ae27ce0673a9707077a8870d4010a37bd43b00bb100983` |
-| Simulador iOS | `215773bf965276609d0d6bb6b2cd374bbaf511c2c42185614c0cfcbe1b85c245` |

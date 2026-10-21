@@ -3,7 +3,7 @@
  Guía de implementación y claves por pantalla: LOCALIZACION.md.
  Copie solo las claves que necesite en el Localizable.strings de su app.
  Traduzca los valores por idioma; conserve los nombres y marcadores de formato.
- Para Microblink, configure customLocalizationFileName: "Localizable".
+ Incluya esta tabla en el target de la app; BDIVConfig no selecciona archivos de textos.
  Las claves omitidas mantienen el texto original de cada componente.
  Los bloques de compatibilidad no cambian las pantallas del flujo actual.
 */
