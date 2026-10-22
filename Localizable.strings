@@ -1,11 +1,9 @@
 /*
- Localizable.strings — Become iOS
- Guía de implementación y claves por pantalla: LOCALIZACION.md.
- Copie solo las claves que necesite en el Localizable.strings de su app.
- Traduzca los valores por idioma; conserve los nombres y marcadores de formato.
- Incluya esta tabla en el target de la app; BDIVConfig no selecciona archivos de textos.
- Las claves omitidas mantienen el texto original de cada componente.
- Los bloques de compatibilidad no cambian las pantallas del flujo actual.
+ Optional local resource reference, not an installation step.
+ Normal screen copy follows the contract; see LOCALIZACION.md for supported overrides.
+ Copy only intentional overrides: they take priority and can hide contract updates.
+ Some keys are compatibility entries that do not control the current screens.
+ Preserve key names and format placeholders; native component keys have their own scope.
 */
 
 // Errores de creación de identidad y resultados (ver ERRORES.md)
