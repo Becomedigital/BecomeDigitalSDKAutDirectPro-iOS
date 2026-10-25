@@ -4,7 +4,9 @@
 
 Become screen text is applied automatically from the contract. **Adding `Localizable.strings` or copying the template is not required to use the SDK or receive contract text updates.**
 
-This guide remains useful for intentional app overrides, native messages, and capture components. The [resource template](Localizable.strings) is a compatibility reference, not an installation step or a catalog of every phrase displayed by the current screens.
+Use contract configuration for normal Become flow text changes, including introduction, consent, country and document selection, capture introductions, review, and results. Keep those phrases out of app resource files when they should receive later contract updates. Missing contract entries retain the SDK defaults.
+
+Local resource customization primarily covers the internal interfaces of Microblink Capture UX and Amplify Face Liveness. It is not restricted to those providers: native loading/error labels and the supported Become screen overrides described below remain available for compatibility. The [resource template](Localizable.strings) is an optional reference, not an installation step or a catalog of every current screen phrase.
 
 ## When local resources are useful
 
@@ -13,7 +15,8 @@ This guide remains useful for intentional app overrides, native messages, and ca
 | Normal Become flow copy, titles, instructions, and actions | Contract configuration for each language. |
 | Intentionally replace a screen phrase from the app | A supported entry in the app target's `Localizable.strings`. |
 | Native labels such as initial loading and certain errors | The native resource key read by that label. |
-| Internal document capture and facial detector instructions | Resources supported by that native component and version. |
+| Microblink Capture UX scanning guidance | Supported `mbic_*` resources for the integrated Capture UX version. |
+| Amplify Face Liveness detector guidance | Supported `amplify_ui_liveness_*` resources for the integrated Amplify version. |
 
 An app override takes priority for its key and can hide later contract updates. If the whole template was previously copied into the app, remove entries that should follow the contract and retain only intentional overrides.
 
@@ -25,18 +28,18 @@ Current screens accept identifiers such as `intro.title`, `intro.cta`, `atdp.che
 
 Some historical aliases remain supported, including `text_tittle_general_intro` for `intro.title`, and snake-case `atdp_` aliases. Other template entries belong to replaced screens and do not control the current SwiftUI views. Prefer a supported screen-specific identifier.
 
-## Optional example
+## Optional native component example
 
-Add **only intentional overrides** to the app's `Localizable.strings`:
+Add **only the supported component entries you intend to customize** to the app's `Localizable.strings`:
 
 ```text
-"intro.cta" = "Start verification";
-"countrySelection.searchPlaceholder" = "Search issuing country…";
-"text_loader_init" = "Loading…";
-"identity_error_documentFront" = "Capture the front again, fully visible and in focus.";
+"mbic_flip_document" = "Turn the document over";
+"amplify_ui_liveness_challenge_connecting" = "Connecting…";
 ```
 
-The first two are screen keys; the others are native loading and error keys. Enable app target membership and create language variants such as `es.lproj/Localizable.strings` or `en.lproj/Localizable.strings` only for languages you customize. Rebuild the host app after local resource changes; rebuilding the XCFramework is unnecessary.
+These entries target the Capture UX and Amplify interfaces, respectively. They do not replace the Become document-capture introduction or facial introduction text. Enable app target membership and create language variants such as `es.lproj/Localizable.strings` or `en.lproj/Localizable.strings` only for languages you customize. Rebuild the host app after local resource changes; rebuilding the XCFramework is unnecessary.
+
+For an intentional Become override, use the supported screen identifier or native resource described above. Do not copy flow keys merely to configure the providers. A local override takes precedence only where the SDK reads that exact key.
 
 ## Native components
 
