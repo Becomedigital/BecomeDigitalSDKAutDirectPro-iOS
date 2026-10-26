@@ -115,7 +115,7 @@ The SDK displays the steps and document types available for the contract. Supply
 
 Complete frames are used for document uploads. Cropped, perspective-corrected images are used for preview; if no crop is available, the preview can show the complete frame. Full-frame uploads preserve the image bounds while applying JPEG encoding and size limits.
 
-The host selects `themeMode`. Contract presentation and screen text are applied automatically; `BDIVConfig` has no design or localization-table settings. Use contract configuration for normal flow text changes; no translation file is required. Local resources primarily customize supported Microblink Capture UX and Amplify Face Liveness instructions. The SDK also retains optional native loading/error and supported Become screen overrides, which can mask later contract updates; see [language and optional local text overrides](LOCALIZACION.md).
+The SDK applies the flow, appearance and text assigned to the contract. `BDIVConfig` does not configure flow copy or design. Local resources are optional for native component instructions and technical loading/network labels; see the [native text guide](LOCALIZACION.md).
 
 An animated loader remains visible until the first configured screen is ready. Its initial color uses the host's `AccentColor` or inherited tint. Document-only contracts do not require a facial result to complete.
 
