@@ -30,7 +30,15 @@ Add only the entries you intend to customize to the app target’s `Localizable.
 "amplify_ui_liveness_challenge_connecting" = "Connecting…";
 ```
 
-Capture UX uses supported app `Localizable` entries with a native fallback. Amplify reads the main app bundle at initialization and retains its native defaults for missing keys. The integrated Face Liveness version has no supported public API to inject contract text inside its iOS detector. SDK-owned facial introduction, feedback and review text still follows the contract.
+For Capture UX overrides, select the app bundle through its supported public API **before starting the Become flow**:
+
+```swift
+import CaptureUX
+
+MBICCaptureUISDK.shared().customResourcesBundle = .main
+```
+
+Capture UX then reads the selected bundle and falls back to its native localization for missing keys. Merely adding `mbic_*` entries without selecting that bundle does not guarantee that Capture UX reads them. No deprecated language or custom-localization-file setting is required. Amplify reads the main app bundle at initialization and retains its native defaults for missing keys. The integrated Face Liveness version has no supported public API to inject contract text inside its iOS detector. SDK-owned facial introduction, feedback and review text still follows the contract.
 
 Enable app target membership and create language variants such as `es.lproj/Localizable.strings` and `en.lproj/Localizable.strings`. See the [optional native key reference](Localizable.strings).
 
