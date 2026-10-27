@@ -107,6 +107,8 @@ final class ViewController: UIViewController, BDIVDelegate {
 | `nationalIdTypeChoices` | `[]` | Optional document subtype choices. |
 | `themeMode` | `.system` | `.light`, `.dark`, or the device's preferred appearance. |
 
+When final verification remains pending, the SDK keeps waiting while `performVerificationCheck` is enabled. Set a positive `pollingMaxAttempts` to bound the total number of checks and handle the resulting error callback. `pollingTimeout` applies to each request, not to the whole verification.
+
 For authentication, use `flow: .Authentication`, an existing nonempty `userId`, and `documenTypes: []` when documents are not required. Create a new configuration to change immutable parameters for another run.
 
 ### Documents and presentation
