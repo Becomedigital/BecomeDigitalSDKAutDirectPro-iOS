@@ -1,25 +1,21 @@
-# SwiftUI integration example
+# Ejemplo de integración con SwiftUI Legacy
 
-This app shows how to start the distributed iOS SDK from SwiftUI. `BecomeSwiftUIScreen` presents `BecomeSDKBridge`, which retains a UIKit view controller while the SDK is active and receives `BDIVDelegate` callbacks. The app also handles background URL session events and provides English, Spanish, and Latin American Spanish resources for the host screen and supported native components.
+Esta aplicación muestra cómo iniciar la SDK distribuida desde SwiftUI y recibir el resultado o la cancelación mediante `BDIVDelegate`. Incluye el manejo de las transferencias en segundo plano y recursos de localización en español, español de Latinoamérica e inglés.
 
-The repository contains no client credentials or capture license for this example. A contract with Become, credentials for that contract, and a license issued for your app identifier are required to complete a verification. Without them, the example builds but shows a missing configuration message when you try to start the SDK.
+## Preparar la aplicación
 
-## Prepare your local app
+1. Consulta los requisitos y dependencias de la [guía de instalación](../../README.md#installation-and-dependencies). Utiliza Xcode 27 o posterior e iOS 16 o posterior.
+2. Copia `App/Secrets.example.plist` como `App/Secrets.plist` y completa `clientId`, `clientSecret` y `contractId` con los valores de tu integración. El archivo local está excluido de Git.
+3. Agrega la licencia emitida para tu aplicación como `App/com.become.document.key.txt`. Utiliza una licencia válida para el identificador y ambiente de tu aplicación. Este archivo también está excluido de Git.
+4. Configura el identificador autorizado de tu aplicación. Si agregaste las credenciales o la licencia, utiliza `generate_project.rb` para incluir esos archivos en el proyecto; requiere la gema `xcodeproj`. La variable `BECOME_DEMO_BUNDLE_ID` permite indicar tu identificador al generarlo.
+5. Abre **`BecomeSwiftUIDemoLegacy.xcworkspace`**, selecciona tu equipo de firma y genera la aplicación para un iPhone físico. Ingresa el identificador del usuario y toca **Start onboarding**.
 
-1. Read the [installation guide](../../README.md#installation-and-dependencies) and use Xcode 27 or later with iOS 16 or later.
-2. Copy `App/Secrets.example.plist` to `App/Secrets.plist`. Enter the `clientId`, `clientSecret`, and `contractId` supplied for your integration. The real file is ignored by Git.
-3. Place the capture license supplied for your app at `App/com.become.document.key.txt`. This file is also ignored by Git. Use a license valid for the app identifier and environment you will test.
-4. Set your authorized app identifier and regenerate the project:
+El workspace conserva el proyecto `BecomeSwiftUIDemo.xcodeproj` y las dependencias de la [guía de instalación](../../README.md#installation-and-dependencies). Utiliza directamente el `BDIdentityVerification.xcframework` incluido en el repositorio. El generador conserva el nombre del workspace con el sufijo `Legacy`.
 
-   ```bash
-   BECOME_DEMO_BUNDLE_ID=com.yourcompany.yourapp ruby generate_project.rb
-   ```
+El ejemplo puede compilar sin credenciales ni licencia; para completar una verificación requiere los valores válidos de tu integración. Si faltan, muestra un mensaje al intentar iniciar. No compartas las credenciales, la licencia ni una aplicación que las incluya.
 
-   The generator requires the `xcodeproj` Ruby gem. It includes the two private files as bundle resources only when they exist. Regenerate the project after adding or removing either file.
-5. Open `BecomeSwiftUIDemo.xcodeproj`, select your signing team, and build for a physical iPhone. The app targets iOS 16 or later. Enter a user ID and tap **Start onboarding**.
+## Idioma y diagnóstico
 
-The repository's `BDIdentityVerification.xcframework` is referenced directly; there is no second copy in this example. The project pins the Swift packages to the versions in the [installation guide](../../README.md#installation-and-dependencies). If you change the generated project locally, review its resource membership before sharing it; never commit `Secrets.plist`, the license, or a built app.
+El ejemplo activa `BDIVConfig.debugLogsEnabled` para facilitar el soporte. Consulta la [guía de diagnóstico](../../LOGGING.md) y desactiva la opción cuando termines las pruebas. La [guía de localización](../../LOCALIZACION.md) describe los textos y claves admitidos para personalizar tu aplicación.
 
-`BDIVConfig.debugLogsEnabled` is enabled for support diagnostics. Logs can contain personal information from a test session. The [localization guide](../../LOCALIZACION.md) explains which text is supplied by the contract and which native text can be translated in the app. The [logging guide](../../LOGGING.md) describes the supported diagnostics.
-
-Document capture and facial verification require a physical device and valid integration details. A successful simulator build confirms compilation and resource packaging only.
+La captura de documentos y la validación facial requieren un dispositivo físico y una licencia válida para tu aplicación.

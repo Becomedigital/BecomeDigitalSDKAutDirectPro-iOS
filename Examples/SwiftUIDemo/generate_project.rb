@@ -70,3 +70,7 @@ target.build_configurations.each do |configuration|
   })
 end
 project.save
+
+# Conserva un nombre de apertura que identifique esta integración Legacy.
+workspace = Xcodeproj::Workspace.new('BecomeSwiftUIDemo.xcodeproj')
+workspace.save_as(File.join(root, 'BecomeSwiftUIDemoLegacy.xcworkspace'))
