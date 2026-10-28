@@ -107,6 +107,8 @@ final class ViewController: UIViewController, BDIVDelegate {
 | `nationalIdTypeChoices` | `[]` | Optional document subtype choices. |
 | `themeMode` | `.system` | `.light`, `.dark`, or the device's preferred appearance. |
 
+When final verification remains pending, the SDK keeps waiting while `performVerificationCheck` is enabled. Set a positive `pollingMaxAttempts` to bound the total number of checks and handle the resulting error callback. `pollingTimeout` applies to each request, not to the whole verification.
+
 For authentication, use `flow: .Authentication`, an existing nonempty `userId`, and `documenTypes: []` when documents are not required. Create a new configuration to change immutable parameters for another run.
 
 ### Documents and presentation
@@ -115,7 +117,7 @@ The SDK displays the steps and document types available for the contract. Supply
 
 Complete frames are used for document uploads. Cropped, perspective-corrected images are used for preview; if no crop is available, the preview can show the complete frame. Full-frame uploads preserve the image bounds while applying JPEG encoding and size limits.
 
-The host selects `themeMode`. Colors, logos, typography, component appearance, and layout are assigned to the contract and are not configurable through `BDIVConfig`. Supported per-key text overrides use the app's `Localizable.strings`; see [localization](LOCALIZACION.md).
+The SDK applies the flow, appearance and text assigned to the contract. `BDIVConfig` does not configure flow copy or design. Local resources are optional for native component instructions and technical loading/network labels; see the [native text guide](LOCALIZACION.md).
 
 An animated loader remains visible until the first configured screen is ready. Its initial color uses the host's `AccentColor` or inherited tint. Document-only contracts do not require a facial result to complete.
 
@@ -133,7 +135,7 @@ The response object provides `toJson()`. Do not expect a response dictionary. `S
 
 ## Additional guides
 
-- [Text overrides and language fallback](LOCALIZACION.md)
+- [Language and optional local text overrides](LOCALIZACION.md)
 - [Optional client diagnostics](LOGGING.md)
 - [Screen-capture protection](SCREEN_CAPTURE_CONFIGURATION.md)
 - [Background session events](CARGAS_SEGUNDO_PLANO.md)
