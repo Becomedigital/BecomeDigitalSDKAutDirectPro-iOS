@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Necesitamos acceso a la cámara para verificar tu identidad.";
+"NSLocationWhenInUseUsageDescription" = "La ubicación puede utilizarse cuando el contrato de verificación lo requiera.";

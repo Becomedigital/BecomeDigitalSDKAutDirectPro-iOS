@@ -1,6 +1,8 @@
 # Become iOS SDK — Capture legacy
 
-This guide matches the `BDIdentityVerification.xcframework` distributed on `feature/mobile-contract-parity`. It provides SwiftUI verification screens with onboarding and authentication, typed results, contract-controlled appearance, and Microblink Capture legacy document capture.
+This guide matches the supplied `BDIdentityVerification.xcframework`. It provides SwiftUI verification screens with onboarding and authentication, typed results, contract-controlled appearance, and Microblink Capture legacy document capture.
+
+For a complete host app, see the [SwiftUI integration example](Examples/SwiftUIDemo/README.md). It shows the button, UIKit delegate bridge, SDK configuration, callbacks, scene lifecycle, and localizable resources. The example requires credentials and a capture license issued for your own contract and app identifier before a verification can run.
 
 ## Validated versions
 
