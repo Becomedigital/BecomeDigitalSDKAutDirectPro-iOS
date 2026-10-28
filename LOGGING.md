@@ -1,6 +1,6 @@
-# Diagnóstico — iOS
+# Diagnóstico para soporte en iOS
 
-Para una prueba, active el parámetro al crear la configuración:
+Activa `debugLogsEnabled` cuando necesites recopilar información para revisar una incidencia de integración. Su valor predeterminado es `false`.
 
 ```swift
 let config = BDIVConfig(
@@ -11,10 +11,10 @@ let config = BDIVConfig(
     userId: userId,
     debugLogsEnabled: true
 )
-identityVerification = BecomeDigitalSDK(bdivConfig: config, delegate: self)
-identityVerification?.startVerification()
 ```
 
-El valor predeterminado es `false`; vuelva a desactivarlo al terminar. En Xcode o Console, incluya mensajes **Debug** y filtre por `BecomeSDK`.
+Inicia la SDK con esa configuración como se indica en la [guía de integración](README.md#iniciar-una-verificación). En la consola de Xcode o en Console, incluye los mensajes de nivel **Debug** y filtra por `BecomeSDK`.
 
-Para solicitar soporte, indique la versión de la SDK, el dispositivo, el paso visible y las líneas relevantes de `BecomeSDK`. Revise cualquier registro antes de compartirlo para excluir información personal.
+Para soporte, indica la versión de la SDK, el dispositivo, la versión de iOS y el paso donde ocurrió el problema. Comparte solo los mensajes relevantes y revisa su contenido antes de enviarlos. No incluyas credenciales, licencias, imágenes ni datos personales.
+
+Al terminar, crea la siguiente configuración con `debugLogsEnabled: false` o sin indicar el parámetro.
