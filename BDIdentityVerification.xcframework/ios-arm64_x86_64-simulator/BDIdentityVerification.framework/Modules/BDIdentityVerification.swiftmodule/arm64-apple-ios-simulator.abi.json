@@ -3522,6 +3522,184 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(jwt:contractId:documenTypes:userId:performVerificationCheck:flow:pollingMaxAttempts:pollingTimeout:debugLogsEnabled:preventScreenCapture:country:state:nationalIdType:nationalIdTypeChoices:documentNumber:themeMode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BDIVConfig",
+                "printedName": "BDIdentityVerification.BDIVConfig",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[BDIdentityVerification.DocumentType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DocumentType",
+                    "printedName": "BDIdentityVerification.DocumentType",
+                    "usr": "s:22BDIdentityVerification12DocumentTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Flow",
+                "printedName": "BDIdentityVerification.BDIVConfig.Flow",
+                "hasDefaultArg": true,
+                "usr": "s:22BDIdentityVerification10BDIVConfigV4FlowO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "hasDefaultArg": true,
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ThemeMode",
+                "printedName": "BDIdentityVerification.BDIVConfig.ThemeMode",
+                "hasDefaultArg": true,
+                "usr": "s:22BDIdentityVerification10BDIVConfigV9ThemeModeO"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:22BDIdentityVerification10BDIVConfigV3jwt10contractId12documenTypes04userF007performB5Check4flow18pollingMaxAttempts0M7Timeout16debugLogsEnabled20preventScreenCapture7country5state08nationalF4Type0yfZ7Choices14documentNumber9themeModeACSS_SSSayAA08DocumentZ0OGSSSbAC4FlowOSiSdS2bSSSgA2YSaySSGAyC9ThemeModeOtcfc",
+            "mangledName": "$s22BDIdentityVerification10BDIVConfigV3jwt10contractId12documenTypes04userF007performB5Check4flow18pollingMaxAttempts0M7Timeout16debugLogsEnabled20preventScreenCapture7country5state08nationalF4Type0yfZ7Choices14documentNumber9themeModeACSS_SSSayAA08DocumentZ0OGSSSbAC4FlowOSiSdS2bSSSgA2YSaySSGAyC9ThemeModeOtcfc",
+            "moduleName": "BDIdentityVerification",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(clienId:clientSecret:contractId:documenTypes:userId:performVerificationCheck:flow:pollingMaxAttempts:pollingTimeout:debugLogsEnabled:preventScreenCapture:country:state:nationalIdType:nationalIdTypeChoices:documentNumber:themeMode:)",
             "children": [
               {
@@ -3697,8 +3875,10 @@
             "usr": "s:22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE007performB5Check4flow18pollingMaxAttempts0O7Timeout16debugLogsEnabled20preventScreenCapture7country5state08nationalE4Type08nationalE11TypeChoices14documentNumber9themeModeACSS_S2SSayAA12DocumentTypeOGSSSbAC4FlowOSiSdS2bSSSgA2ZSaySSGAzC9ThemeModeOtcfc",
             "mangledName": "$s22BDIdentityVerification10BDIVConfigV7clienId12clientSecret08contractE012documenTypes04userE007performB5Check4flow18pollingMaxAttempts0O7Timeout16debugLogsEnabled20preventScreenCapture7country5state08nationalE4Type08nationalE11TypeChoices14documentNumber9themeModeACSS_S2SSayAA12DocumentTypeOGSSSbAC4FlowOSiSdS2bSSSgA2ZSaySSGAzC9ThemeModeOtcfc",
             "moduleName": "BDIdentityVerification",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
             "init_kind": "Designated"
@@ -3719,9 +3899,11 @@
             "usr": "s:22BDIdentityVerification10BDIVConfigV7clienIdSSvp",
             "mangledName": "$s22BDIdentityVerification10BDIVConfigV7clienIdSSvp",
             "moduleName": "BDIdentityVerification",
+            "deprecated": true,
             "declAttributes": [
               "HasStorage",
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
             "isLet": true,
@@ -3764,9 +3946,11 @@
             "usr": "s:22BDIdentityVerification10BDIVConfigV12clientSecretSSvp",
             "mangledName": "$s22BDIdentityVerification10BDIVConfigV12clientSecretSSvp",
             "moduleName": "BDIdentityVerification",
+            "deprecated": true,
             "declAttributes": [
               "HasStorage",
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
             "isLet": true,
@@ -3790,6 +3974,162 @@
                 "moduleName": "BDIdentityVerification",
                 "implicit": true,
                 "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "jwt",
+            "printedName": "jwt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22BDIdentityVerification10BDIVConfigV3jwtSSvp",
+            "mangledName": "$s22BDIdentityVerification10BDIVConfigV3jwtSSvp",
+            "moduleName": "BDIdentityVerification",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV3jwtSSvg",
+                "mangledName": "$s22BDIdentityVerification10BDIVConfigV3jwtSSvg",
+                "moduleName": "BDIdentityVerification",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "verificationResultsJwt",
+            "printedName": "verificationResultsJwt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvp",
+            "mangledName": "$s22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvp",
+            "moduleName": "BDIdentityVerification",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvg",
+                "mangledName": "$s22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvg",
+                "moduleName": "BDIdentityVerification",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvs",
+                "mangledName": "$s22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvs",
+                "moduleName": "BDIdentityVerification",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvM",
+                "mangledName": "$s22BDIdentityVerification10BDIVConfigV22verificationResultsJwtSSSgvM",
+                "moduleName": "BDIdentityVerification",
+                "implicit": true,
+                "accessorKind": "_modify"
               }
             ]
           },
@@ -7062,8 +7402,8 @@
       },
       {
         "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "BDIdentityVerification",
         "declAttributes": [
@@ -14716,112 +15056,119 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11468,
+      "offset": 11463,
+      "length": 13,
+      "value": "\"missing_jwt\""
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
+      "kind": "StringLiteral",
+      "offset": 11504,
       "length": 19,
       "value": "\"missing_client_id\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11511,
+      "offset": 11547,
       "length": 23,
       "value": "\"missing_client_secret\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11562,
+      "offset": 11598,
       "length": 18,
       "value": "\"missing_contract\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11596,
+      "offset": 11632,
       "length": 14,
       "value": "\"missing_user\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11635,
+      "offset": 11671,
       "length": 24,
       "value": "\"missing_document_types\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11686,
+      "offset": 11722,
       "length": 17,
       "value": "\"license_missing\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11722,
+      "offset": 11758,
       "length": 17,
       "value": "\"license_invalid\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 11755,
+      "offset": 11791,
       "length": 14,
       "value": "\"license_read\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13184,
+      "offset": 13220,
       "length": 17,
       "value": "\"network_failure\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13217,
+      "offset": 13253,
       "length": 14,
       "value": "\"http_failure\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13251,
+      "offset": 13287,
       "length": 18,
       "value": "\"invalid_response\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13294,
+      "offset": 13330,
       "length": 15,
       "value": "\"missing_image\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13331,
+      "offset": 13367,
       "length": 20,
       "value": "\"preparation_failed\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13423,
+      "offset": 13459,
       "length": 17,
       "value": "\"below_threshold\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13463,
+      "offset": 13499,
       "length": 21,
       "value": "\"validation_rejected\""
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Presentation\/Utils\/Logger.swift",
       "kind": "StringLiteral",
-      "offset": 13510,
+      "offset": 13546,
       "length": 24,
       "value": "\"validation_unavailable\""
     },
@@ -15129,49 +15476,91 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 2358,
+      "offset": 2278,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 2448,
+      "offset": 2368,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 2498,
+      "offset": 2418,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 2542,
+      "offset": 2462,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 2594,
+      "offset": 2514,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "Array",
-      "offset": 2776,
+      "offset": 2696,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4815,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4905,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4955,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4999,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5051,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
+      "kind": "Array",
+      "offset": 5233,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/Model\/BDIVConfig.swift",
       "kind": "Array",
-      "offset": 5898,
+      "offset": 9757,
       "length": 297,
       "value": "[\"AL\", \"AK\", \"AZ\", \"AR\", \"CA\", \"CO\", \"CT\", \"DE\", \"FL\", \"GA\", \"HI\", \"ID\", \"IL\", \"IN\", \"IA\", \"KS\", \"KY\", \"LA\", \"ME\", \"MD\", \"MA\", \"MI\", \"MN\", \"MS\", \"MO\", \"MT\", \"NE\", \"NV\", \"NH\", \"NJ\", \"NM\", \"NY\", \"NC\", \"ND\", \"OH\", \"OK\", \"OR\", \"PA\", \"RI\", \"SC\", \"SD\", \"TN\", \"TX\", \"UT\", \"VT\", \"VA\", \"WA\", \"WV\", \"WI\", \"WY\", \"DC\"]"
     },
@@ -15766,14 +16155,28 @@
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/API\/RestServices.swift",
       "kind": "IntegerLiteral",
-      "offset": 16608,
+      "offset": 17739,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/API\/RestServices.swift",
       "kind": "BooleanLiteral",
-      "offset": 16668,
+      "offset": 17799,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/API\/RestServices.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18479,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/iOS_become_sdk_legacy\/sdk\/BDIdentityVerification\/Data\/API\/RestServices.swift",
+      "kind": "BooleanLiteral",
+      "offset": 18539,
       "length": 4,
       "value": "true"
     },
@@ -15848,420 +16251,420 @@
       "value": "0"
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 640,
       "length": 18,
       "value": "\"colorPrimaryBlue\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 786,
       "length": 11,
       "value": "\"grayLigth\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 923,
       "length": 10,
       "value": "\"grayText\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1069,
       "length": 15,
       "value": "\"grayTextLight\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1337,
       "length": 21,
       "value": "\"CapturePhoto150x150\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1504,
       "length": 20,
       "value": "\"CaptureStop150x150\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1672,
       "length": 21,
       "value": "\"CaptureVideo150x150\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1837,
       "length": 19,
       "value": "\"FlipCamera150x150\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2002,
       "length": 20,
       "value": "\"MovieSelector72x72\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2168,
       "length": 20,
       "value": "\"PhotoSelector72x72\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2314,
       "length": 10,
       "value": "\"arrownex\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2469,
       "length": 20,
       "value": "\"back_camera613x613\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2638,
       "length": 22,
       "value": "\"back_document557x868\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2799,
       "length": 17,
       "value": "\"back_icon106x75\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2962,
       "length": 21,
       "value": "\"back_icon_dark34x28\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3131,
       "length": 22,
       "value": "\"back_icon_white35x25\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3296,
       "length": 19,
       "value": "\"become_img865x266\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3462,
       "length": 21,
       "value": "\"border_image405x405\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3624,
       "length": 18,
       "value": "\"camera_icon29x26\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3772,
       "length": 12,
       "value": "\"capturebtn\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3927,
       "length": 20,
       "value": "\"close__icon_w78x78\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4086,
       "length": 17,
       "value": "\"close_list78x78\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4245,
       "length": 19,
       "value": "\"dni_icon_btn50x50\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4423,
       "length": 27,
       "value": "\"document_reference160x251\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4618,
       "length": 32,
       "value": "\"document_reference_back159x251\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4787,
       "length": 16,
       "value": "\"down_icon20x11\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 4951,
       "length": 22,
       "value": "\"driver_icon_btn49x49\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5099,
       "length": 13,
       "value": "\"error_image\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5249,
       "length": 16,
       "value": "\"face_reference\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5413,
       "length": 22,
       "value": "\"finger_capture_error\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5563,
       "length": 14,
       "value": "\"finger_image\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5718,
       "length": 18,
       "value": "\"galery_icon32x31\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 5868,
       "length": 13,
       "value": "\"icon865x266\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6022,
       "length": 18,
       "value": "\"icon_become17x20\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6182,
       "length": 19,
       "value": "\"icon_cancel_black\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6351,
       "length": 23,
       "value": "\"icon_d_license249x207\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6529,
       "length": 26,
       "value": "\"icon_d_license249x207_en\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6694,
       "length": 17,
       "value": "\"icon_dni272x208\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 6855,
       "length": 20,
       "value": "\"icon_dni272x208_en\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7036,
       "length": 28,
       "value": "\"icon_identification311x182\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7213,
       "length": 22,
       "value": "\"icon_passport167x205\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7389,
       "length": 25,
       "value": "\"icon_passport167x205_en\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7551,
       "length": 16,
       "value": "\"log_out339x337\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7719,
       "length": 24,
       "value": "\"passport_icon_btn49x49\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 7902,
       "length": 27,
       "value": "\"passport_reference251x291\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 8103,
       "length": 35,
       "value": "\"reference_capture_document135x227\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 8312,
       "length": 35,
       "value": "\"reference_capture_passport227x265\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 8515,
       "length": 32,
       "value": "\"reference_document_back134x227\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 8688,
       "length": 18,
       "value": "\"reload_icon17x19\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 8858,
       "length": 24,
       "value": "\"reload_icon_white25x26\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9011,
       "length": 12,
       "value": "\"selfie_cap\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9154,
       "length": 13,
       "value": "\"selfie_mask\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9310,
       "length": 19,
       "value": "\"selfie_sunglasses\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9472,
       "length": 19,
       "value": "\"start_bar1300x127\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9639,
       "length": 22,
       "value": "\"start_bar1300x127_en\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9821,
       "length": 28,
       "value": "\"succes_upload_image333x369\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 9986,
       "length": 16,
       "value": "\"undo_icon35x25\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 10155,
       "length": 25,
       "value": "\"undraw_finish-line_auqi\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 10326,
       "length": 21,
       "value": "\"undraw_warning_qn4r\""
     },
     {
-      "filePath": "\/tmp\/become-selfie-wire-20261026\/DerivedData-Simulator\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/valdecillo\/Development\/Become\/.become_runtime\/jwt-operation-tokens-20261029\/ios-legacy\/DerivedData\/Build\/Intermediates.noindex\/ArchiveIntermediates\/BDIdentityVerification_PROD\/IntermediateBuildFilesPath\/BDIdentityVerification.build\/Release-iphonesimulator\/BDIdentityVerification.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 10490,
       "length": 19,

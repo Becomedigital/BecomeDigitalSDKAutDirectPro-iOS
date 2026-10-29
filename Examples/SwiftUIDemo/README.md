@@ -4,6 +4,8 @@ Este proyecto muestra cómo iniciar la SDK de iOS distribuida desde SwiftUI. `Be
 
 El repositorio no incluye credenciales de cliente ni licencia de captura para este ejemplo. Para completar una verificación necesitas un contrato con Become, las credenciales de ese contrato y una licencia emitida para el identificador de tu aplicación. Sin estos datos, el ejemplo compila, pero muestra un aviso de configuración faltante cuando intentas iniciar la SDK.
 
+Este ejemplo conserva la firma compatible que recibe `clienId` y `clientSecret`, marcada como deprecada. Para una integración nueva, utiliza la [firma con JWT](../../README.md#iniciar-una-verificación). Ambas están disponibles en el paquete incluido. La [guía de autenticación](../../AUTENTICACION.md) explica cómo asignar los JWT de creación y consulta al migrar.
+
 ## Preparar la aplicación local
 
 1. Lee la [guía de instalación](../../INSTALACION.md). Utiliza Xcode 27 o posterior e iOS 16 o posterior.

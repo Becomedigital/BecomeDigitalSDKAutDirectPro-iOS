@@ -6,13 +6,14 @@
 | --- | --- |
 | SDK de Become incluida | 1.2.3 |
 | Sistema operativo | iOS 16.0 o posterior |
+| Destinos incluidos | iPhone físico (`arm64`) y simuladores en Mac con Apple Silicon (`arm64`) o Intel (`x86_64`) |
 | Xcode | 27.0 o posterior compatible |
 | Amplify Swift | 2.53.3 |
 | Amplify UI Swift Liveness | 1.4.4 |
 | CaptureCore y CaptureUX | 1.4.3 |
 | Licencia de captura | Emitida para el identificador de tu aplicación |
 
-Necesitas las credenciales y el identificador de contrato entregados por Become. Esta entrega está preparada para producción. Realiza las pruebas de cámara, documentos y rostro en un dispositivo físico; el paquete también incluye compatibilidad con simuladores para integrar las pantallas.
+Necesitas un JWT vigente y el identificador del contrato. La firma anterior con credenciales continúa disponible para integraciones existentes y está marcada como deprecada; consulta la [guía de inicialización](README.md#iniciar-una-verificación). Esta entrega está preparada para producción. Realiza las pruebas de cámara, documentos y rostro en un dispositivo físico; el paquete también incluye compatibilidad con simuladores para integrar las pantallas.
 
 ## Instalación
 

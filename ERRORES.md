@@ -22,7 +22,9 @@ La SDK presenta las opciones de revisión y reintento disponibles para el usuari
 
 | Situación | Qué revisar |
 | --- | --- |
-| No inicia la verificación | Credenciales e identificador de contrato no vacíos. En autenticación, un `userId` existente. |
+| No inicia la verificación | JWT vigente sin el prefijo `Bearer` e identificador de contrato no vacío. En autenticación, un `userId` existente. Para la firma deprecada, revisa las credenciales. |
+| El token es rechazado | Obtén otro JWT desde el backend de tu aplicación y crea una nueva configuración para reintentar. |
+| Creación correcta y HTTP 403 al consultar | Comprueba los permisos por operación: `jwt` para creación y `verificationResultsJwt` para consulta. No basta con cambiar el token principal a `verification:get`. Revisa también vigencia, ambiente y contrato; consulta la [guía de autenticación](AUTENTICACION.md#si-se-crea-la-verificación-pero-la-consulta-devuelve-http-403). |
 | No se abre la cámara | Dispositivo físico, descripción `NSCameraUsageDescription` y permiso de cámara concedido. |
 | No se habilita la captura de documento | Archivo `com.become.document.key.txt`, pertenencia al destino y coincidencia del identificador de aplicación con la licencia. |
 | Xcode indica que falta un módulo | Versiones de paquetes, Xcode y configuración **Embed & Sign** indicados en [Instalación](INSTALACION.md#instalación). |

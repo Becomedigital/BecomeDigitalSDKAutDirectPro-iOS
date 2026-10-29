@@ -2,7 +2,7 @@
 
 Integra la verificación de identidad de Become en tu aplicación. La SDK presenta las pantallas de captura y devuelve el resultado mediante objetos que tu aplicación puede consultar.
 
-El [proyecto de ejemplo con SwiftUI](Examples/SwiftUIDemo/README.md) muestra una integración completa desde la pantalla de la aplicación hasta la configuración y las respuestas de la SDK. Para ejecutar una verificación necesitas credenciales y una licencia de captura emitidas para tu contrato y el identificador de tu aplicación.
+El [proyecto de ejemplo con SwiftUI](Examples/SwiftUIDemo/README.md) muestra una integración completa desde la pantalla de la aplicación hasta la configuración y las respuestas de la SDK. Para ejecutar una verificación necesitas un JWT vigente, un contrato y una licencia de captura emitida para el identificador de tu aplicación.
 
 Puedes iniciar dos flujos:
 
@@ -25,7 +25,7 @@ Los pasos, documentos admitidos, apariencia y textos de la verificación corresp
 
 ## Antes de comenzar
 
-Necesitas una aplicación para iOS 16.0 o posterior, las credenciales de tu integración, el identificador del contrato y la licencia de captura correspondiente a tu aplicación. Sigue la [guía de instalación](INSTALACION.md) para agregar la SDK, sus dependencias y permisos.
+Necesitas una aplicación para iOS 16.0 o posterior, un JWT vigente, el identificador del contrato y la licencia de captura correspondiente a tu aplicación. Sigue la [guía de instalación](INSTALACION.md) para agregar la SDK, sus dependencias y permisos.
 
 ## Iniciar una verificación
 
@@ -38,16 +38,16 @@ import BDIdentityVerification
 final class VerificacionViewController: UIViewController, BDIVDelegate {
     private var verificacion: BecomeDigitalSDK?
 
-    func iniciarOnboarding() {
-        let config = BDIVConfig(
-            clienId: "TU_CLIENT_ID",
-            clientSecret: "TU_CLIENT_SECRET",
+    func iniciarOnboarding(jwt: String, resultsJwt: String) {
+        var config = BDIVConfig(
+            jwt: jwt,
             contractId: "TU_CONTRACT_ID",
             documenTypes: [.DNI, .PASSPORT, .DRIVERLICENSE],
             userId: "TU_USER_ID",
             flow: .Onboarding,
             themeMode: .system
         )
+        config.verificationResultsJwt = resultsJwt
         verificacion = BecomeDigitalSDK(bdivConfig: config, delegate: self)
         verificacion?.startVerification()
     }
@@ -78,7 +78,28 @@ final class VerificacionViewController: UIViewController, BDIVDelegate {
 }
 ```
 
-Utiliza los identificadores `clienId`, `documenTypes` y `SUCCES` exactamente como aparecen en los ejemplos.
+Obtén desde tu backend un JWT de creación (`verification:create`) para `jwt` y otro de consulta (`verification:get`) para `verificationResultsJwt`. Asigna ambos antes de iniciar la verificación. Consulta los [ejemplos de migración y el diagnóstico de HTTP 403](AUTENTICACION.md).
+
+Entrega únicamente los valores de los tokens, sin el prefijo `Bearer`. Tu aplicación se encarga de obtenerlos y renovarlos; la SDK no los renueva automáticamente. Para reintentar con tokens vigentes, crea otra configuración y otra instancia de la SDK.
+
+Utiliza los identificadores `documenTypes` y `SUCCES` exactamente como aparecen en los ejemplos.
+
+### Integraciones existentes con credenciales
+
+La firma que recibe `clienId` y `clientSecret` continúa disponible para las aplicaciones existentes, pero está marcada como **deprecada**. Migra a la firma con `jwt` para nuevas integraciones. Conserva la escritura original de `clienId` mientras utilices la firma anterior:
+
+```swift
+let configCompatible = BDIVConfig(
+    clienId: "TU_CLIENT_ID",
+    clientSecret: "TU_CLIENT_SECRET",
+    contractId: "TU_CONTRACT_ID",
+    documenTypes: [.DNI, .PASSPORT, .DRIVERLICENSE],
+    userId: "TU_USER_ID",
+    flow: .Onboarding
+)
+```
+
+Las dos firmas conservan las mismas opciones de flujo, documentos, apariencia, diagnóstico y espera del resultado. La firma con JWT no requiere `clienId` ni `clientSecret`. No agregues secretos de cliente al código de una nueva integración.
 
 ### Autenticar a un usuario existente
 
@@ -90,7 +111,10 @@ Define los parámetros de `BDIVConfig` antes de iniciar la verificación.
 
 | Parámetro | Valor predeterminado | Uso |
 | --- | --- | --- |
-| `clienId`, `clientSecret`, `contractId` | Obligatorios | Credenciales de tu integración e identificador del contrato. No deben estar vacíos. |
+| `jwt` | Obligatorio en la firma actual | JWT vigente obtenido por tu aplicación, sin el prefijo `Bearer`. |
+| `verificationResultsJwt` | `nil` | JWT para consultar el resultado de onboarding. Asígnalo antes de iniciar; si se omite, se conserva el uso del token principal. No cambia la firma deprecada. |
+| `contractId` | Obligatorio | Identificador del contrato. No debe estar vacío. |
+| `clienId`, `clientSecret` | Solo firma deprecada | Credenciales de integraciones existentes. No se utilizan en la firma con JWT. |
 | `userId` | Argumento obligatorio | Identificador del usuario. En onboarding puede ser una cadena vacía; en autenticación debe identificar a un usuario existente. |
 | `documenTypes` | Argumento obligatorio | Tipos de documento: `.DNI`, `.PASSPORT` y `.DRIVERLICENSE`. Un arreglo vacío utiliza los disponibles en el contrato. |
 | `flow` | `.Onboarding` | Flujo que deseas iniciar: `.Onboarding` o `.Authentication`. |
@@ -106,7 +130,7 @@ Define los parámetros de `BDIVConfig` antes de iniciar la verificación.
 | `documentNumber` | `nil` | Número de documento precargado. |
 | `themeMode` | `.system` | Apariencia `.light`, `.dark` o la preferencia del dispositivo con `.system`. |
 
-Los valores de la configuración quedan fijos para esa instancia. Crea otra configuración para iniciar una verificación con parámetros diferentes.
+Asigna `verificationResultsJwt` antes de crear la instancia de la SDK. Los demás valores de la configuración quedan fijos para esa instancia. Crea otra configuración para iniciar una verificación con parámetros diferentes.
 
 ### Espera del resultado
 
@@ -149,6 +173,7 @@ El [proyecto de ejemplo](Examples/SwiftUIDemo/README.md) incluye el puente entre
 ## Guías complementarias
 
 - [Instalación, dependencias, licencia y permisos](INSTALACION.md)
+- [Inicialización con JWT y firma deprecada](AUTENTICACION.md)
 - [Resultados, errores y cancelación](ERRORES.md)
 - [Localización y claves disponibles](LOCALIZACION.md)
 - [Diagnóstico para soporte](LOGGING.md)

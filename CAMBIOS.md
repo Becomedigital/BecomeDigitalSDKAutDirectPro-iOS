@@ -4,6 +4,9 @@ Estos son los aspectos de funcionamiento público que debes revisar al incorpora
 
 | Aspecto | Comportamiento y acción de integración |
 | --- | --- |
+| Inicialización | Utiliza `BDIVConfig(jwt:contractId:documenTypes:userId:)` con un JWT vigente obtenido por tu aplicación. La firma con `clienId` y `clientSecret` sigue disponible y está marcada como deprecada. |
+| Consulta del resultado | Permite asignar `verificationResultsJwt` para usar un JWT de consulta diferente al de creación. Consulta la [guía de autenticación](AUTENTICACION.md). |
+| Compatibilidad de integración | El paquete incluye iPhone físico y simuladores en Mac con Apple Silicon o Intel. Las capturas de cámara y rostro se comprueban en un dispositivo físico. |
 | Flujos | Se mantienen **Onboarding** y **Authentication**. Para autenticar a un usuario existente, selecciona `flow: .Authentication` e indica su `userId`. |
 | Pasos y documentos | Se muestran los pasos y tipos de documento disponibles para el contrato. Un único tipo también se presenta para confirmación. |
 | Apariencia y textos | Se utilizan los asociados al contrato. El modo claro, oscuro o del sistema se elige con `themeMode`. |
