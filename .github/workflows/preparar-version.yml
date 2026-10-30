@@ -30,7 +30,7 @@ concurrency:
 jobs:
   preparar:
     if: github.ref == 'refs/heads/main'
-    runs-on: ${{ endsWith(github.event.repository.name, '-iOS') && (vars.IOS_CI_RUNNER || 'xcode-27') || 'ubuntu-latest' }}
+    runs-on: ${{ endsWith(github.event.repository.name, '-iOS') && (vars.IOS_CI_RUNNER || 'xcode-27') || 'ubuntu-24.04' }}
     timeout-minutes: 20
     permissions:
       contents: write
