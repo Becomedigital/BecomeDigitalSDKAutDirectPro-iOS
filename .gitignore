@@ -1,2 +1,6 @@
 # macOS metadata
 .DS_Store
+.build/
+.swiftpm/
+dist/
+__pycache__/
