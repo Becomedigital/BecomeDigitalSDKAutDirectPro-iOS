@@ -52,8 +52,8 @@ jobs:
 
   integrar-ios:
     name: Integración iOS, dispositivo y simulador
-    if: endsWith(github.event.repository.name, '-iOS')
-    runs-on: ${{ vars.IOS_CI_RUNNER || 'macos-latest' }}
+    if: endsWith(github.event.repository.name, '-iOS') && github.event.pull_request.head.repo.fork != true
+    runs-on: ${{ vars.IOS_CI_RUNNER || 'xcode-27' }}
     timeout-minutes: 60
     needs: reglas
     env:
@@ -86,7 +86,10 @@ jobs:
           distribution: temurin
           java-version: '21'
       - name: Preparar plataforma Android
-        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+        uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
+        with:
+          packages: platform-tools platforms;android-36 build-tools;36.0.0
+          log-accepted-android-sdk-licenses: 'false'
       - name: Compilar la aplicación consumidora sin filtrar arquitecturas
         working-directory: examples/compose-demo
         run: ./gradlew --no-daemon --project-cache-dir "$RUNNER_TEMP/become-gradle-project" :app:assembleDebug :app:assembleRelease
