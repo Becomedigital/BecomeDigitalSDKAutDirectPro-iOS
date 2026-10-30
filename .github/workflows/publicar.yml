@@ -1,0 +1,103 @@
+name: Publicar RC o versión final
+
+on:
+  push:
+    tags: ['[0-9]*.[0-9]*.[0-9]*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Versión exacta ya preparada y revisada
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: publicar-distribucion
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    uses: ./.github/workflows/validar.yml
+
+  preflight:
+    name: Verificar versión, promoción y aprobación requerida
+    needs: validar
+    runs-on: ${{ endsWith(github.event.repository.name, '-iOS') && (vars.IOS_CI_RUNNER || 'macos-latest') || 'ubuntu-latest' }}
+    timeout-minutes: 20
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_VERSION: ${{ inputs.version || github.ref_name }}
+      DEVELOPER_DIR: ${{ vars.IOS_DEVELOPER_DIR }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Seleccionar Xcode cuando corresponda
+        if: endsWith(github.event.repository.name, '-iOS')
+        run: |
+          if [ -z "$DEVELOPER_DIR" ]; then
+            unset DEVELOPER_DIR
+            echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          fi
+      - name: Validar el commit, los binarios y la RC de origen
+        id: version
+        run: |
+          python3 .github/scripts/distribution.py preflight
+          echo "version=$RELEASE_VERSION" >> "$GITHUB_OUTPUT"
+
+  publicar:
+    name: Publicación aprobada
+    needs: preflight
+    runs-on: ${{ endsWith(github.event.repository.name, '-iOS') && (vars.IOS_CI_RUNNER || 'macos-latest') || 'ubuntu-latest' }}
+    timeout-minutes: 50
+    environment: ${{ endsWith(github.event.repository.name, '-Android') && 'maven-central' || 'sdk-release' }}
+    permissions:
+      contents: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_VERSION: ${{ needs.preflight.outputs.version }}
+      MAVEN_LICENSE_URL: ${{ vars.MAVEN_LICENSE_URL }}
+      MAVEN_LICENSE_NAME: ${{ vars.MAVEN_LICENSE_NAME }}
+      DEVELOPER_DIR: ${{ vars.IOS_DEVELOPER_DIR }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Seleccionar Xcode cuando corresponda
+        if: endsWith(github.event.repository.name, '-iOS')
+        run: |
+          if [ -z "$DEVELOPER_DIR" ]; then
+            unset DEVELOPER_DIR
+            echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          fi
+      - name: Volver a verificar antes de acceder a las credenciales externas
+        run: python3 .github/scripts/distribution.py preflight
+      - name: Empaquetar exactamente los binarios aprobados
+        run: python3 .github/scripts/distribution.py assemble
+      - name: Firmar, validar y publicar en Maven Central
+        if: endsWith(github.event.repository.name, '-Android')
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          SIGNING_FINGERPRINT: ${{ vars.SIGNING_FINGERPRINT }}
+        run: python3 .github/scripts/distribution.py publish-central
+      - name: Publicar los archivos y las notas revisadas en GitHub
+        run: python3 .github/scripts/distribution.py publish-github
+      - name: Conservar el identificador de Sonatype para recuperar un reintento
+        if: always() && endsWith(github.event.repository.name, '-Android')
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: despliegue-central-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/become-release/central-deployment.json
+          if-no-files-found: ignore
+          retention-days: 30

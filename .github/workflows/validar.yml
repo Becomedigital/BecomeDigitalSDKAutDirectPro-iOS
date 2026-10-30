@@ -1,0 +1,119 @@
+name: Validar distribución
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, feature/legacy-package-distribution]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validar-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reglas:
+    name: Reglas de versiones y promoción
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Probar validaciones y rechazos
+        run: python3 -m unittest discover -s .github/tests -v
+      - name: Verificar la definición de los workflows
+        run: |
+          curl --fail --silent --show-error --location https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz --output "$RUNNER_TEMP/actionlint.tar.gz"
+          echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $RUNNER_TEMP/actionlint.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP" actionlint
+          "$RUNNER_TEMP/actionlint" -shellcheck='' .github/workflows/*.yml
+
+  artefactos:
+    name: Integridad, API y arquitecturas
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verificar los artefactos recibidos
+        run: python3 .github/scripts/distribution.py check
+
+  integrar-ios:
+    name: Integración iOS, dispositivo y simulador
+    if: endsWith(github.event.repository.name, '-iOS')
+    runs-on: ${{ vars.IOS_CI_RUNNER || 'macos-latest' }}
+    timeout-minutes: 60
+    needs: reglas
+    env:
+      DEVELOPER_DIR: ${{ vars.IOS_DEVELOPER_DIR }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Seleccionar Xcode configurado
+        run: |
+          if [ -z "$DEVELOPER_DIR" ]; then
+            unset DEVELOPER_DIR
+            echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          fi
+      - name: Comprobar Swift y construir ambas integraciones
+        run: python3 .github/scripts/smoke_ios.py
+
+  integrar-android:
+    name: Integración Android, R8 y destinos nativos
+    if: endsWith(github.event.repository.name, '-Android')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: reglas
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Preparar plataforma Android
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+      - name: Compilar la aplicación consumidora sin filtrar arquitecturas
+        working-directory: examples/compose-demo
+        run: ./gradlew --no-daemon --project-cache-dir "$RUNNER_TEMP/become-gradle-project" :app:assembleDebug :app:assembleRelease
+      - name: Verificar bibliotecas de dispositivo y emulador en ambos APK
+        run: |
+          python3 .github/scripts/distribution.py verify-apk --output examples/compose-demo/app/build/outputs/apk/debug/app-debug.apk
+          python3 .github/scripts/distribution.py verify-apk --output examples/compose-demo/app/build/outputs/apk/release/app-release-unsigned.apk
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 examples/compose-demo/app/build/outputs/apk/release/app-release-unsigned.apk
+
+  resultado:
+    name: Distribución validada
+    if: always()
+    needs: [reglas, artefactos, integrar-ios, integrar-android]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Exigir todas las validaciones aplicables
+        env:
+          REGLAS: ${{ needs.reglas.result }}
+          ARTEFACTOS: ${{ needs.artefactos.result }}
+          IOS: ${{ needs.integrar-ios.result }}
+          ANDROID: ${{ needs.integrar-android.result }}
+        run: |
+          test "$REGLAS" = success
+          test "$ARTEFACTOS" = success
+          if [[ "$GITHUB_REPOSITORY" == *-iOS ]]; then
+            test "$IOS" = success
+          else
+            test "$ANDROID" = success
+          fi

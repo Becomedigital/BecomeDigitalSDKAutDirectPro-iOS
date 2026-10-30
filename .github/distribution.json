@@ -1,0 +1,29 @@
+{
+  "platform": "ios",
+  "repository": "Becomedigital/BecomeDigitalSDKAutDirectPro-iOS",
+  "artifacts": [
+    "BDIdentityVerification.xcframework"
+  ],
+  "public_api": [
+    "BecomeDigitalSDK",
+    "BDIVConfig",
+    "verificationResultsJwt"
+  ],
+  "integration": [
+    "scripts/prepare_spm_release.py",
+    "Package.swift",
+    "Sources/LegacyPackageDependencies/Dependencies.swift",
+    ".github/scripts/distribution.py",
+    ".github/distribution.json",
+    "CHECKSUMS.sha256"
+  ],
+  "resources": [
+    "Assets.car",
+    "Model.momd/Model.mom",
+    "Fonts/Inter.ttf",
+    "en.lproj/Dictionary.stringsdict",
+    "es.lproj/Dictionary.stringsdict",
+    "amplifyconfiguration.json",
+    "AmplifyUILiveness_FaceLiveness.bundle/Info.plist"
+  ]
+}

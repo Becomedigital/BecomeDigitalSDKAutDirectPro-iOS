@@ -1,0 +1,82 @@
+name: Preparar RC o versión final
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Versión exacta X.Y.Z-rc.N o X.Y.Z
+        required: true
+        type: string
+      candidate:
+        description: RC publicada que se promoverá, solo para una versión final
+        required: false
+        type: string
+      functional_verified:
+        description: Se completaron las pruebas funcionales de la RC en dispositivos físicos
+        default: false
+        type: boolean
+      notes:
+        description: Cambios públicos en JSON con listas agregado, cambiado, corregido y retirado
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preparar-version
+  cancel-in-progress: false
+
+jobs:
+  preparar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ${{ endsWith(github.event.repository.name, '-iOS') && (vars.IOS_CI_RUNNER || 'macos-latest') || 'ubuntu-latest' }}
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_VERSION: ${{ inputs.version }}
+      RELEASE_CANDIDATE: ${{ inputs.candidate }}
+      FUNCTIONAL_VERIFIED: ${{ inputs.functional_verified }}
+      RELEASE_NOTES_JSON: ${{ inputs.notes }}
+      DEVELOPER_DIR: ${{ vars.IOS_DEVELOPER_DIR }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Seleccionar Xcode cuando corresponda
+        if: endsWith(github.event.repository.name, '-iOS')
+        run: |
+          if [ -z "$DEVELOPER_DIR" ]; then
+            unset DEVELOPER_DIR
+            echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
+          fi
+      - name: Preparar changelog, versión y manifiesto
+        run: python3 .github/scripts/distribution.py prepare
+      - name: Crear propuesta revisable y ejecutar su validación
+        run: |
+          RELEASE_BRANCH="release/$RELEASE_VERSION"
+          git switch -c "$RELEASE_BRANCH"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/notes.json .github/release.json CHANGELOG.md
+          if [ -f Package.swift ]; then git add Package.swift; fi
+          git commit -m "Preparar versión $RELEASE_VERSION"
+          gh auth setup-git
+          git push origin "$RELEASE_BRANCH"
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          Path(os.environ['RUNNER_TEMP'], 'propuesta.txt').write_text(
+              '# ' + os.environ['RELEASE_VERSION'] + '\n\n' +
+              Path('CHANGELOG.md').read_text().split('\n\n', 2)[-1].split('\n## ', 1)[0], encoding='utf-8')
+          PY
+          gh pr create --base main --head "$RELEASE_BRANCH" --title "Preparar versión $RELEASE_VERSION" --body-file "$RUNNER_TEMP/propuesta.txt"
+          gh workflow run validar.yml --ref "$RELEASE_BRANCH"
