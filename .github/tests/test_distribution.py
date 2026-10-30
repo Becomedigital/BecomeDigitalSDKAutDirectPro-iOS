@@ -32,6 +32,7 @@ def fat():
 def elf(machine):
     data = bytearray(64)
     data[:6] = b'\x7fELF\x02\x01'
+    data[4] = 1 if machine in (3,40) else 2
     struct.pack_into('<H', data, 18, machine)
     return bytes(data)
 
@@ -75,6 +76,14 @@ class Artifacts(unittest.TestCase):
         self.assertEqual(set(d.native_abis(archive)), {'arm64-v8a','x86_64'})
         with self.assertRaises(d.Invalid):
             d.native_abis(d.zip_bytes({'jni/x86_64/libCapture.so':elf(183)}))
+
+    def test_packaged_extra_32_bit_abis_are_preserved_and_validated(self):
+        archive=d.zip_bytes({'lib/x86/libgraphics.so':elf(3),'lib/armeabi-v7a/libgraphics.so':elf(40),
+                             'lib/arm64-v8a/libgraphics.so':elf(183),'lib/x86_64/libgraphics.so':elf(62)})
+        self.assertEqual(set(d.native_abis(archive)),{'x86','armeabi-v7a','arm64-v8a','x86_64'})
+        data=bytearray(elf(183)); data[4]=1
+        with self.assertRaisesRegex(d.Invalid,'clase ELF'):
+            d.native_abis(d.zip_bytes({'lib/arm64-v8a/libgraphics.so':bytes(data)}))
 
     def test_android_rejects_device_only_native_dependency(self):
         with tempfile.TemporaryDirectory() as temporary:

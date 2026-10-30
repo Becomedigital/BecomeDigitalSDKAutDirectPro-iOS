@@ -197,8 +197,10 @@ def native_abis(data):
                 binary = archive.read(name)
                 require(binary[:4] == b"\x7fELF", f"Archivo ELF inválido: {name}.")
                 machine = struct.unpack_from(("<" if binary[5] == 1 else ">") + "H", binary, 18)[0]
-                require(machine == {"arm64-v8a": 183, "x86_64": 62, "armeabi-v7a": 40}.get(parts[1]),
+                require(machine == {"arm64-v8a": 183, "x86_64": 62, "armeabi-v7a": 40, "x86": 3}.get(parts[1]),
                         f"La arquitectura real no corresponde al nombre: {name}.")
+                require(binary[4] == (2 if parts[1] in ('arm64-v8a','x86_64') else 1),
+                        f'La clase ELF no corresponde a la arquitectura: {name}.')
                 native.setdefault(parts[1], set()).add(parts[2])
         return native
 
