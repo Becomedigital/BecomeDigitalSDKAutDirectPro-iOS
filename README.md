@@ -1,143 +1,184 @@
-# Become iOS SDK — Capture legacy
+# SDK de Become para iOS
 
-This guide matches the `BDIdentityVerification.xcframework` distributed on `feature/mobile-contract-parity`. It provides SwiftUI verification screens with onboarding and authentication, typed results, contract-controlled appearance, and Microblink Capture legacy document capture.
+Integra la verificación de identidad de Become en tu aplicación. La SDK presenta las pantallas de captura y devuelve el resultado mediante objetos que tu aplicación puede consultar.
 
-## Validated versions
+El [proyecto de ejemplo con SwiftUI](Examples/SwiftUIDemo/README.md) muestra una integración completa desde la pantalla de la aplicación hasta la configuración y las respuestas de la SDK. Para ejecutar una verificación necesitas un JWT vigente, un contrato y una licencia de captura emitida para el identificador de tu aplicación.
 
-| Component | Version |
-| --- | --- |
-| Become framework | 1.2.3 |
-| Minimum iOS | 16.0 |
-| Validated Xcode | 27.0 (27A266a) |
-| Framework compiler | Apple Swift 6.4, Swift 5 language mode |
-| Amplify Swift | 2.53.3 |
-| Amplify UI Swift Liveness | 1.4.4 |
-| CaptureCore | 1.4.3 |
-| CaptureUX | 1.4.3 |
+Puedes iniciar dos flujos:
 
-Use Xcode 27.0 or a compatible newer toolchain capable of reading the supplied Swift 6.4 module interfaces. The XCFramework contains an arm64 device slice and arm64/x86_64 simulator slices. Camera and identity checks require a physical device.
+- **Onboarding:** registro y verificación de una identidad.
+- **Authentication:** autenticación de un usuario existente.
 
-The supplied framework is the production build. `BDIVConfig` has no environment selector. A separate development build and a valid license for its application identifier are required when testing another environment.
+Los pasos, documentos admitidos, apariencia y textos de la verificación corresponden al contrato de tu organización.
 
-## Installation and dependencies
+## Contenido de la guía
 
-1. Add `BDIdentityVerification.xcframework` to the application target and select **Embed & Sign**.
-2. In Xcode, use **File > Add Package Dependencies** and select **Exact Version** for each package below.
+- [Requisitos](INSTALACION.md#requisitos)
+- [Instalación](INSTALACION.md#instalación)
+- [Permisos](INSTALACION.md#permisos)
+- [Iniciar una verificación](#iniciar-una-verificación)
+- [Configurar la SDK](#configurar-la-sdk)
+- [Consultar el resultado](#consultar-el-resultado)
+- [Apariencia e idioma](#apariencia-e-idioma)
+- [Ejemplo práctico con SwiftUI](#ejemplo-práctico-con-swiftui)
+- [Guías complementarias](#guías-complementarias)
 
-| Package URL | Exact version | App target products |
-| --- | --- | --- |
-| https://github.com/aws-amplify/amplify-swift | 2.53.3 | `Amplify` |
-| https://github.com/aws-amplify/amplify-ui-swift-liveness | 1.4.4 | `FaceLiveness` |
-| https://github.com/BlinkID/capture-core-sp | 1.4.3 | `CaptureCore` |
-| https://github.com/BlinkID/capture-ux-sp | 1.4.3 | `CaptureUX` |
+## Antes de comenzar
 
-3. Embed and sign `BDIdentityVerification.framework`, `CaptureCore.framework`, and `CaptureUX.framework`. Confirm that all three are present in the built app's `Frameworks` directory. Let Swift Package Manager manage the other package products and their transitive dependencies.
-4. Remove BlinkID Core/UX migration packages when integrating this Capture legacy build. Keep versions aligned if the host already uses Amplify.
-5. Add the license issued for the application's Bundle Identifier as **`com.become.document.key.txt`**. Enable app target membership and include it in **Copy Bundle Resources**. Keep license contents out of source control.
+Necesitas una aplicación para iOS 16.0 o posterior, un JWT vigente, el identificador del contrato y la licencia de captura correspondiente a tu aplicación. Sigue la [guía de instalación](INSTALACION.md) para agregar la SDK, sus dependencias y permisos.
 
-All listed dependencies remain required when a particular contract omits facial capture.
+## Iniciar una verificación
 
-## Permissions
-
-Add a camera usage description to the app's `Info.plist`:
-
-```xml
-<key>NSCameraUsageDescription</key>
-<string>Camera access is required to verify your identity.</string>
-```
-
-If the integration uses optional location collection, also declare `NSLocationWhenInUseUsageDescription`. Denying location does not block verification.
-
-## Initialization
-
-The delegate must be a `UIViewController` implementing `BDIVDelegate`. Retain the SDK instance while verification is active. The public spellings `clienId` and `documenTypes` are retained for compatibility.
+Implementa `BDIVDelegate` en el controlador que presenta la SDK y conserva la instancia mientras el flujo permanezca activo.
 
 ```swift
 import UIKit
 import BDIdentityVerification
 
-final class ViewController: UIViewController, BDIVDelegate {
-    private var identityVerification: BecomeDigitalSDK?
+final class VerificacionViewController: UIViewController, BDIVDelegate {
+    private var verificacion: BecomeDigitalSDK?
 
-    func startOnboarding() {
-        let config = BDIVConfig(
-            clienId: "YOUR_CLIENT_ID",
-            clientSecret: "YOUR_CLIENT_SECRET",
-            contractId: "YOUR_CONTRACT_ID",
+    func iniciarOnboarding(jwt: String, resultsJwt: String) {
+        var config = BDIVConfig(
+            jwt: jwt,
+            contractId: "TU_CONTRACT_ID",
             documenTypes: [.DNI, .PASSPORT, .DRIVERLICENSE],
-            userId: "YOUR_USER_ID",
+            userId: "TU_USER_ID",
             flow: .Onboarding,
             themeMode: .system
         )
-        identityVerification = BecomeDigitalSDK(bdivConfig: config, delegate: self)
-        identityVerification?.startVerification()
+        config.verificationResultsJwt = resultsJwt
+        verificacion = BecomeDigitalSDK(bdivConfig: config, delegate: self)
+        verificacion?.startVerification()
     }
 
     func BDIVResponseSuccess(bdivResult: BDIdentityVerificationResponse) {
-        guard bdivResult.responseStatus == .SUCCES else { return }
-        if let started = bdivResult.onboarding { _ = started.userId }
-        if let final = bdivResult.verification { _ = final.urlGetData }
-        if let authentication = bdivResult.authentication {
-            // Evaluate the authentication decision separately from SDK success.
-            _ = authentication.result
+        guard bdivResult.responseStatus == .SUCCES else {
+            // Presenta el estado recibido sin asumir una aprobación.
+            return
+        }
+        if let resultado = bdivResult.authentication {
+            if resultado.result {
+                // Continúa con la autenticación aprobada.
+            } else {
+                // Informa que la autenticación no fue aprobada.
+            }
+        } else if let resultado = bdivResult.verification {
+            _ = resultado.urlGetData
+            // Continúa con el onboarding confirmado.
+        } else if let resultado = bdivResult.onboarding {
+            _ = resultado.userId
+            // El registro fue creado; no representa una aprobación final.
         }
     }
 
     func BDIVResponseError(error: String) {
-        // Restore the host UI and offer a new user-initiated attempt.
+        // Recupera la interfaz de tu aplicación y permite un nuevo intento.
     }
 }
 ```
 
-### Public configuration
+Obtén desde tu backend un JWT de creación (`verification:create`) para `jwt` y otro de consulta (`verification:get`) para `verificationResultsJwt`. Asigna ambos antes de iniciar la verificación. Consulta los [ejemplos de migración y el diagnóstico de HTTP 403](AUTENTICACION.md).
 
-| Parameter | Default | Meaning |
+Entrega únicamente los valores de los tokens, sin el prefijo `Bearer`. Tu aplicación se encarga de obtenerlos y renovarlos; la SDK no los renueva automáticamente. Para reintentar con tokens vigentes, crea otra configuración y otra instancia de la SDK.
+
+Utiliza los identificadores `documenTypes` y `SUCCES` exactamente como aparecen en los ejemplos.
+
+### Integraciones existentes con credenciales
+
+La firma que recibe `clienId` y `clientSecret` continúa disponible para las aplicaciones existentes, pero está marcada como **deprecada**. Migra a la firma con `jwt` para nuevas integraciones. Conserva la escritura original de `clienId` mientras utilices la firma anterior:
+
+```swift
+let configCompatible = BDIVConfig(
+    clienId: "TU_CLIENT_ID",
+    clientSecret: "TU_CLIENT_SECRET",
+    contractId: "TU_CONTRACT_ID",
+    documenTypes: [.DNI, .PASSPORT, .DRIVERLICENSE],
+    userId: "TU_USER_ID",
+    flow: .Onboarding
+)
+```
+
+Las dos firmas conservan las mismas opciones de flujo, documentos, apariencia, diagnóstico y espera del resultado. La firma con JWT no requiere `clienId` ni `clientSecret`. No agregues secretos de cliente al código de una nueva integración.
+
+### Autenticar a un usuario existente
+
+Crea una configuración con `flow: .Authentication` y el `userId` del usuario que deseas autenticar. Puedes indicar `documenTypes: []` cuando el flujo no requiera documentos. El inicio y los métodos del delegado son los mismos del ejemplo anterior.
+
+## Configurar la SDK
+
+Define los parámetros de `BDIVConfig` antes de iniciar la verificación.
+
+| Parámetro | Valor predeterminado | Uso |
 | --- | --- | --- |
-| `clienId`, `clientSecret`, `contractId` | Required arguments | Nonempty client credentials and contract identifier. |
-| `userId` | Required argument | Nonempty for `.Authentication`; onboarding also accepts an empty string. |
-| `documenTypes` | Required argument | `.DNI`, `.PASSPORT`, `.DRIVERLICENSE`. The contract filters this list. An empty list uses the contract's available types. |
-| `flow` | `.Onboarding` | `.Onboarding` or `.Authentication`. |
-| `performVerificationCheck` | `true` | Wait for final onboarding confirmation. Set `false` to return the creation result directly. |
-| `pollingMaxAttempts` | `0` | Maximum result checks; `0` means no attempt limit. |
-| `pollingTimeout` | `2` seconds | Timeout for each result check. For slow connections, use a larger value such as `30`. |
-| `debugLogsEnabled` | `false` | Enable optional client diagnostics. |
-| `preventScreenCapture` | `false` | Enable the SDK's screen-capture protection when `true`. |
-| `country`, `state` | `nil` | Optional two-letter country code or comma-separated country list; optional US postal state code. |
-| `nationalIdType`, `documentNumber` | `nil` | Optional prefilled document details. |
-| `nationalIdTypeChoices` | `[]` | Optional document subtype choices. |
-| `themeMode` | `.system` | `.light`, `.dark`, or the device's preferred appearance. |
+| `jwt` | Obligatorio en la firma actual | JWT vigente obtenido por tu aplicación, sin el prefijo `Bearer`. |
+| `verificationResultsJwt` | `nil` | JWT para consultar el resultado de onboarding. Asígnalo antes de iniciar; si se omite, se conserva el uso del token principal. No cambia la firma deprecada. |
+| `contractId` | Obligatorio | Identificador del contrato. No debe estar vacío. |
+| `clienId`, `clientSecret` | Solo firma deprecada | Credenciales de integraciones existentes. No se utilizan en la firma con JWT. |
+| `userId` | Argumento obligatorio | Identificador del usuario. En onboarding puede ser una cadena vacía; en autenticación debe identificar a un usuario existente. |
+| `documenTypes` | Argumento obligatorio | Tipos de documento: `.DNI`, `.PASSPORT` y `.DRIVERLICENSE`. Un arreglo vacío utiliza los disponibles en el contrato. |
+| `flow` | `.Onboarding` | Flujo que deseas iniciar: `.Onboarding` o `.Authentication`. |
+| `performVerificationCheck` | `true` | Espera la confirmación del onboarding. Con `false`, devuelve el resultado de creación. |
+| `pollingMaxAttempts` | `0` | Número máximo de consultas del resultado. `0` permite seguir esperando sin límite de intentos. |
+| `pollingTimeout` | `2` segundos | Tiempo máximo de espera por consulta del resultado. No es el tiempo máximo del flujo completo. |
+| `debugLogsEnabled` | `false` | Activa los mensajes de diagnóstico para soporte. |
+| `preventScreenCapture` | `false` | Activa la protección de las pantallas de la SDK frente a capturas y grabación. |
+| `country` | `nil` | Código de país de dos letras, como `CO`, o varios códigos separados por comas. |
+| `state` | `nil` | Código de estado de Estados Unidos, cuando corresponda. |
+| `nationalIdType` | `nil` | Subtipo de identificación precargado. |
+| `nationalIdTypeChoices` | `[]` | Opciones de subtipo de identificación. |
+| `documentNumber` | `nil` | Número de documento precargado. |
+| `themeMode` | `.system` | Apariencia `.light`, `.dark` o la preferencia del dispositivo con `.system`. |
 
-When final verification remains pending, the SDK keeps waiting while `performVerificationCheck` is enabled. Set a positive `pollingMaxAttempts` to bound the total number of checks and handle the resulting error callback. `pollingTimeout` applies to each request, not to the whole verification.
+Asigna `verificationResultsJwt` antes de crear la instancia de la SDK. Los demás valores de la configuración quedan fijos para esa instancia. Crea otra configuración para iniciar una verificación con parámetros diferentes.
 
-For authentication, use `flow: .Authentication`, an existing nonempty `userId`, and `documenTypes: []` when documents are not required. Create a new configuration to change immutable parameters for another run.
+### Espera del resultado
 
-### Documents and presentation
+Con `performVerificationCheck: true`, la SDK mantiene la espera mientras el resultado siga pendiente. Si necesitas limitarla, indica un valor positivo en `pollingMaxAttempts` y atiende el error mediante el delegado. Puedes aumentar `pollingTimeout`, por ejemplo a `30`, cuando la conexión requiera más tiempo por consulta.
 
-The SDK displays the steps and document types available for the contract. Supplying fewer document types restricts the requested list to supported types; when there is no overlap, the SDK uses the contract list. A single document type is still displayed for confirmation. Passport capture uses the front; other required sides follow the contract.
+Con `performVerificationCheck: false`, recibirás el resultado de creación sin esperar la confirmación final.
 
-Complete frames are used for document uploads. Cropped, perspective-corrected images are used for preview; if no crop is available, the preview can show the complete frame. Full-frame uploads preserve the image bounds while applying JPEG encoding and size limits.
+### Selección de documentos
 
-The SDK applies the flow, appearance and text assigned to the contract. `BDIVConfig` does not configure flow copy or design. Local resources are optional for native component instructions and technical loading/network labels; see the [native text guide](LOCALIZACION.md).
+La SDK combina los tipos solicitados con los admitidos por el contrato. Si no hay coincidencias, utiliza los del contrato. Cuando solo existe un tipo, también lo muestra para que el usuario confirme qué documento va a capturar.
 
-An animated loader remains visible until the first configured screen is ready. Its initial color uses the host's `AccentColor` or inherited tint. Document-only contracts do not require a facial result to complete.
+El pasaporte requiere la cara frontal. Los demás documentos solicitan los lados definidos para el contrato. La vista previa puede mostrar un recorte; la verificación utiliza la captura completa. Si el contrato solo requiere documentos, no se exige una captura facial.
 
-## Typed results and errors
+## Consultar el resultado
 
-`BDIVResponseSuccess` receives `BDIdentityVerificationResponse`, containing `responseStatus`, `message`, and optional flow-specific objects:
+`BDIVResponseSuccess` recibe un `BDIdentityVerificationResponse` con `responseStatus`, `message` y objetos opcionales según la operación:
 
-| Object | Public fields | When to inspect it |
+| Propiedad | Tipo | Contenido |
 | --- | --- | --- |
-| `onboarding` | `code`, `message`, `urlResource`, `userId` | Direct creation result when `performVerificationCheck` is `false`. Creation is not final approval. |
-| `verification` | `urlGetData` | Confirmed onboarding result when waiting for completion. |
-| `authentication` | `company`, `confidence`, `executionId`, `liveness`, `result`, `userId` | Authentication result; evaluate the Boolean `result` separately. |
+| `onboarding` | `BDIVOnboardingResult?` | `code`, `message`, `urlResource`, `userId`. Disponible al devolver la creación sin esperar la confirmación final. |
+| `verification` | `BDIVVerificationResult?` | `urlGetData`. Disponible con el resultado confirmado del onboarding. |
+| `authentication` | `BDIVAuthenticationResult?` | `company`, `confidence`, `executionId`, `liveness`, `result`, `userId`. Consulta `result` para decidir si la autenticación fue aprobada. |
 
-The response object provides `toJson()`. Do not expect a response dictionary. `SUCCES` retains its historical spelling; other declared statuses are `ERROR`, `PENDING`, and `NOFOUND`. Errors and user cancellation are delivered through `BDIVResponseError(error:)`. Message text is not a stable error code. See [error handling](ERRORES.md).
+Consulta cada propiedad de forma opcional. El resultado de creación no implica una aprobación final. En autenticación, recibir `.SUCCES` indica que la operación devolvió un resultado; la decisión está en `authentication.result`.
 
-## Additional guides
+Los estados declarados son `SUCCES`, `ERROR`, `PENDING` y `NOFOUND`. El objeto también ofrece `toJson()` si necesitas una representación en texto. Los errores y la cancelación del usuario se comunican mediante `BDIVResponseError(error:)`.
 
-- [Language and optional local text overrides](LOCALIZACION.md)
-- [Optional client diagnostics](LOGGING.md)
-- [Screen-capture protection](SCREEN_CAPTURE_CONFIGURATION.md)
-- [Background session events](CARGAS_SEGUNDO_PLANO.md)
+El contenido de `message` y `error` es descriptivo y puede cambiar con el idioma; no lo utilices como código para tomar decisiones. Consulta la [guía de resultados y errores](ERRORES.md).
 
-Before release, validate camera permissions, the licensed app identifier, both requested document sides, cancellation, and the configured flow on a physical device.
+## Apariencia e idioma
+
+La SDK utiliza el logo, colores, tipografía y textos asociados al contrato. En la aplicación puedes elegir el modo claro, oscuro o del sistema con `themeMode`.
+
+Las indicaciones de captura y algunos mensajes de carga y conexión admiten traducciones locales. Consulta las claves y los ejemplos en la [guía de localización](LOCALIZACION.md).
+
+## Ejemplo práctico con SwiftUI
+
+El [proyecto de ejemplo](Examples/SwiftUIDemo/README.md) incluye el puente entre SwiftUI y `BDIVDelegate`, el ciclo de vida con escenas, la atención de sesiones en segundo plano y recursos de localización. Puedes compilarlo sin credenciales para revisar la integración; sigue su guía para agregar tus datos y tu licencia de forma local antes de probar el flujo en un dispositivo físico.
+
+## Guías complementarias
+
+- [Instalación, dependencias, licencia y permisos](INSTALACION.md)
+- [Inicialización con JWT y firma deprecada](AUTENTICACION.md)
+- [Resultados, errores y cancelación](ERRORES.md)
+- [Localización y claves disponibles](LOCALIZACION.md)
+- [Diagnóstico para soporte](LOGGING.md)
+- [Protección de pantalla](SCREEN_CAPTURE_CONFIGURATION.md)
+- [Continuidad en segundo plano](CARGAS_SEGUNDO_PLANO.md)
+- [Revisión al actualizar la integración](CAMBIOS.md)
+
+Antes de publicar tu aplicación, comprueba en un dispositivo físico los permisos, la licencia, los documentos solicitados, la cancelación y el manejo del resultado de cada flujo que utilices.

@@ -1,0 +1,11 @@
+/App/Secrets.plist
+/App/com.become.document.key.txt
+/DerivedData/
+/SourcePackages/
+/.build/
+*.app/
+*.xcarchive/
+*.dSYM/
+*.ipa
+xcuserdata/
+*.xcuserstate
