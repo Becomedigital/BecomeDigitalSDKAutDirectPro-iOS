@@ -430,7 +430,9 @@ def maven_bundle(config, value, output, root=ROOT):
     license_url = os.environ.get("MAVEN_LICENSE_URL", "")
     require(license_url.startswith("https://") and "example.invalid" not in license_url,
             "Configura MAVEN_LICENSE_URL con los términos públicos aprobados.")
-    module.stage(value, os.environ.get("MAVEN_LICENSE_NAME", "Licencia de Become Digital"), license_url, False, None)
+    license_name = os.environ.get('MAVEN_LICENSE_NAME', '').strip()
+    require(license_name, 'Configura MAVEN_LICENSE_NAME con el nombre de la licencia aprobada.')
+    module.stage(value, license_name, license_url, False, None)
     source = root / "dist/maven-repository"
     shutil.copytree(source, output / "maven", dirs_exist_ok=True)
     folders = [p.parent for p in (output / "maven").rglob("*.pom")]

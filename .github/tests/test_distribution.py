@@ -247,6 +247,13 @@ class IOSPackage(unittest.TestCase):
 
 
 class Publication(unittest.TestCase):
+    def test_maven_requires_approved_license_and_preserves_base_binary_version(self):
+        with tempfile.TemporaryDirectory() as temporary, patch.dict(os.environ,{'MAVEN_LICENSE_URL':'https://example.org/terms'},clear=True), patch.object(d,'platform_module') as module:
+            with self.assertRaisesRegex(d.Invalid,'MAVEN_LICENSE_NAME'):
+                d.maven_bundle({},'3.5.1-rc.1',Path(temporary))
+            module.return_value.validate_artifacts.assert_called_once_with('3.5.1')
+            module.return_value.stage.assert_not_called()
+
     def test_existing_github_asset_cannot_be_overwritten(self):
         with tempfile.TemporaryDirectory() as temporary:
             output=Path(temporary)
