@@ -14,7 +14,8 @@
     "Sources/LegacyPackageDependencies/Dependencies.swift",
     ".github/scripts/distribution.py",
     ".github/distribution.json",
-    "CHECKSUMS.sha256"
+    "CHECKSUMS.sha256",
+    "VERSION"
   ],
   "resources": [
     "Assets.car",
@@ -34,5 +35,6 @@
   "forbidden_imports": [
     "BlinkID"
   ],
-  "repository": "Becomedigital/BecomeDigitalSDKAutDirectPro-iOS"
+  "repository": "Becomedigital/BecomeDigitalSDKAutDirectPro-iOS",
+  "version_file": "VERSION"
 }
