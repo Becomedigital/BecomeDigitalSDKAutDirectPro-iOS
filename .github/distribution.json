@@ -1,6 +1,5 @@
 {
   "platform": "ios",
-  "repository": "Becomedigital/BecomeDigitalSDKAutDirectPro-iOS",
   "artifacts": [
     "BDIdentityVerification.xcframework"
   ],
@@ -25,5 +24,15 @@
     "es.lproj/Dictionary.stringsdict",
     "amplifyconfiguration.json",
     "AmplifyUILiveness_FaceLiveness.bundle/Info.plist"
-  ]
+  ],
+  "ios_project": "Examples/SwiftUIDemo/BecomeSwiftUIDemo.xcodeproj",
+  "ios_scheme": "BecomeSwiftUIDemo",
+  "required_imports": [
+    "CaptureCore",
+    "CaptureUX"
+  ],
+  "forbidden_imports": [
+    "BlinkID"
+  ],
+  "repository": "Becomedigital/BecomeDigitalSDKAutDirectPro-iOS"
 }

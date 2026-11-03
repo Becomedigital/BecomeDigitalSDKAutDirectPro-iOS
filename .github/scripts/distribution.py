@@ -179,7 +179,9 @@ def audit_ios(config, root=ROOT, publication=False):
             interface = framework / f"Modules/BDIdentityVerification.swiftmodule/{arch}-apple-ios{suffix}.swiftinterface"
             text = interface.read_text()
             require(all(symbol in text for symbol in config["public_api"]), "La API pública está incompleta.")
-            require("import CaptureCore" in text and "import CaptureUX" in text and "import BlinkID" not in text,
+            imports = set(re.findall(r'^import ([\w.]+)$', text, re.MULTILINE))
+            require(set(config.get('required_imports', ['CaptureCore', 'CaptureUX'])).issubset(imports)
+                    and not set(config.get('forbidden_imports', ['BlinkID'])).intersection(imports),
                     "El artefacto no corresponde a la variante de esta distribución.")
             apis.append("\n".join(line.strip() for line in text.splitlines() if not line.startswith("//") and line.strip()))
     require(seen == set(expected), "Falta dispositivo o simulador en el XCFramework.")
@@ -205,6 +207,41 @@ def native_abis(data):
         return native
 
 
+def native_dependency(entry):
+    """Verifica los bytes públicos fijados de una dependencia transitiva."""
+    url, checksum = entry['url'], entry['sha256']
+    require(url.startswith('https://repo.maven.apache.org/maven2/')
+            and re.fullmatch(r'[0-9a-f]{64}', checksum), 'Dependencia nativa sin origen o checksum permitido.')
+    cache = Path(os.environ.get('RUNNER_TEMP', tempfile.gettempdir())) / 'become-native-dependencies'
+    cache.mkdir(parents=True, exist_ok=True)
+    path = cache / (checksum + '.aar')
+    if path.exists():
+        data = path.read_bytes()
+    else:
+        try:
+            with urllib.request.urlopen(url, timeout=60) as response:
+                data = response.read(200 * 1024 * 1024 + 1)
+        except (urllib.error.URLError, TimeoutError) as error:
+            raise Invalid('No se pudo verificar la dependencia nativa pública.') from error
+        require(len(data) <= 200 * 1024 * 1024, 'La dependencia supera el tamaño permitido.')
+    require(digest(data) == checksum, 'El checksum de la dependencia nativa no coincide.')
+    with zipfile.ZipFile(io.BytesIO(data)) as archive:
+        require('classes.jar' in archive.namelist(), 'La dependencia no es un AAR válido.')
+    if not path.exists():
+        temporary = path.with_suffix('.tmp')
+        temporary.write_bytes(data)
+        temporary.replace(path)
+    return data
+
+
+def declared_release_version(config, actual, root):
+    if config.get('version_file'):
+        expected = (root / config['version_file']).read_text().strip()
+        version(expected)
+        require(actual == expected, 'La versión interna no coincide con VERSION; regenera el artefacto desde su fuente.')
+    return actual
+
+
 def audit_android(config, root=ROOT):
     failures = []
     declared_version = None
@@ -222,6 +259,11 @@ def audit_android(config, root=ROOT):
                     require(any(b"https://api.svi.becomedigital.net" in item for item in build_configs),
                             "No se pudo verificar el ambiente productivo del AAR.")
                     require(not any(b"api.dev.svi" in item for item in build_configs), "El AAR contiene configuración dev.")
+                    if config.get('required_class_references'):
+                        bytecode = b''.join(classes.read(path) for path in class_names if path.endswith('.class'))
+                        require(all(value.encode() in bytecode for value in config['required_class_references'])
+                                and not any(value.encode() in bytecode for value in config.get('forbidden_class_references', [])),
+                                'El AAR no corresponde a la variante de esta distribución.')
                 values = ET.fromstring(archive.read('res/values/values.xml'))
                 sdk_version = values.find("string[@name='sdk_version']")
                 declared = (sdk_version.text or '').strip('"\' ') if sdk_version is not None else ''
@@ -237,15 +279,26 @@ def audit_android(config, root=ROOT):
             for abi in ("arm64-v8a", "x86_64"):
                 if abi in abis:
                     require(abis[abi] == abis.get("arm64-v8a", set()), f"Bibliotecas nativas distintas: {name} / {abi}.")
+    for entry in config.get('native_dependencies', []):
+        abis = native_abis(native_dependency(entry))
+        if entry.get('requires_native'):
+            require(abis, 'Faltan las bibliotecas nativas de la dependencia.')
+        if abis:
+            missing = {'arm64-v8a', 'x86_64'} - set(abis)
+            if missing:
+                failures.append(f"{entry['coordinate']}: faltan {', '.join(sorted(missing))}")
+            for abi in ('arm64-v8a', 'x86_64'):
+                if abi in abis:
+                    require(abis[abi] == abis.get('arm64-v8a', set()), 'Las bibliotecas de la dependencia difieren entre ABIs.')
     require(not failures, "Soporte nativo incompleto; no se permite retirar ABIs para publicar. " + "; ".join(failures))
-    return declared_version
+    return declared_release_version(config, declared_version, root)
 
 
 def audit(config, root=ROOT, publication=False):
     module = platform_module(config, root)
     if config["platform"] == "ios":
         module.verify_existing_checksums()
-        return audit_ios(config, root, publication)
+        return declared_release_version(config, audit_ios(config, root, publication), root)
     module.verify_checksums()
     return audit_android(config, root)
 
@@ -422,6 +475,10 @@ def verify_apk(config, path):
     for artifact in config['artifacts']:
         for libraries in native_abis((ROOT / artifact).read_bytes()).values():
             expected.update(libraries)
+    for entry in config.get('native_dependencies', []):
+        for libraries in native_abis(native_dependency(entry)).values():
+            expected.update(libraries)
+    require(expected, 'No se identificaron bibliotecas nativas que verificar en el APK.')
     for abi in ('arm64-v8a','x86_64'):
         require(expected.issubset(packaged.get(abi, set())), f'El APK no contiene todas las bibliotecas de {abi}.')
 

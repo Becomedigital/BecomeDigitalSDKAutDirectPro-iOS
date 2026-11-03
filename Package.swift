@@ -2,7 +2,7 @@
 import PackageDescription
 
 let artifactVersion = "1.2.3"
-let artifactChecksum = "6a9576d407e6aa3245cdc9cc596ca1d455abea2fe0478f57bb4740a8e7c07546"
+let artifactChecksum = "750e81d1b99743717ba2ad89560263ddd8fc622924f9c797d757e33b4f78d5cd"
 let artifactURL = "https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/download/\(artifactVersion)/BDIdentityVerification-\(artifactVersion).xcframework.zip"
 
 let package = Package(

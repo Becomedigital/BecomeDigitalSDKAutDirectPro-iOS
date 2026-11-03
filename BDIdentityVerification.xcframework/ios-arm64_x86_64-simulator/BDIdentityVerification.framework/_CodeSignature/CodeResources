@@ -51,7 +51,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		l9IlLJ7N7aHTEd9Vkwwi0cFbHIQ=
+		MPX4QTHFCHbzkepTbSKyeuv+NGU=
 		</data>
 		<key>Fonts/Inter.ttf</key>
 		<data>
@@ -107,7 +107,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		9Y1aDxYBvQmCU1ITZle56sggN+A=
+		msY0oUVmtq7YMBe4QPobL06Fogg=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -123,7 +123,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		9Y1aDxYBvQmCU1ITZle56sggN+A=
+		msY0oUVmtq7YMBe4QPobL06Fogg=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -140,6 +140,10 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		gmjWEoJ28wST307dTa/rQxobN88=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		Th4ilW/1PXe85yhJ3H+fdlAuSQo=
 		</data>
 		<key>amplifyconfiguration.json</key>
 		<data>
@@ -263,7 +267,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QZMIIABclPI/SdBTunHnvToMr5Lw9hHfl+PhP83eZKM=
+			dcgNIHJGIs9ldvQ6mPimp2qDs3IFfxEixE7QRYn6I54=
 			</data>
 		</dict>
 		<key>Fonts/Inter.ttf</key>
@@ -354,7 +358,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lNQlKPiPCJCBl8/8EyM2CT5zHMkxBQ3kqLcKUstTgbc=
+			laDjpPjamJQ2EAFG+Ru4E79yO0dzxasE8QMQRxpJ/dY=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -382,7 +386,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lNQlKPiPCJCBl8/8EyM2CT5zHMkxBQ3kqLcKUstTgbc=
+			laDjpPjamJQ2EAFG+Ru4E79yO0dzxasE8QMQRxpJ/dY=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -411,6 +415,13 @@
 			<key>hash2</key>
 			<data>
 			YXCWTQSypfUSbP7dhhd/94tD/sbks0wvVtGsTfAQpfw=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9rEOYRUNxlw/js7BVLe044u8YRaIrmxaK0I/8xfgxOE=
 			</data>
 		</dict>
 		<key>amplifyconfiguration.json</key>

@@ -68,8 +68,10 @@ jobs:
             unset DEVELOPER_DIR
             echo "DEVELOPER_DIR=$(xcode-select -p)" >> "$GITHUB_ENV"
           fi
+      - name: Preparar el adaptador del proyecto consumidor
+        run: gem install xcodeproj --version 1.27.0 --no-document --user-install
       - name: Comprobar Swift y construir ambas integraciones
-        run: python3 .github/scripts/smoke_ios.py
+        run: python3 .github/scripts/smoke_ios_spm.py
 
   integrar-android:
     name: Integración Android, R8 y destinos nativos
@@ -90,14 +92,16 @@ jobs:
         with:
           packages: platform-tools platforms;android-36 build-tools;36.0.0
           log-accepted-android-sdk-licenses: 'false'
+      - name: Preparar el consumo de Maven sin dependencias manuales del AAR
+        run: python3 .github/scripts/smoke_android.py
       - name: Compilar la aplicación consumidora sin filtrar arquitecturas
-        working-directory: examples/compose-demo
+        working-directory: ${{ env.ANDROID_CI_PROJECT }}
         run: ./gradlew --no-daemon --project-cache-dir "$RUNNER_TEMP/become-gradle-project" :app:assembleDebug :app:assembleRelease
       - name: Verificar bibliotecas de dispositivo y emulador en ambos APK
         run: |
-          python3 .github/scripts/distribution.py verify-apk --output examples/compose-demo/app/build/outputs/apk/debug/app-debug.apk
-          python3 .github/scripts/distribution.py verify-apk --output examples/compose-demo/app/build/outputs/apk/release/app-release-unsigned.apk
-          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 examples/compose-demo/app/build/outputs/apk/release/app-release-unsigned.apk
+          python3 .github/scripts/distribution.py verify-apk --output "$ANDROID_CI_PROJECT/app/build/outputs/apk/debug/app-debug.apk"
+          python3 .github/scripts/distribution.py verify-apk --output "$ANDROID_CI_PROJECT/app/build/outputs/apk/release/app-release-unsigned.apk"
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -c -P 16 -v 4 "$ANDROID_CI_PROJECT/app/build/outputs/apk/release/app-release-unsigned.apk"
 
   resultado:
     name: Distribución validada

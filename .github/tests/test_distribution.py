@@ -93,6 +93,57 @@ class Artifacts(unittest.TestCase):
             with self.assertRaisesRegex(d.Invalid,'x86_64'):
                 d.audit_android({'artifacts':['capture.aar']},root)
 
+    def test_transitive_maven_dependency_cannot_hide_missing_emulator_abi(self):
+        data = d.zip_bytes({'classes.jar':d.zip_bytes({'Type.class':b'class'}),
+                            'jni/arm64-v8a/libBlinkID.so':elf(183)})
+        with patch.object(d, 'native_dependency', return_value=data):
+            with self.assertRaisesRegex(d.Invalid, 'blinkid-core.*x86_64'):
+                d.audit_android({'artifacts':[], 'native_dependencies':[
+                    {'coordinate':'com.microblink:blinkid-core:8002.0.0', 'requires_native':True}]})
+
+    def test_apk_must_include_native_libraries_from_transitive_dependencies(self):
+        dependency = d.zip_bytes({'classes.jar':d.zip_bytes({'Type.class':b'class'}),
+                                 'jni/arm64-v8a/libBlinkID.so':elf(183)})
+        apk = d.zip_bytes({'lib/arm64-v8a/libBlinkID.so':elf(183), 'lib/x86_64/libOther.so':elf(62)})
+        with tempfile.TemporaryDirectory() as temporary, patch.object(d,'native_dependency',return_value=dependency):
+            path = Path(temporary)/'app.apk';path.write_bytes(apk)
+            with self.assertRaisesRegex(d.Invalid, 'x86_64'):
+                d.verify_apk({'artifacts':[], 'native_dependencies':[{}]},path)
+
+    def test_android_cannot_mix_legacy_and_blinkid_bytecode(self):
+        classes = d.zip_bytes({'sdk/BDIVConfig.class':b'com/microblink/blinkid',
+                               'sdk/BuildConfig.class':b'https://api.svi.becomedigital.net prod'})
+        aar = d.zip_bytes({'classes.jar':classes, 'proguard.txt':b'rules',
+                          'res/values/values.xml':b'<resources><string name="sdk_version">3.5.1</string></resources>'})
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'becomedigitalsdk.aar').write_bytes(aar)
+            config={'artifacts':['becomedigitalsdk.aar'],'public_api':['BDIVConfig'],
+                    'required_class_references':['com/microblink/capture'],'forbidden_class_references':['com/microblink/blinkid']}
+            with self.assertRaisesRegex(d.Invalid,'variante'):
+                d.audit_android(config,root)
+            config.update(required_class_references=['com/microblink/blinkid'],forbidden_class_references=['com/microblink/capture'])
+            self.assertEqual(d.audit_android(config,root),'3.5.1')
+
+    def test_pinned_dependency_rejects_modified_bytes_and_other_origins(self):
+        entry = {'url':'https://repo.maven.apache.org/maven2/group/sdk.aar', 'sha256':'0'*64}
+        with tempfile.TemporaryDirectory() as temporary, patch.dict(os.environ, {'RUNNER_TEMP':temporary}):
+            folder = Path(temporary) / 'become-native-dependencies'
+            folder.mkdir()
+            (folder / ('0'*64 + '.aar')).write_bytes(b'modified')
+            with self.assertRaisesRegex(d.Invalid, 'checksum'):
+                d.native_dependency(entry)
+            entry['url'] = 'https://example.org/sdk.aar'
+            with self.assertRaisesRegex(d.Invalid, 'origen'):
+                d.native_dependency(entry)
+
+    def test_published_version_must_match_artifact_and_version_file(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / 'VERSION').write_text('1.3.0\n')
+            with self.assertRaisesRegex(d.Invalid, 'VERSION'):
+                d.declared_release_version({'version_file':'VERSION'}, '1.2.3', root)
+            self.assertEqual(d.declared_release_version({'version_file':'VERSION'}, '1.3.0', root), '1.3.0')
+
     def test_symlink_cannot_escape_artifact(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -229,6 +280,15 @@ class IOSPackage(unittest.TestCase):
         (self.root/'SDK.xcframework/Info.plist').write_bytes(plistlib.dumps({'AvailableLibraries':libraries}))
 
     def test_valid_device_and_universal_simulator(self):
+        self.assertEqual(d.audit_ios(self.config,self.root),'3.5.1')
+
+    def test_blinkid_distribution_requires_its_own_imports(self):
+        self.config.update(required_imports=['BlinkID'], forbidden_imports=['CaptureCore','CaptureUX'])
+        with self.assertRaisesRegex(d.Invalid, 'variante'):
+            d.audit_ios(self.config,self.root)
+        for framework in self.frameworks:
+            for interface in framework.glob('Modules/BDIdentityVerification.swiftmodule/*.swiftinterface'):
+                interface.write_text(interface.read_text().replace('import CaptureCore\nimport CaptureUX', 'import BlinkID'))
         self.assertEqual(d.audit_ios(self.config,self.root),'3.5.1')
 
     def test_rejects_wrong_platform_despite_correct_architecture(self):
