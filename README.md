@@ -142,7 +142,11 @@ Con `performVerificationCheck: false`, recibirás el resultado de creación sin 
 
 La SDK combina los tipos solicitados con los admitidos por el contrato. Si no hay coincidencias, utiliza los del contrato. Cuando solo existe un tipo, también lo muestra para que el usuario confirme qué documento va a capturar.
 
-El pasaporte requiere la cara frontal. Los demás documentos solicitan los lados definidos para el contrato. La vista previa puede mostrar un recorte; la verificación utiliza la captura completa. Si el contrato solo requiere documentos, no se exige una captura facial.
+El pasaporte requiere la cara frontal. Los demás documentos solicitan los lados definidos para el contrato.
+
+Cuando la revisión está habilitada, se muestra una cara a la vez. Utiliza las flechas para recorrer el frente y el reverso; las imágenes conservan sus proporciones y se ajustan al espacio disponible. La captura automática utiliza el recorte del documento para esta revisión y conserva la captura completa para verificar la identidad. Si falta la imagen necesaria para revisar, se solicita una nueva captura. La captura manual muestra la fotografía completa.
+
+Si el contrato solo requiere documentos, no se exige una captura facial.
 
 ## Consultar el resultado
 

@@ -8,6 +8,7 @@ Estos son los aspectos de funcionamiento público que debes revisar al incorpora
 | Consulta del resultado | Permite asignar `verificationResultsJwt` para usar un JWT de consulta diferente al de creación. Consulta la [guía de autenticación](AUTENTICACION.md). |
 | Compatibilidad de integración | El paquete incluye iPhone físico y simuladores en Mac con Apple Silicon o Intel. Las capturas de cámara y rostro se comprueban en un dispositivo físico. |
 | Flujos | Se mantienen **Onboarding** y **Authentication**. Para autenticar a un usuario existente, selecciona `flow: .Authentication` e indica su `userId`. |
+| Revisión del documento | Muestra una cara a la vez, con flechas para recorrer frente y reverso. Conserva las proporciones y ajusta el tamaño al espacio disponible. Si falta una imagen necesaria para revisar una captura automática, solicita repetirla. |
 | Pasos y documentos | Se muestran los pasos y tipos de documento disponibles para el contrato. Un único tipo también se presenta para confirmación. |
 | Apariencia y textos | Se utilizan los asociados al contrato. El modo claro, oscuro o del sistema se elige con `themeMode`. |
 | Datos iniciales | Puedes precargar país, estado, número de documento y subtipo mediante las opciones públicas de configuración. |

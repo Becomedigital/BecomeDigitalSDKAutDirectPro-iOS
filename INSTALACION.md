@@ -13,6 +13,8 @@
 | CaptureCore y CaptureUX | 1.4.3 |
 | Licencia de captura | Emitida para el identificador de tu aplicación |
 
+La integración de este paquete se verificó con Xcode 27.2.
+
 Necesitas un JWT vigente y el identificador del contrato. La firma anterior con credenciales continúa disponible para integraciones existentes y está marcada como deprecada; consulta la [guía de inicialización](README.md#iniciar-una-verificación). Esta entrega está preparada para producción. Realiza las pruebas de cámara, documentos y rostro en un dispositivo físico; el paquete también incluye compatibilidad con simuladores para integrar las pantallas.
 
 ## Instalación
