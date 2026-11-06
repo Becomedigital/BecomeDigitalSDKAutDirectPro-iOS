@@ -4,10 +4,10 @@
 
 | Requisito | Versión o condición |
 | --- | --- |
-| SDK de Become incluida | 1.2.3 |
+| SDK de Become incluida | 3.5.1 |
 | Sistema operativo | iOS 16.0 o posterior |
 | Destinos incluidos | iPhone físico (`arm64`) y simuladores en Mac con Apple Silicon (`arm64`) o Intel (`x86_64`) |
-| Xcode | 27.0 o posterior compatible |
+| Compilador Swift | 6.4 o posterior compatible |
 | Amplify Swift | 2.53.3 |
 | Amplify UI Swift Liveness | 1.4.4 |
 | CaptureCore y CaptureUX | 1.4.3 |
