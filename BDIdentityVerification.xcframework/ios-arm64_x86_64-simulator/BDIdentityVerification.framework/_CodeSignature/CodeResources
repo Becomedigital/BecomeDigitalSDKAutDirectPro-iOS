@@ -95,7 +95,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nfEL4R/SgO1+tRpLcM4BdOA5AT0=
+		PpVhkyQ3RKyBnB83GzDfplXysaQ=
 		</data>
 		<key>Model.momd/Model.mom</key>
 		<data>
@@ -107,7 +107,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		rQQV1vcQLmcvoQl0pkVqn45iNDE=
+		Xg9Pr8mqknErZ9UDtJB8KfzTE6U=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -123,7 +123,7 @@
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		rQQV1vcQLmcvoQl0pkVqn45iNDE=
+		Xg9Pr8mqknErZ9UDtJB8KfzTE6U=
 		</data>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -140,6 +140,10 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		gmjWEoJ28wST307dTa/rQxobN88=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		1YW/9x3IyHoMN8camhivbBDYcDY=
 		</data>
 		<key>amplifyconfiguration.json</key>
 		<data>
@@ -354,7 +358,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LY/ZJ6LuPgOmL7hdUEaybzqr1op0J50jjOP+NtmTFmM=
+			0QrZl3uuvbxtkNV6ZIP+pujqhz1VBDE1s8KCRYf2zMk=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -382,7 +386,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LY/ZJ6LuPgOmL7hdUEaybzqr1op0J50jjOP+NtmTFmM=
+			0QrZl3uuvbxtkNV6ZIP+pujqhz1VBDE1s8KCRYf2zMk=
 			</data>
 		</dict>
 		<key>Modules/BDIdentityVerification.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -411,6 +415,13 @@
 			<key>hash2</key>
 			<data>
 			YXCWTQSypfUSbP7dhhd/94tD/sbks0wvVtGsTfAQpfw=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			y1vz7ol5G2Q9Xyf/4s/mbanr2k/TqUtLqKUiGz7WJH4=
 			</data>
 		</dict>
 		<key>amplifyconfiguration.json</key>
