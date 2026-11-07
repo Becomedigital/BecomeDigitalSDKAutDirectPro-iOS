@@ -1,0 +1,12 @@
+{
+  "agregado": [
+    "Instalación por versión exacta mediante el gestor de paquetes de la plataforma, con resolución automática de dependencias."
+  ],
+  "cambiado": [
+    "La revisión del documento muestra una cara a la vez y permite alternar entre las imágenes conservando sus proporciones."
+  ],
+  "corregido": [
+    "Solicita repetir la captura automática cuando falta la imagen necesaria para revisar el documento."
+  ],
+  "retirado": []
+}

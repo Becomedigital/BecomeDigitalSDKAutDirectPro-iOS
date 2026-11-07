@@ -1,0 +1,239 @@
+ACUERDO DE LICENCIA PROPIETARIA DE LAS SDK DE BECOME DIGITAL
+
+TÉRMINOS PROVISIONALES PARA LA DISTRIBUCIÓN LEGACY IOS 3.5.1-RC.1
+Versión del texto: 0.1
+Licenciante: Become Digital, en adelante «Become».
+
+Este texto corresponde a la distribución indicada y conserva sus
+condiciones de integración. Las condiciones oficiales que Become publique para
+entregas posteriores no sustituyen automáticamente las de esta versión, según
+lo previsto en la cláusula 12.
+
+1. OBJETO Y ALCANCE
+
+Este acuerdo establece los permisos y restricciones aplicables a los componentes
+propios de las herramientas de desarrollo de Become Digital para integrar
+verificación de identidad en aplicaciones móviles, en adelante la «SDK».
+
+Comprende la distribución Legacy para iOS del producto BDIdentityVerification,
+versión 3.5.1-rc.1, publicada en el repositorio BecomeDigitalSDKAutDirectPro-iOS
+de BecomeDigital y consumida mediante Swift Package Manager o descarga directa,
+incluidos los binarios,
+interfaces públicas y documentación de integración que se entreguen acompañados
+de este acuerdo o que lo incorporen expresamente por referencia. No extiende sus
+efectos a otras versiones entregadas bajo condiciones diferentes.
+
+La persona o entidad que acepta este acuerdo e integra la SDK será el
+«Integrador». Quien actúe en representación de una entidad debe contar con
+facultades suficientes para obligarla. Los mecanismos de aceptación de este
+acuerdo serán los establecidos por Become en el proceso de contratación o
+entrega correspondiente.
+
+Los componentes, tecnologías y materiales de terceros se rigen por lo previsto
+en la cláusula 7 y quedan excluidos de cualquier concesión de derechos que
+Become no esté facultada para otorgar.
+
+2. LICENCIA DE INTEGRACIÓN SIN CARGO
+
+Siempre que el Integrador cumpla este acuerdo, Become le concede una licencia
+no exclusiva y de alcance mundial para descargar, instalar, copiar y utilizar
+la SDK con el propósito de evaluar, desarrollar, probar, mantener y distribuir
+aplicaciones que integren las funcionalidades de Become, en adelante las
+«Aplicaciones Integradoras».
+
+La concesión no implica transferencia de propiedad ni autoriza la cesión o
+comercialización de la SDK como producto independiente, salvo autorización
+previa y escrita de Become. La distribución permitida dentro de las
+Aplicaciones Integradoras se regula en la cláusula 3.
+
+Become no cobrará una tarifa ni regalía separada por los permisos de integración
+de la SDK concedidos en este acuerdo. Esta gratuidad no comprende los servicios,
+consumos, licencias de terceros, soporte u otras prestaciones reguladas en un
+contrato separado.
+
+La SDK puede requerir credenciales, autorizaciones o licencias técnicas válidas
+para habilitar determinadas funcionalidades. Su descarga o integración no
+constituye por sí sola una autorización de acceso a servicios o tecnologías.
+
+3. COPIAS Y REDISTRIBUCIÓN DENTRO DE APLICACIONES
+
+El Integrador puede realizar las copias necesarias para el desarrollo, pruebas,
+compilación, respaldo y mantenimiento de las Aplicaciones Integradoras.
+
+Asimismo, puede distribuir la SDK en formato binario incorporada en dichas
+aplicaciones, directamente o mediante las tiendas y canales de distribución
+de aplicaciones correspondientes, siempre que:
+
+a) La SDK se utilice únicamente como parte de la Aplicación Integradora y no se
+   ofrezca como una biblioteca, herramienta de desarrollo o producto separado.
+b) Se conserven los avisos de titularidad, licencia y atribución aplicables,
+   incluidos los avisos de terceros que deban acompañar la distribución.
+c) No se concedan a los destinatarios derechos sobre la SDK superiores a los
+   autorizados por este acuerdo y las licencias de terceros aplicables.
+d) La distribución no facilite deliberadamente la extracción o reutilización de
+   la SDK como producto independiente ni la evasión de sus controles de acceso.
+
+El Integrador puede comercializar sus Aplicaciones Integradoras, incluso mediante
+venta, suscripción u otros modelos de negocio. Esa comercialización no se
+considerará reventa independiente de la SDK cuando se cumplan las condiciones
+anteriores. Tampoco otorga derechos adicionales de acceso a los servicios.
+
+Los usuarios finales podrán utilizar las funciones incorporadas de la SDK dentro
+de la Aplicación Integradora, sin adquirir por ello una licencia autónoma para
+extraerla, modificarla o redistribuirla por separado.
+
+4. RESTRICCIONES
+
+Salvo autorización previa y escrita de Become, las excepciones de la cláusula 5,
+los derechos otorgados directamente por las licencias de terceros o los derechos
+que la ley aplicable no permita restringir, el Integrador no podrá:
+
+a) Modificar, adaptar, traducir el código, alterar el funcionamiento o crear
+   obras derivadas de los componentes propios de la SDK.
+b) Descompilar, desensamblar o realizar ingeniería inversa de esos componentes.
+c) Vender, revender, alquilar, sublicenciar, ceder o distribuir la SDK como
+   producto independiente o como herramienta para que terceros la integren en
+   otras aplicaciones fuera del alcance autorizado por Become.
+d) Eliminar o alterar avisos de derechos de autor, atribución o licencia.
+e) Eludir deliberadamente controles de licencia, autenticación, seguridad o
+   restricciones de acceso y consumo aplicables.
+f) Presentar una versión modificada o una distribución no autorizada como una
+   entrega oficial de Become.
+
+El acceso incidental a código fuente o a archivos internos de la SDK no amplía
+los permisos de este acuerdo ni implica una licencia de modificación.
+
+5. OPERACIONES NORMALES DE INTEGRACIÓN
+
+No se considerarán modificaciones prohibidas:
+
+a) La configuración mediante las interfaces públicas y las opciones de
+   personalización y localización documentadas por Become.
+b) La adaptación de los ejemplos de integración para el código propio de la
+   Aplicación Integradora, sin alterar el código funcional de la SDK.
+c) Las transformaciones técnicas ordinarias que las herramientas de desarrollo
+   o distribución apliquen al integrar la SDK, como compilación, enlace,
+   desazucarado, minificación, optimización u ofuscación con herramientas como
+   D8/R8, selección de arquitecturas compatibles, empaquetado y firma.
+
+Estas operaciones se autorizan únicamente para integrar o distribuir las
+Aplicaciones Integradoras conforme a este acuerdo. No habilitan la alteración
+del código o la lógica interna de la SDK fuera de las opciones públicas
+documentadas, la evasión de controles de licencia o seguridad, ni la distribución
+de una SDK modificada como producto separado.
+Tampoco amplían los permisos concedidos por los titulares de componentes de
+terceros ni constituyen una garantía de compatibilidad de cualquier configuración
+de herramientas elegida por el Integrador.
+
+6. SERVICIOS SUJETOS A CONTRATO
+
+Esta licencia no incluye el acceso gratuito o ilimitado a las API, verificaciones
+de identidad, procesamiento documental, validación facial, almacenamiento ni
+otros servicios prestados por Become o por terceros.
+
+El acceso, la activación, los ambientes habilitados, los volúmenes de uso, las
+tarifas, la facturación, el soporte, los niveles de servicio y las condiciones de
+suspensión o terminación se regirán por el contrato aplicable y sus anexos.
+
+El Integrador debe contar con las credenciales y autorizaciones que correspondan
+y utilizarlas exclusivamente dentro del alcance contratado. La terminación de un
+servicio producirá los efectos previstos en su contrato; la integración gratuita
+de la SDK no obliga a Become a mantener ese servicio disponible.
+
+Este acuerdo tampoco sustituye las obligaciones y autorizaciones que resulten
+aplicables al tratamiento de datos personales ni los acuerdos correspondientes.
+
+7. COMPONENTES Y DERECHOS DE TERCEROS
+
+La SDK puede incluir componentes de terceros o requerir su instalación. Cada
+componente conserva su titularidad, avisos y condiciones de licencia propios.
+
+Este acuerdo no concede derechos sobre tecnologías de terceros que Become no
+esté autorizada a otorgar. El Integrador deberá obtener las licencias,
+autorizaciones o claves que le correspondan y cumplir las condiciones de uso y
+redistribución aplicables.
+
+Las restricciones de este acuerdo no reducen los derechos que una licencia de
+terceros otorgue directamente al Integrador respecto del componente cubierto por
+ella. En caso de conflicto sobre ese componente, prevalecerán sus propios
+términos en la medida que corresponda.
+
+8. REPOSITORIOS Y CANALES AUTORIZADOS
+
+Become puede distribuir versiones oficiales de la SDK mediante repositorios y
+gestores de paquetes u otros canales que designe. La autorización a sus
+operadores para alojar, reproducir, transmitir, almacenar en caché o mantener
+espejos de los paquetes se regirá por los acuerdos de distribución que Become
+celebre con ellos y por los permisos que esté facultada para otorgar.
+
+El Integrador puede mantener copias técnicas en los gestores de dependencias y
+cachés utilizados para desarrollar y distribuir sus Aplicaciones Integradoras.
+Esto no le permite crear una oferta pública independiente de la SDK o presentarse
+como su distribuidor sin autorización escrita de Become.
+
+La disponibilidad pública de un archivo no amplía los derechos otorgados por
+este acuerdo ni por las licencias de terceros. La terminación de los permisos
+del Integrador no revoca las autorizaciones de distribución que Become haya
+otorgado válidamente a los operadores de repositorios bajo acuerdos separados.
+
+9. PROPIEDAD INTELECTUAL
+
+Become o sus respectivos titulares conservan todos los derechos sobre la SDK,
+su documentación, marcas y demás materiales. Solo se conceden los permisos
+expresamente previstos en este acuerdo.
+
+No se concede autorización para utilizar las marcas o signos distintivos de
+Become con fines promocionales, de patrocinio o de respaldo comercial, salvo
+los avisos de atribución requeridos o una autorización separada.
+
+10. GARANTÍAS, SOPORTE Y RESPONSABILIDAD
+
+Salvo las obligaciones expresamente asumidas por escrito y los derechos que no
+puedan excluirse por ley, la SDK y su documentación se proporcionan en el estado
+en que se encuentran. Become no garantiza que su operación esté libre de errores
+o interrupciones ni su compatibilidad con configuraciones no documentadas.
+
+La licencia gratuita de integración no incluye por sí sola mantenimiento,
+actualizaciones, soporte, niveles de servicio ni garantías adicionales. Las
+prestaciones y responsabilidades asumidas en un contrato aplicable conservarán
+sus efectos y no quedarán reducidas por esta cláusula.
+
+Las exclusiones y límites de responsabilidad estarán sujetos a la ley aplicable
+y a lo expresamente pactado en el contrato correspondiente. Este acuerdo no
+excluye responsabilidades que legalmente no puedan excluirse.
+
+11. VIGENCIA Y TERMINACIÓN
+
+Los permisos de este acuerdo permanecerán vigentes mientras el Integrador cumpla
+sus condiciones. Become podrá terminarlos por un incumplimiento esencial,
+previa notificación y respetando los procedimientos y oportunidades de
+subsanación exigibles según la ley o el contrato aplicable.
+
+Producida la terminación, el Integrador deberá cesar los usos y las nuevas
+distribuciones que hayan dejado de estar autorizados y retirar las copias bajo
+su control, salvo las que deba conservar por obligación legal o por un derecho
+independiente vigente. El alcance de las medidas sobre aplicaciones ya
+distribuidas se determinará conforme al contrato y la ley aplicables.
+
+Las obligaciones de protección de la propiedad intelectual y las disposiciones
+que por su naturaleza deban sobrevivir a la terminación conservarán sus efectos.
+
+12. RELACIÓN CON OTROS ACUERDOS Y NUEVAS VERSIONES
+
+Un acuerdo individual escrito con Become prevalecerá sobre este texto únicamente
+respecto de las materias que regule expresamente, sin ampliar derechos de
+terceros que Become no pueda conceder.
+
+Become podrá ofrecer nuevas versiones de la SDK bajo condiciones distintas,
+informadas al momento de su entrega. La publicación de nuevas condiciones no
+modifica automáticamente las licencias de versiones previamente entregadas,
+salvo acuerdo válido en contrario o disposición legal aplicable.
+
+13. LEY APLICABLE Y RESOLUCIÓN DE CONTROVERSIAS
+
+La ley aplicable y el mecanismo de resolución de controversias serán los
+establecidos en el contrato correspondiente. A falta de estipulación contractual
+aplicable, se aplicarán las normas y competencias que correspondan conforme a
+la ley, sin afectar las que sean de aplicación obligatoria.
+
+FIN DEL ACUERDO PROVISIONAL
