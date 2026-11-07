@@ -4,13 +4,10 @@
 
 | Requisito | Versión o condición |
 | --- | --- |
-| SDK de Become incluida | 3.5.1 |
+| Versión de Become | `3.5.1-rc.1` |
 | Sistema operativo | iOS 16.0 o posterior |
 | Destinos incluidos | iPhone físico (`arm64`) y simuladores en Mac con Apple Silicon (`arm64`) o Intel (`x86_64`) |
 | Compilador Swift | 6.4 o posterior compatible |
-| Amplify Swift | 2.53.3 |
-| Amplify UI Swift Liveness | 1.4.4 |
-| CaptureCore y CaptureUX | 1.4.3 |
 | Licencia de captura | Emitida para el identificador de tu aplicación |
 
 La integración de este paquete se verificó con Xcode 27.2.
@@ -19,20 +16,18 @@ Necesitas un JWT vigente y el identificador del contrato. La firma anterior con 
 
 ## Instalación
 
-1. Agrega `BDIdentityVerification.xcframework` al destino de tu aplicación en Xcode y selecciona **Embed & Sign**.
-2. En **File > Add Package Dependencies**, agrega los siguientes paquetes con la opción **Exact Version**.
+1. En Xcode, abre **File > Add Package Dependencies**.
+2. Agrega `https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS`.
+3. Selecciona **Exact Version** e ingresa `3.5.1-rc.1`.
+4. Agrega el producto **BDIdentityVerification** al destino de tu aplicación.
 
-| Paquete | Versión | Producto que debes agregar |
-| --- | --- | --- |
-| https://github.com/aws-amplify/amplify-swift | 2.53.3 | `Amplify` |
-| https://github.com/aws-amplify/amplify-ui-swift-liveness | 1.4.4 | `FaceLiveness` |
-| https://github.com/BlinkID/capture-core-sp | 1.4.3 | `CaptureCore` |
-| https://github.com/BlinkID/capture-ux-sp | 1.4.3 | `CaptureUX` |
+SPM descarga el XCFramework y resuelve automáticamente sus dependencias. La instalación conserva el uso de `import BDIdentityVerification` y los parámetros públicos de inicialización. Si tu aplicación ya utiliza paquetes compartidos, compara sus reglas con la [guía de dependencias y compatibilidad](DEPENDENCIAS.md).
 
-3. Comprueba que `BDIdentityVerification.framework`, `CaptureCore.framework` y `CaptureUX.framework` estén configurados como **Embed & Sign**. Mantén las versiones de la tabla, incluso cuando tu contrato no solicite una captura facial.
-4. Agrega la licencia como **`com.become.document.key.txt`**, con pertenencia al destino de tu aplicación e incluida en **Copy Bundle Resources**. El identificador de la aplicación debe coincidir con el autorizado en la licencia.
+Agrega la licencia como **`com.become.document.key.txt`**, con pertenencia al destino de tu aplicación e incluida en **Copy Bundle Resources**. El identificador de tu aplicación debe coincidir con el autorizado en la licencia.
 
-Si tu aplicación ya incluye alguno de estos paquetes, utiliza una única versión compatible con esta entrega.
+La candidata está disponible en [Releases](https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/tag/3.5.1-rc.1). Realiza la validación funcional en un dispositivo físico.
+
+Si actualizas una integración por archivo, sigue primero la [guía de migración](MIGRACION.md) para evitar módulos duplicados.
 
 ## Permisos
 
@@ -46,3 +41,5 @@ Agrega a `Info.plist` una descripción que explique al usuario por qué necesita
 Si tu contrato utiliza ubicación, agrega también `NSLocationWhenInUseUsageDescription`. Rechazar el permiso de ubicación no bloquea la verificación.
 
 Continúa con el [ejemplo de inicialización](README.md#iniciar-una-verificación).
+
+Si prefieres utilizar los binarios descargables, consulta la [integración manual](INSTALACION_MANUAL.md), que requiere configurar sus dependencias por separado.
