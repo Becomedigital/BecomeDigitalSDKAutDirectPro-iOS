@@ -27,6 +27,12 @@ Los pasos, documentos admitidos, apariencia y textos de la verificación corresp
 
 Necesitas una aplicación para iOS 16.0 o posterior, un JWT vigente, el identificador del contrato y la licencia de captura correspondiente a tu aplicación. Sigue la [guía de instalación](INSTALACION.md) para agregar la SDK, sus dependencias y permisos.
 
+## Instalación con versión exacta
+
+Integra esta candidata mediante SPM con **Exact Version** `3.5.1-rc.1` y el producto `BDIdentityVerification`. El gestor descarga automáticamente las dependencias del paquete. Completa los permisos y la licencia de tu aplicación siguiendo la [guía de instalación](INSTALACION.md).
+
+Si vienes de la distribución por archivo, consulta la [migración](MIGRACION.md). Esta es una versión de pruebas; valida cámara, documentos y rostro en un dispositivo físico antes de distribuir tu app.
+
 ## Iniciar una verificación
 
 Implementa `BDIVDelegate` en el controlador que presenta la SDK y conserva la instancia mientras el flujo permanezca activo.

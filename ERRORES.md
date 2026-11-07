@@ -27,7 +27,7 @@ La SDK presenta las opciones de revisión y reintento disponibles para el usuari
 | Creación correcta y HTTP 403 al consultar | Comprueba los permisos por operación: `jwt` para creación y `verificationResultsJwt` para consulta. No basta con cambiar el token principal a `verification:get`. Revisa también vigencia, ambiente y contrato; consulta la [guía de autenticación](AUTENTICACION.md#si-se-crea-la-verificación-pero-la-consulta-devuelve-http-403). |
 | No se abre la cámara | Dispositivo físico, descripción `NSCameraUsageDescription` y permiso de cámara concedido. |
 | No se habilita la captura de documento | Archivo `com.become.document.key.txt`, pertenencia al destino y coincidencia del identificador de aplicación con la licencia. |
-| Xcode indica que falta un módulo | Versiones de paquetes, Xcode y configuración **Embed & Sign** indicados en [Instalación](INSTALACION.md#instalación). |
+| Xcode indica que falta un módulo | Resolución exacta del paquete, asociación del producto `BDIdentityVerification` al target y requisitos de Xcode indicados en [Instalación](INSTALACION.md#instalación). |
 | La conexión se interrumpe | Recuperar la conectividad y permitir que el usuario vuelva a intentarlo. |
 | Se agota la espera del resultado | Revisar `pollingTimeout` y `pollingMaxAttempts` según el comportamiento que necesita tu aplicación. |
 | Se solicita repetir el documento o el rostro | Seguir las indicaciones de la pantalla y permitir una nueva captura. |
