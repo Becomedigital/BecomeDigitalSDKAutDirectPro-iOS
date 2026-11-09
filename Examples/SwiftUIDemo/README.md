@@ -6,6 +6,10 @@ El repositorio no incluye credenciales de cliente ni licencia de captura para es
 
 Este ejemplo conserva la firma compatible que recibe `clienId` y `clientSecret`, marcada como deprecada. Para una integración nueva, utiliza la [firma con JWT](../../README.md#iniciar-una-verificación). Ambas están disponibles en el paquete incluido. La [guía de autenticación](../../AUTENTICACION.md) explica cómo asignar los JWT de creación y consulta al migrar.
 
+## Usar la candidata publicada
+
+El proyecto conserva una referencia al archivo local incluido en esta distribución. Para probar la integración publicada, aplica la [migración a SPM](../../MIGRACION.md), selecciona exactamente `3.5.1-rc.1` y agrega el producto `BDIdentityVerification`. SPM resuelve las demás dependencias.
+
 ## Preparar la aplicación local
 
 1. Lee la [guía de instalación](../../INSTALACION.md). Utiliza Xcode 27 o posterior e iOS 16 o posterior.
@@ -20,7 +24,7 @@ Este ejemplo conserva la firma compatible que recibe `clienId` y `clientSecret`,
    El generador requiere la gema de Ruby `xcodeproj`. Agrega los dos archivos privados a los recursos de la aplicación solo cuando existen. Vuelve a generar el proyecto después de agregar o quitar cualquiera de ellos.
 5. Abre `BecomeSwiftUIDemo.xcodeproj`, selecciona tu equipo de firma y compila para un iPhone físico. Ingresa un identificador de usuario y toca **Iniciar verificación**.
 
-La aplicación utiliza directamente `BDIdentityVerification.xcframework` de este repositorio; el ejemplo no contiene una segunda copia. El proyecto fija las versiones de los paquetes Swift indicadas en la [guía de instalación](../../INSTALACION.md). Si modificas el proyecto generado, revisa los recursos incluidos antes de compartirlo. No agregues a Git `Secrets.plist`, la licencia ni una aplicación compilada.
+La aplicación utiliza directamente `BDIdentityVerification.xcframework` de este repositorio; el ejemplo no contiene una segunda copia. Al migrar a SPM, sigue la [guía de instalación](../../INSTALACION.md) y conserva una sola integración de Become. Si modificas el proyecto generado, revisa los recursos incluidos antes de compartirlo. No agregues a Git `Secrets.plist`, la licencia ni una aplicación compilada.
 
 `BDIVConfig.debugLogsEnabled` está activado para generar mensajes de diagnóstico. Los registros de una prueba pueden contener información personal. La [guía de localización](../../LOCALIZACION.md) distingue los textos entregados por el contrato de los textos nativos que puede traducir la aplicación. Consulta también la [guía de registros](../../LOGGING.md).
 
