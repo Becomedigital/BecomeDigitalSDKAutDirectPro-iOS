@@ -1,8 +1,8 @@
 {
-  "version": "3.5.1-rc.1",
-  "date": "2026-11-06",
-  "candidate": "",
-  "functional_validation": false,
+  "version": "3.5.1",
+  "date": "2026-11-09",
+  "candidate": "3.5.1-rc.1",
+  "functional_validation": true,
   "inputs": {
     "BDIdentityVerification.xcframework": "ba70185c6609ce3a117305e84a56ca194f19dad801f57fbec0704fa5b468a064",
     "integration_sha256": "460e5549023ddb4d92373d06f9a90cadab5e6113d52c96c6ce24e1d567c45ffe"
