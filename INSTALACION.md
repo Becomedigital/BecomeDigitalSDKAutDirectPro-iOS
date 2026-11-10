@@ -4,7 +4,7 @@
 
 | Requisito | Versión o condición |
 | --- | --- |
-| Versión de Become | `3.5.1-rc.1` |
+| Versión de Become | `3.5.1` |
 | Sistema operativo | iOS 16.0 o posterior |
 | Destinos incluidos | iPhone físico (`arm64`) y simuladores en Mac con Apple Silicon (`arm64`) o Intel (`x86_64`) |
 | Compilador Swift | 6.4 o posterior compatible |
@@ -18,14 +18,14 @@ Necesitas un JWT vigente y el identificador del contrato. La firma anterior con 
 
 1. En Xcode, abre **File > Add Package Dependencies**.
 2. Agrega `https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS`.
-3. Selecciona **Exact Version** e ingresa `3.5.1-rc.1`.
+3. Selecciona **Exact Version** e ingresa `3.5.1`.
 4. Agrega el producto **BDIdentityVerification** al destino de tu aplicación.
 
 SPM descarga el XCFramework y resuelve automáticamente sus dependencias. La instalación conserva el uso de `import BDIdentityVerification` y los parámetros públicos de inicialización. Si tu aplicación ya utiliza paquetes compartidos, compara sus reglas con la [guía de dependencias y compatibilidad](DEPENDENCIAS.md).
 
 Agrega la licencia como **`com.become.document.key.txt`**, con pertenencia al destino de tu aplicación e incluida en **Copy Bundle Resources**. El identificador de tu aplicación debe coincidir con el autorizado en la licencia.
 
-La candidata está disponible en [Releases](https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/tag/3.5.1-rc.1). Realiza la validación funcional en un dispositivo físico.
+La versión oficial está disponible en [Releases](https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/tag/3.5.1). Realiza la validación funcional en un dispositivo físico.
 
 Si actualizas una integración por archivo, sigue primero la [guía de migración](MIGRACION.md) para evitar módulos duplicados.
 

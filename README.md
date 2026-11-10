@@ -1,8 +1,8 @@
-# SDK de Become para iOS
+# Verificación de identidad de Become para iOS
 
-Integra la verificación de identidad de Become en tu aplicación. La SDK presenta las pantallas de captura y devuelve el resultado mediante objetos que tu aplicación puede consultar.
+Integra la verificación de identidad de Become en tu aplicación. Presenta las pantallas de captura y consulta sus resultados desde tu aplicación.
 
-El [proyecto de ejemplo con SwiftUI](Examples/SwiftUIDemo/README.md) muestra una integración completa desde la pantalla de la aplicación hasta la configuración y las respuestas de la SDK. Para ejecutar una verificación necesitas un JWT vigente, un contrato y una licencia de captura emitida para el identificador de tu aplicación.
+El [proyecto de ejemplo con SwiftUI](Examples/SwiftUIDemo/README.md) muestra la configuración, el inicio de la verificación y el manejo de sus resultados. Para ejecutar una verificación necesitas un JWT vigente, un contrato y una licencia de captura emitida para el identificador de tu aplicación.
 
 Puedes iniciar dos flujos:
 
@@ -29,9 +29,9 @@ Necesitas una aplicación para iOS 16.0 o posterior, un JWT vigente, el identifi
 
 ## Instalación con versión exacta
 
-Integra esta candidata mediante SPM con **Exact Version** `3.5.1-rc.1` y el producto `BDIdentityVerification`. El gestor descarga automáticamente las dependencias del paquete. Completa los permisos y la licencia de tu aplicación siguiendo la [guía de instalación](INSTALACION.md).
+Integra la versión oficial mediante SPM con **Exact Version** `3.5.1` y el producto `BDIdentityVerification`. El gestor descarga automáticamente las dependencias del paquete. Completa los permisos y la licencia de tu aplicación siguiendo la [guía de instalación](INSTALACION.md).
 
-Si vienes de la distribución por archivo, consulta la [migración](MIGRACION.md). Esta es una versión de pruebas; valida cámara, documentos y rostro en un dispositivo físico antes de distribuir tu app.
+Si vienes de la distribución por archivo, consulta la [migración](MIGRACION.md). Valida cámara, documentos y rostro en un dispositivo físico antes de distribuir tu app.
 
 ## Iniciar una verificación
 
@@ -182,6 +182,7 @@ El [proyecto de ejemplo](Examples/SwiftUIDemo/README.md) incluye el puente entre
 
 ## Guías complementarias
 
+- [Términos de uso de esta versión](legal/LICENSE-3.5.1.txt)
 - [Instalación, dependencias, licencia y permisos](INSTALACION.md)
 - [Inicialización con JWT y firma deprecada](AUTENTICACION.md)
 - [Resultados, errores y cancelación](ERRORES.md)
