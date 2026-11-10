@@ -1,14 +1,14 @@
 # Ejemplo de integración con SwiftUI
 
-Este proyecto muestra cómo iniciar la SDK de iOS distribuida desde SwiftUI. `BecomeSwiftUIScreen` presenta `BecomeSDKBridge`, que conserva un controlador de UIKit mientras la verificación está activa y recibe las respuestas de `BDIVDelegate`. La aplicación también atiende los eventos de sesiones en segundo plano e incluye recursos en inglés, español y español latinoamericano para su pantalla y los componentes nativos compatibles.
+Este proyecto muestra cómo iniciar una verificación de identidad de Become desde SwiftUI. `BecomeSwiftUIScreen` presenta `BecomeSDKBridge`, que conserva un controlador de UIKit mientras la verificación está activa y recibe las respuestas de `BDIVDelegate`. La aplicación también atiende los eventos de sesiones en segundo plano e incluye recursos en inglés, español y español latinoamericano para su pantalla y los componentes nativos compatibles.
 
-El repositorio no incluye credenciales de cliente ni licencia de captura para este ejemplo. Para completar una verificación necesitas un contrato con Become, las credenciales de ese contrato y una licencia emitida para el identificador de tu aplicación. Sin estos datos, el ejemplo compila, pero muestra un aviso de configuración faltante cuando intentas iniciar la SDK.
+El repositorio no incluye credenciales de cliente ni licencia de captura para este ejemplo. Para completar una verificación necesitas un contrato con Become, las credenciales de ese contrato y una licencia emitida para el identificador de tu aplicación. Sin estos datos, el ejemplo compila, pero muestra un aviso de configuración faltante cuando intentas iniciar la verificación.
 
 Este ejemplo conserva la firma compatible que recibe `clienId` y `clientSecret`, marcada como deprecada. Para una integración nueva, utiliza la [firma con JWT](../../README.md#iniciar-una-verificación). Ambas están disponibles en el paquete incluido. La [guía de autenticación](../../AUTENTICACION.md) explica cómo asignar los JWT de creación y consulta al migrar.
 
-## Usar la candidata publicada
+## Usar la versión oficial
 
-El proyecto conserva una referencia al archivo local incluido en esta distribución. Para probar la integración publicada, aplica la [migración a SPM](../../MIGRACION.md), selecciona exactamente `3.5.1-rc.1` y agrega el producto `BDIdentityVerification`. SPM resuelve las demás dependencias.
+El proyecto conserva una referencia al archivo local incluido en esta distribución. Para probar la integración publicada, aplica la [migración a SPM](../../MIGRACION.md), selecciona exactamente `3.5.1` y agrega el producto `BDIdentityVerification`. SPM resuelve las demás dependencias.
 
 ## Preparar la aplicación local
 

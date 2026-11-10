@@ -1,6 +1,6 @@
 # Migrar la integración Legacy de iOS a SPM
 
-La candidata `3.5.1-rc.1` permite agregar Become mediante una versión exacta. Conserva los JWT, el contrato, la licencia de tu aplicación, los permisos y las traducciones que utilizas.
+La versión oficial `3.5.1` permite agregar Become mediante una versión exacta. Conserva los JWT, el contrato, la licencia de tu aplicación, los permisos y las traducciones que utilizas.
 
 ## Retirar la integración por archivo
 
@@ -11,7 +11,7 @@ La candidata `3.5.1-rc.1` permite agregar Become mediante una versión exacta. C
 
 ## Agregar la versión exacta
 
-En Xcode, abre **File > Add Package Dependencies**, agrega `https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS.git`, selecciona **Exact Version** con `3.5.1-rc.1` y asocia el producto `BDIdentityVerification` al target de tu app. SPM descarga el XCFramework y resuelve sus dependencias.
+En Xcode, abre **File > Add Package Dependencies**, agrega `https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS.git`, selecciona **Exact Version** con `3.5.1` y asocia el producto `BDIdentityVerification` al target de tu app. SPM descarga el XCFramework y resuelve sus dependencias.
 
 El módulo importado sigue siendo `BDIdentityVerification`. Sigue la [instalación](INSTALACION.md) y conserva la [inicialización y los callbacks](README.md#iniciar-una-verificación) de tu integración.
 
