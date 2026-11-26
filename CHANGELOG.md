@@ -1,5 +1,11 @@
 # Historial de cambios
 
+## 3.5.2-rc.1 — 2026-11-26
+
+### Cambios
+
+- Las imágenes completas del documento conservan las dimensiones de captura y se envían en JPEG de calidad máxima.
+
 ## 3.5.1 — 2026-11-09
 
 ### Novedades
