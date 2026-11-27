@@ -1,5 +1,16 @@
 # Historial de cambios
 
+## 3.5.2 — 2026-11-27
+
+### Novedades
+
+- La revisión permite abrir las imágenes del documento en pantalla completa y ampliarlas.
+
+### Cambios
+
+- Las imágenes completas conservan sus dimensiones de captura y se codifican en JPEG de calidad máxima.
+- La captura automática solicita 2160p en dispositivos compatibles.
+
 ## 3.5.1 — 2026-11-09
 
 ### Novedades
