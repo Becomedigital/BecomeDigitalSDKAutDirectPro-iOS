@@ -57,7 +57,7 @@ Los demás valores de la tabla son el resultado observado. El intervalo admisibl
 | Versión resuelta de referencia | La indicada para cada paquete en la resolución de referencia. |
 | Mínimo funcional compatible | No establecido para paquetes con requisitos flexibles. |
 | Máximo funcional compatible | No establecido. |
-| Versión de BecomeDigital | Fija `3.5.1-rc.1` como se indica en la [instalación](INSTALACION.md). |
+| Versión de BecomeDigital | Fija el número exacto de la versión estable como se indica en la [instalación](INSTALACION.md). |
 
 Una resolución válida confirma que los requisitos declarados se pueden satisfacer. No certifica por sí sola la compilación ni el comportamiento de todas las bibliotecas de tu aplicación. Tampoco permite concluir que una versión anterior o posterior sea compatible o esté deprecada.
 

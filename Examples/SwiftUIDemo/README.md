@@ -8,7 +8,7 @@ Este ejemplo conserva la firma compatible que recibe `clienId` y `clientSecret`,
 
 ## Usar la versión oficial
 
-El proyecto conserva una referencia al archivo local incluido en esta distribución. Para probar la integración publicada, aplica la [migración a SPM](../../MIGRACION.md), selecciona exactamente `3.5.1` y agrega el producto `BDIdentityVerification`. SPM resuelve las demás dependencias.
+El proyecto conserva una referencia al archivo local incluido en esta distribución. Para probar la integración publicada, aplica la [migración a SPM](../../MIGRACION.md), usa **Exact Version** con el número exacto de la [última versión estable](https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/latest) y agrega el producto `BDIdentityVerification`. SPM resuelve las demás dependencias.
 
 ## Preparar la aplicación local
 
