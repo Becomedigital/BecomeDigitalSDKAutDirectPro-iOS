@@ -29,7 +29,7 @@ Necesitas una aplicación para iOS 16.0 o posterior, un JWT vigente, el identifi
 
 ## Instalación con versión exacta
 
-Integra la versión oficial mediante SPM con **Exact Version** `3.5.1` y el producto `BDIdentityVerification`. El gestor descarga automáticamente las dependencias del paquete. Completa los permisos y la licencia de tu aplicación siguiendo la [guía de instalación](INSTALACION.md).
+Integra la versión oficial mediante SPM con el producto `BDIdentityVerification`. En **Exact Version**, ingresa el número exacto de la [última versión estable](https://github.com/Becomedigital/BecomeDigitalSDKAutDirectPro-iOS/releases/latest). El gestor descarga automáticamente las dependencias del paquete. Completa los permisos y la licencia de tu aplicación siguiendo la [guía de instalación](INSTALACION.md).
 
 Si vienes de la distribución por archivo, consulta la [migración](MIGRACION.md). Valida cámara, documentos y rostro en un dispositivo físico antes de distribuir tu app.
 
